@@ -14,6 +14,7 @@
         thead{
             font-weight: bold;
         }
+
     </style>
 </head>
 <body>
@@ -58,13 +59,15 @@
 
     </div>
 
-       
+
 
 
 <script src="../bootstrap-5.3.0/js/bootstrap.js"></script>
 <script src="../dependecies/jquery-3.6.4.js"></script>
 <script>
-$("#title_logo").after('<div class="col text-center white-text" id ="project_title"><div class="row"><h5 class="clear-input w-100 text-center m-0 mt-2" id="">ENGINEERING DEPARTMENT</h5></div><div class="row"><p>Home - Admin <span>•••</span></p></div></div>')
+$("#title_logo").after('<div class="col text-center white-text" id ="project_title"><div class="row"><h5 class="clear-input w-100 text-center m-0 mt-2" id="">ENGINEERING DEPARTMENT</h5></div><div class="row"><p>Review Board <span id = "pop_up_nav"></span></p></div></div>')
+$("#pop_up_nav").append('<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value); ">'+
+' <option value="">Select...</option><option value="https://google.com">Google</option><option value="https://yahoo.com">Yahoo</option></select>')
 
 </script>
 </body>

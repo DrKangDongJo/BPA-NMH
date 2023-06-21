@@ -46,6 +46,17 @@ body{
     background-color: #b72d2d;
 
 }
+.my-btn-green{
+    background-color: #429b41;
+    color:white;
+
+}
+
+.my-btn-green:hover{
+    background-color: #4db04c;
+
+}
+
 .border-black{
     border:1px solid black;
 }

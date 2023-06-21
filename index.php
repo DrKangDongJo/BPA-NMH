@@ -66,7 +66,7 @@
 
        </div>
        
-        <a href = "pages/applicant/applicant_home.php">
+        <a href = "pages/applicant_home.php">
             <button type="" class="btn my-btn-blue mt-0 float-end px-4" style="color:white;">
             LOGIN</button>
        </a>
