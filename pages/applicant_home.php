@@ -83,7 +83,8 @@
 
 
 
-<script src="../bootstrap-5.3.0/js/bootstrap.js"></script>
+
+<script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
 <script src="../dependecies/jquery-3.6.4.js"></script>
 <script>
 

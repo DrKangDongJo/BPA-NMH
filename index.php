@@ -16,13 +16,15 @@
 
         .login-cont{
             background-color: #5A8BB5;
-            width: 400px;
-            height: 600px;
+            min-width: 300px;
+            min-height: 500px;
+            max-width: 400px;
+            max-height: 600px;
             border-radius: 10px;
-            position:absolute;
+            /* position:absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); */
             padding:2%;
 
         }    
@@ -41,7 +43,7 @@
     ?>
     </div>
    
-    <div class="login-cont">
+    <div class="row login-cont mx-auto mt-2">
        <div class="row mt-5" style = "justify-content:center">
             <img src="img/Seal_of_Nasugbu.png" alt="Seal of Nasugbu" style="width:50%;" class = "img-fluid">
        </div>
@@ -78,13 +80,13 @@
 </div>
 
 
-
-
-
-
-
+<script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
+<script src="../dependecies/jquery-3.6.4.js"></script>
 <script>
+       $("#user-tools").attr('hidden','hidden')
+       $("#logo")[0].setAttribute("src","img/Seal_of_Nasugbu.png")
+       $("#title_logo").removeClass("col-4")
+       $("#title_logo").addClass("p-0")
 </script>
-
 </body>
 </html>

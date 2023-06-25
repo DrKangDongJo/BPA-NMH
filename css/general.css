@@ -12,6 +12,10 @@ body{
     font-family: 'Work Sans', sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 .white-text{
     color:white;
 }
@@ -77,4 +81,8 @@ body{
 .clear-input:focus{
     border: none;
 
+}
+
+.my-size-square{
+    aspect-ratio: 1/1;
 }
