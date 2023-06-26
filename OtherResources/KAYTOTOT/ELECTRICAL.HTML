@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Permit Form</title>
+    <link rel="stylesheet" href="bootstrap-5.3.0/css/bootstrap.css">
+    
+</head>
+<style>
+    #Cards{
+        width: 1450px;
+        height: 500px;
+        text-align: center;
+        margin: auto;
+        
+    }
+    .left-align{
+        text-align: justify;
+    }
+</style>
+<body>
+    <div class="nav bg-primary ">BS-NMH</div>
+    <div class="container-fluid">
+        <div class="col text-center"> 
+            <div class="row">
+                <div class="mt-5">
+                    <div class="header mt-2">
+                        <h6>Republic of the Philippines</h6>
+                        <h6>City/Municipality of Nasugbu</h6>
+                        <h6>Province of Batangas</h6>
+                    </div>
+                    <h4>OFFICE OF BUILDING OFFICIAL</h4>
+                    <H1>ELECTRICAL PERMIT</H1>
+                    <div class="row mx-auto">
+                        <div class="col ">
+                            <label class="" for="ApplicationNo">Application No.</label><br>
+                            <input type="text">
+                        </div>
+                        <div class="col">
+                            <label class="" for="ApplicationNo">EP NO.</label><br>
+                            <input type="text">
+                        </div>
+                        <div class="col">
+                            <label class="" for="ApplicationNo">Building Permit No.</label><br>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col text-center mx-auto">
+            <h7 class="left-align"><b>BOX 1 (TO BE ACCOMPLISHED IN PRINT THE OWNER/APPLICANT)</b></h7>
+        
+            <div id="Cards" class="card text-center ">
+                <form class="left-align">
+                    <div class="row">
+                        <div class="col left-align">
+                            <label for="FirstName"><b><h9>OWNER/APPLICANT</h7></b></label><br>
+                            <label for="FirstName">First Name:</label>
+                            <input type="text" id="FirstName" name="FirstName"><br>
+                            <label for="Last Name">Last Name:</label>
+                            <input type="text" id="Last Name" name="Last Name"><br>
+                            <label for="M.I">M.I:</label>
+                            <input type="text" id="M.I" name="M.I">
+                            
+                        </div>
+                        <div class="col">
+                            <h8><b>SCOPE OF WORK</b></h8>
+                            <div class="form-check">
+                                <input class="form-check-input" type="NewInstallation" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                  NEW INSTALLATION
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                 ANNUAL INSPECTION
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                <label class="form-check-label" for="exampleRadios3">
+                                  TEMPORARY
+                                </label>
+                              </div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="FirstName"><b><h9>FOR CONSTRUCTION OWNED BY AN ENTERPRICE</h7></b></label><br>
+                                <label for="FormOfOwnership">Form of Ownership :</label>
+                            <input type="text" id="FormOfOwnership" name="FormOfOwnership"><br>
+                            <label for="CharacterofOccupancy">Use or Character of Occupancy</label>
+                            <input type="CharacterofOccupancy" id="CharacterofOccupancy" name="CharacterofOccupancy"><br>
+                            <label for="Address">Str/Barangay/City/Municipality</label>
+                            <input type="Address" id="Address" name="Address"><br>
+                            <label for="zipcode">Zipcode</label>
+                            <input type="zipcode" id="zipcode" name="zipcode"><br>
+                            <label for="lot"><b>Location of Construction:</b></label><br>
+                            Lot: <input type="text" id="lot" name="lot" size="5">
+                            Blk: <input type="text" id="blk" name="blk" size="5">
+                            TCT No: <input type="text" id="tctNo" name="tctNo" size="5">
+                            Street: <input type="text" id="street" name="street">
+                            Tax Dec No: <input type="text" id="brgy" name="brgy"><br>
+                            Street: <input type="text" id="zipCode" name="zipCode" size="5">
+                            Barangay: <input type="text" id="zipCode" name="zipCode" size="5">
+                            City/Municipality: <input type="text" id="city" name="city">
+                            
+
+                        </div>
+                        
+                        
+                    </div>
+    
+                    </form>
+             
+                
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
