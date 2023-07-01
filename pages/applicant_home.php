@@ -1,11 +1,11 @@
+<?php
+$page_title = "Home | Applicant | BPA"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applicant Home</title>
-    <link rel="stylesheet" href="../bootstrap-5.3.0\css\bootstrap.css">
-    <link rel="stylesheet" href="../css/general.css">
+  <?php require('../php_func/header_temp.php')?>
 </head>
 <body>
 
@@ -14,15 +14,11 @@
         <?php
         require '../components/navbar.php';
         ?>
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitches" onclick="check_state()">
-  <label class="custom-control-label" for="customSwitches">Toggle this to switch view(demo only)</label>
-</div>
+
     </div>
 
-    <!-- ** first time use! -->
+    <!-- ** empty -->
     <div id = "first_time_use" class="row text-center" style="margin:2%">
-        <p class ="muted">VIEW OF FIRST TIME USER</p>
         <p class ="m-2">No recent or saved Projects found.</p>
         <p  class ="m-2">Create and add one now.</p>
         <button type="button" class = "btn my-btn-blue mx-auto white-text" style="width:auto"
@@ -65,7 +61,7 @@
 
 
 
-<div id="with_saved_project" class ="p-4" hidden>
+<div id="with_saved_project" class ="p-4" >
     <div class="row">
         <p>Recent Projects</p>
     </div>
@@ -87,21 +83,6 @@
 <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
 <script src="../dependecies/jquery-3.6.4.js"></script>
 <script>
-
-
-function check_state(){
-    if($("#customSwitches").is(':checked') == true){
-        $("#first_time_use").attr('hidden','hidden')
-    $("#with_saved_project").removeAttr('hidden')
-   
-}else{
-    $("#first_time_use").removeAttr('hidden');
-    $("#with_saved_project").attr('hidden','hidden')
-    
-  
-
-}
-}
 
 
 

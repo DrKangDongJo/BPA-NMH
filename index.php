@@ -1,10 +1,15 @@
+<?php
+$page_title = "Building Permit Application | Home";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building Permit Application | Home</title>
+    <title><?php echo $page_title;?></title>
+    <link rel="icon" type="image/x-icon" href="img/Seal_of_Nasugbu.png">
 
 
     <style>
@@ -42,13 +47,13 @@
     require 'components\navbar.php';
     ?>
     </div>
-   
+    <form action="php_func/login_validation.php" method="post">
     <div class="row login-cont mx-auto mt-2">
        <div class="row mt-5" style = "justify-content:center">
             <img src="img/Seal_of_Nasugbu.png" alt="Seal of Nasugbu" style="width:50%;" class = "img-fluid">
        </div>
         <br>
-
+      
        <div class="row">
         <label for="USERNAME" class = "white-text ">USERNAME</label>
         <div class="row m-auto">
@@ -68,12 +73,16 @@
 
        </div>
        
-        <a href = "pages/applicant_home.php">
-            <button type="" class="btn my-btn-blue mt-0 float-end px-4" style="color:white;">
+        <!-- <a href = "pages/applicant_home.php">
+           
+       </a> -->
+       <div>
+       <button type="" class="btn my-btn-blue m-auto float-end p-auto" style="color:white;">
             LOGIN</button>
-       </a>
+        </div>
       
     </div>
+    </form>
 
 
 
