@@ -10,6 +10,12 @@
     <style>
         ul > li{
             list-style: none;
+            /* color: black; */
+            
+        }
+        button > li{
+            color:black;
+            
         }
 
         #basics_label > *,#basics_input > input{
@@ -49,13 +55,16 @@
 
                 <div class="nav flex-column nav-pills align-items-start" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                    <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Unified Application Form</li>
+                    <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span>Unified Application Form
+                    
+                </li>
+
                 </button>
                     <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
                     <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Sanitary plumbing</li>
                     </button>
                     <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false">
-                    <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Form 3</li>
+                    <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Electrical</li>
                     </button>
                     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                        
@@ -66,9 +75,7 @@
                     <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Form 5</li>
                     </button>
                 </div>
-                   
-                    
-                  
+                
                 </ul>
                 <hr class="mx-4">
                 <h5>Additional Requirements(if needed)</h5>
@@ -82,6 +89,8 @@
             </div>
 
             <div id="footer">
+            <button>Add Form</button>
+
 
                 <h5 class = "text-end">Project 2% Complete</h5>
                 <div class="row">
@@ -100,30 +109,33 @@
 
 
     <div class="col m-0 p-0" style ="position:static;overflow-y:scroll" id = "right_portion">
-        <div class="row p-4 m-0">
-            <div class="col">Form - 0% Complete</div>
-            <div class="col text-end ">Application No.96247413</div>
-        </div>
+       
 
         <!-- form -->
        
 <div class="d-flex align-items-end">
   <div class="tab-content" id="v-pills-tabContent">
     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
-    <div id="paper" class = "row border-black m-5 p-3" >
+    
         <?php require "../components/form_unified.php"?>
-        </div>
+        
     </div>
     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
-    <div id="paper" class = "row border-black m-5 p-3" >
-        <?php require "../components/sanitary_form.php"?>
-        </div>
+    <?php require "../components/sanitary_form.php"?>
+       
+    
 
     </div>
-    <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">3...</div>
+    <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">
+    <?php require "../components/electrical.php"?>
+    
+  
+    </div>
     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">4...</div>
     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">5...</div>
   </div>
+        
+
 </div>
 
     </div>

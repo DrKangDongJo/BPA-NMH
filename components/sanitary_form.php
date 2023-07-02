@@ -1,5 +1,10 @@
 
-                
+<div class="row p-4 m-0">
+            <div class="col">Form - 2% Complete</div>
+            <div class="col text-end ">Application No.96247413</div>
+        </div>
+
+        <div id="paper" class = "row border-black m-5 p-3" >     
                 <div id="form_header" class = "row text-center" >
                     <p>REPUBLIC OF THE PHILIPINES<br>
                         <b>MUNICIPALITY OF NASUGBU BATANGAS</b> <br>
@@ -289,4 +294,4 @@
                     
                 </div>
             </div>
-        
+        </div>

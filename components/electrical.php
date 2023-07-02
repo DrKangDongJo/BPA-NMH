@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/bootstrap-5.3.0/css/bootstrap.css"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>SANITARY/PLUMBING PERMIT</title>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col p-4">
-                
+
+<div class="row p-4 m-0">
+            <div class="col">Form - 40% Complete</div>
+            <div class="col text-end ">Application No.96247413</div>
+        </div>
+
+        <div id="paper" class = "row border-black m-5 p-3" >              
                 <div id="form_header" class = "row text-center" >
                     <p>REPUBLIC OF THE PHILIPINES<br>
                         <b>MUNICIPALITY OF NASUGBU BATANGAS</b> <br>
@@ -40,7 +31,7 @@
                             <input type="number" name="building_no" id="building_no" class="col">
                         </div>
                     </div>
-                </div>
+                
                 <h6>BOX 1 (TO BE ACCOMPLISHED IN PRINT BY THE OWNER/APPLICANT)</h6>
 
                 <!-- APPLICANTS NAME -->
@@ -124,7 +115,7 @@
                             </div> 
                             <div class="COL">
                                 <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-2 mx-2" style="">OTHER (Specify)</label>
+                                <label for="" class="my-2 mx-2" >OTHER (Specify)</label>
                                 <input type="text" name="others" class="mx-5 w-50" style="border:none; border-bottom: 1px solid black; outline: none;">
                                
                             </div> 
@@ -229,8 +220,6 @@
                 
             </div>
         </div>
-    </div>
+   
 
-
-</body>
-</html>
+</div>
