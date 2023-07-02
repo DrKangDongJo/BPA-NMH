@@ -14,11 +14,16 @@ $result = select("applicant","$condition");
 if (mysqli_num_rows($result) > 0) {   
 while($row = mysqli_fetch_assoc($result)) {
     // echo "id: " . $row["id"]. " - Name: " . $row["username"]. " " . $row["password"]. "<br>";
-   
     $db_username = $row['username'];
     $db_pass = $row['password'];
 
+    
+// verify password
+// echo "verifying";
+if( password_verify($password,$db_pass) == 1){
+
     //create session
+    session_start();
     $_SESSION['id'] = $row['id'];
     $_SESSION['username'] = $row['username'];
     $_SESSION['firstname'] = $row['firstname'];
@@ -27,20 +32,20 @@ while($row = mysqli_fetch_assoc($result)) {
     $_SESSION['contact_no'] = $row['contact_no'];
 
 
+   header('Location: ../pages/applicant_home.php');
+}else{
+   header('Location: ../index.php?error=incorrect,username='.$username);
+}
+ 
+
+
+
   }
 } else {
     //else return no data
-    echo "0 results";
+    // echo "0 results";
+    header('Location: ../index.php?error=noaccount');
     }
-
-//verify password
-echo "verifying";
-if( password_verify($password,$db_pass) == 1){
-    header('Location: ../pages/applicant_home.php');
-}else{
-    header('Location: ../index.php');
-}
-  
 
 
 

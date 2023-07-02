@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/bootstrap-5.3.0/css/bootstrap.css">
-    <title>SANITARY/PLUMBING PERMIT</title>
-    
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col p-4">
+
                 
                 <div id="form_header" class = "row text-center" >
                     <p>REPUBLIC OF THE PHILIPINES<br>
@@ -37,7 +23,7 @@
                             <input type="number" name="permit_no" id="permit_no" class="col">
                         </div>
                     </div>
-                </div>
+                
                 <h6 style="font-weight:bold;" class="text-center">SANITARY/PLUMBING PERMIT</h6>
                 <h6>BOX | (TO BE ACCOMPLISHED BY SANITARY ENGINEER/MASTER PLUMBER IN PRINT)</h6>
 
@@ -303,9 +289,4 @@
                     
                 </div>
             </div>
-        </div>
-    </div>
-
-
-</body>
-</html>
+        

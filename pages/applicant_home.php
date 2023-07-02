@@ -1,5 +1,8 @@
 <?php
-$page_title = "Home | Applicant | BPA"
+$page_title = "Home | Applicant | BPA";
+session_start();
+print_r($_SESSION);
+require '../php_func/db_func.php'
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +20,69 @@ $page_title = "Home | Applicant | BPA"
 
     </div>
 
-    <!-- ** empty -->
-    <div id = "first_time_use" class="row text-center" style="margin:2%">
+    <?php 
+      $condition = "vw_project_owners.username = '". $_SESSION['username']."'";
+      $project = select("vw_project_owners",$condition);
+
+    //check if there are result
+if (mysqli_num_rows($project) > 0) {   
+
+  ?>
+  
+  <!-- with project -->
+
+  <div id="with_saved_project" class ="p-4" >
+    <div class="row">
+        Recent Projects
+    </div>
+    <div class="row ms-4">
+
+
+
+
+
+    <?php
+
+
+while($row = mysqli_fetch_assoc($project)) {
+    // echo "Name: " . $row["username"]. " " . $row["title"]. "<br>";
+  echo '<div style = "width:245px;height:180px;border:1px solid black;" class="d-flex-inline m-2">
+  <a href="applicant_openProject.php?project_id='.$row['id'].'">
+  <div style = "height:80%;border-bottom:1px solid black;"></div>
+  <p class="text-center" id = "'.$row['id'].'">'.$row['title'].'</p> 
+  </a>
+</div>';
+
+  }
+} else {
+    //else return no data
+    // echo "0 results";
+
+    // <!-- ** empty -->
+    echo '<div id = "first_time_use" class="row text-center" style="margin:2%">
         <p class ="m-2">No recent or saved Projects found.</p>
         <p  class ="m-2">Create and add one now.</p>
         <button type="button" class = "btn my-btn-blue mx-auto white-text" style="width:auto"
         data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PROJECT</button>
+    </div>';
+
+  }
+  ?>
     </div>
+       
+
+
+ 
+    
+
+    
+    
+
+    
 
 </div>
+
+
 
 
 <!-- **! MODAL -->
@@ -61,21 +118,7 @@ $page_title = "Home | Applicant | BPA"
 
 
 
-<div id="with_saved_project" class ="p-4" >
-    <div class="row">
-        <p>Recent Projects</p>
-    </div>
-    <div class="row ms-4">
-        <div style = "width:245px;height:180px;border:1px solid black;">
 
-        <div style = "height:80%;border-bottom:1px solid black;"></div>
-        <p class="text-center">2nd floor renovation</p>
-
-</div>
-
-    </div>
-
-</div>
 
 
 

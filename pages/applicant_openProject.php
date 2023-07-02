@@ -52,7 +52,7 @@
                     <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Unified Application Form</li>
                 </button>
                     <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                    <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Form 2</li>
+                    <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Sanitary plumbing</li>
                     </button>
                     <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false">
                     <li><span><input type="checkbox" name="" id=""  class = "me-2"></span>Form 3</li>
@@ -114,7 +114,12 @@
         <?php require "../components/form_unified.php"?>
         </div>
     </div>
-    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">2...</div>
+    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+    <div id="paper" class = "row border-black m-5 p-3" >
+        <?php require "../components/sanitary_form.php"?>
+        </div>
+
+    </div>
     <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">3...</div>
     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">4...</div>
     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">5...</div>
