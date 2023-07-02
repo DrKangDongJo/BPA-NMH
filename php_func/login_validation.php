@@ -24,7 +24,7 @@ if( password_verify($password,$db_pass) == 1){
 
     //create session
     session_start();
-    $_SESSION['id'] = $row['id'];
+    $_SESSION['user_id'] = $row['id'];
     $_SESSION['username'] = $row['username'];
     $_SESSION['firstname'] = $row['firstname'];
     $_SESSION['middlename'] = $row['middlename'];

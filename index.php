@@ -91,13 +91,14 @@ print_r($_SESSION);
 </div>
 
 
-<script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
-<script src="../dependecies/jquery-3.6.4.js"></script>
+<script src="bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
+<script src="dependecies/jquery-3.6.4.js"></script>
 <script>
        $("#user-tools").attr('hidden','hidden')
        $("#logo")[0].setAttribute("src","img/Seal_of_Nasugbu.png")
        $("#title_logo").removeClass("col-4")
        $("#title_logo").addClass("p-0")
+
 </script>
 </body>
 </html>

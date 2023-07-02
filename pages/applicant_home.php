@@ -2,7 +2,7 @@
 $page_title = "Home | Applicant | BPA";
 session_start();
 print_r($_SESSION);
-require '../php_func/db_func.php'
+
 ?>
 
 <!DOCTYPE html>
@@ -37,10 +37,6 @@ if (mysqli_num_rows($project) > 0) {
     </div>
     <div class="row ms-4">
 
-
-
-
-
     <?php
 
 
@@ -54,6 +50,13 @@ while($row = mysqli_fetch_assoc($project)) {
 </div>';
 
   }
+echo '
+</div>
+</div>
+<button type="button" class = "btn my-btn-blue mx-auto white-text" style="width:auto"
+data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PROJECT</button>
+';
+  
 } else {
     //else return no data
     // echo "0 results";
@@ -68,19 +71,8 @@ while($row = mysqli_fetch_assoc($project)) {
 
   }
   ?>
-    </div>
-       
-
-
  
-    
 
-    
-    
-
-    
-
-</div>
 
 
 
@@ -95,7 +87,7 @@ while($row = mysqli_fetch_assoc($project)) {
         <h1 class="modal-title fs-5" id="project_template_select_modal_Label">Project Templates</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" >
+      <div class="modal-body">
         
         <div style = "width:200px;aspect-ratio:1/1;border:1px solid black;">
 
@@ -126,6 +118,8 @@ while($row = mysqli_fetch_assoc($project)) {
 <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
 <script src="../dependecies/jquery-3.6.4.js"></script>
 <script>
+
+
 
 
 
