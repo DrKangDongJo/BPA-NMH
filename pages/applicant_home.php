@@ -1,7 +1,7 @@
 <?php
 $page_title = "Home | Applicant | BPA";
 session_start();
-print_r($_SESSION);
+// print_r($_SESSION);
 
 ?>
 
@@ -93,7 +93,7 @@ data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PR
 
             <div style = "height:80%;border-bottom:1px solid black;"></div>
            
-           <a href="applicant_openProject.php">
+           <a href="../php_func/new_project.php">
             <p class="text-center">BUILDING PERMIT APPLICATION</p>
             </a>
 

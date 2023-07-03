@@ -5,7 +5,7 @@ session_start();
 // get page url
 $full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $project_id = substr($full_url, strpos($full_url, "=") + 1);    
-// echo $project_id;
+echo $project_id;
 // query
 $condition = "id = '$project_id' AND owner_id = '".$_SESSION['user_id']."'";
 $open_project = select("project",$condition); //result
