@@ -82,6 +82,7 @@ if (mysqli_query($conn, $sql)) {
   echo "Record updated successfully";
 } else {
   echo "Error updating record: " . mysqli_error($conn);
+  // echo $sql;
 }
 
 mysqli_close($conn);
@@ -107,8 +108,7 @@ if(isset($_POST['action'])){
      insert($_POST['table'],$_POST['to_update'],$_POST['condition'],$_POST['ret_last_id']);
      }
   if ($_POST['action'] == "update") { 
-    update($_POST['table'],$_POST['to_update'],$_POST['conditi
-    on']);
+    update($_POST['table'],$_POST['to_update'],$_POST['condition']);
    }
   if ($_POST['action'] == "delete") { delete_(); }
 }
