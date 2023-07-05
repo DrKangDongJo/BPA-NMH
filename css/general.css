@@ -86,3 +86,11 @@ a{
 .my-size-square{
     aspect-ratio: 1/1;
 }
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: #f8f9fa;
+  }
