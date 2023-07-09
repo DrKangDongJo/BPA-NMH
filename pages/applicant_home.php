@@ -77,7 +77,6 @@ data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PR
 
 
 
-<!-- **! MODAL -->
 
 <!-- Modal -->
 <div class="modal fade" id="project_template_select_modal" tabindex="-1" aria-labelledby="project_template_select_modal_Label" aria-hidden="true">

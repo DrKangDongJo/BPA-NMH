@@ -50,9 +50,10 @@ $page_title = "Building Permit Application | Home";
     ?>
     </div>
     <form action="php_func/login_validation.php" method="post">
-    <div class="row login-cont mx-auto mt-2">
-       <div class="row mt-5" style = "justify-content:center">
-            <img src="img/Seal_of_Nasugbu.png" alt="Seal of Nasugbu" style="width:50%;" class = "img-fluid">
+    <div class="my-centered">
+    <div class="row login-cont m-auto">
+       <div class="row mt-auto" style = "justify-content:center">
+            <img src="img/Seal_of_Nasugbu.png" alt="Seal of Nasugbu" style="width:50%; aspect-ratio:1/1" class = "img-fluid">
        </div>
         <br>
       
@@ -70,8 +71,10 @@ $page_title = "Building Permit Application | Home";
        </div>
 
        <div class= "my-upper white-text" style="font-size: 0.9rem;">
-       <p class = "mb-0 mt-1">FORGOT PASSWORD?</p>
-       <p class = "mb-1">SIGNUP</p>
+       
+       <a href="pages/forgot_password.html" class = "white-text"><p class = "mb-0 mt-1">FORGOT PASSWORD?</p></a>
+       <a href="pages/signup.html" class = "white-text"><p class = "mb-1">SIGNUP</p></a>
+       
 
        </div>
        
@@ -83,6 +86,7 @@ $page_title = "Building Permit Application | Home";
             LOGIN</button>
         </div>
       
+    </div>
     </div>
     </form>
 
