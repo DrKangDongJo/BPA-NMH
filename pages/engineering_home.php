@@ -1,11 +1,15 @@
+<?php
+$page_title = "Home | Admin | Engineering | BPA";
+session_start();
+// print_r($_SESSION);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPA | Engineering Department</title>
-    <link rel="stylesheet" href="../bootstrap-5.3.0\css\bootstrap.css">
-    <link rel="stylesheet" href="../css/general.css">
+    
+<?php require('../php_func/header_temp.php')?>
     <style>
                 #pop_up_nav > select{
             background-color: transparent;
@@ -78,16 +82,23 @@
 
 
     </div>
-
+    
        
 
 
     <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
 <script src="../dependecies/jquery-3.6.4.js"></script>
 <script>
-$("#title_logo").after('<div class="col text-center white-text" id ="project_title"><div class="row"><h5 class="clear-input w-100 text-center m-0 mt-2" id="">ENGINEERING DEPARTMENT</h5></div><div class="row"><p>Home - Admin <span id = "pop_up_nav"></span></p></div></div>')
-$("#pop_up_nav").append('<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">'+
-' <option value="">Select...</option><option value="engineering_review_board.php">Pending Applications</option><option value="https://yahoo.com">Yahoo</option></select>')
+$("#nav_center_section").append('<div class="col text-center white-text" id ="project_title"><div class="row"><h5 class="clear-input w-100 text-center m-0 mt-2" id="">ENGINEERING DEPARTMENT</h5></div><div class="row"><p>Home - Admin <span id = "pop_up_nav"></span></p></div></div>')
+$("#user-tools").removeClass("my-auto");
+$("#user-tools").addClass("my-2");
+$("#title_logo").append('<div class = "mx-2"style ="width:22px;height:90%;background-color:#00cc39"></div>')
+
+
+// $("#pop_up_nav").append('<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">'+
+// ' <option value="">Select...</option><option value="engineering_review_board.php">Pending Applications</option><option value="https://yahoo.com">Yahoo</option></select>')
+
+
 
 </script>
 </body>

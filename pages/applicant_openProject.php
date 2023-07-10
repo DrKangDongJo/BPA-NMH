@@ -10,9 +10,6 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 $condition = "id = '$project_id' AND owner_id = '".$_SESSION['user_id']."'";
 $open_project = select("project",$condition); //result
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +25,7 @@ $open_project = select("project",$condition); //result
   <?php 
 
     if($row = mysqli_fetch_assoc($open_project)) {
-        $project_title = $row['title'];
+        $project_title = ucwords($row['title']);
         echo "<title>$project_title</title>";
     }
 
@@ -78,47 +75,41 @@ $open_project = select("project",$condition); //result
     require '../components/navbar.php';
     ?>
 
-    
-
-    <!-- <div class="row"></div> -->
 
     <div class="row m-0" >
-    <div  class ="col-3 m-0 p-0" >
+        <!-- checklist -->
+    <div  class ="col-3 m-0 p-0">
         <!-- cointainer -->
         <div style = "width:100%;background-color:#dfdfdf94;display:flex;flex-direction:column;min-height:100%" class ="p-4 m-0">
-
 
             <!-- header -->
             <div class = "text-end p-0 m-0"><a href="applicant_home.php">BACK</a> </div>
             
+
             <!-- main -->
             <div class = "ms-3" name = "main" style="flex-grow:1">
                 <ul>
-                    
-       <?php
-       
-       $condition = "vw_project_forms_created.project_id = '$project_id'";
-      $forms_present = select("vw_project_forms_created","$condition");
-      if (mysqli_num_rows($forms_present) > 0) {
-       // output data of each row
-       if($row = mysqli_fetch_assoc($forms_present)) {
-       //   echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-       // print_r($row);
-       $forms_present = $row['notNull'];
-       $forms_present = explode (",", $forms_present); 
+                                
+                <!-- forms present in the project -->
+                <?php
+                
+                $condition = "vw_project_forms_created.project_id = '$project_id'";
+                $forms_present = select("vw_project_forms_created","$condition");
+                if (mysqli_num_rows($forms_present) > 0) {
+                // output data of each row
+                if($row = mysqli_fetch_assoc($forms_present)) {
+                //   echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+                // print_r($row);
+                $forms_present = $row['notNull'];
+                $forms_present = explode (",", $forms_present); 
 
-       }
-     } else {
-       echo "0 results";
-     }
-     
+                }
+                } else {
+                echo "0 results";
+                }
+                
+                ?>
 
-
-   //   print_r($forms_present);
-  
-
-
-      ?>
                 <h5 style= "margin-left:-10%">Requirements</h5>
                 <div class="nav flex-column nav-pills align-items-start" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php
@@ -146,7 +137,103 @@ $open_project = select("project",$condition); //result
             </div>
 
             <div id="footer">
-            <button>Add Form</button>
+            <!-- <button>Add Form</button> -->
+          
+
+            <?php 
+            
+            $bs_target = "edit_form";
+            $button_text = "Edit forms";
+            $modal_title = "EDIT FORMS";
+
+            ?>
+
+    <button type="button" class = "btn my-btn-blue mx-auto white-text" style="width:auto"
+            data-bs-toggle="modal" data-bs-target="#<?php echo $bs_target?>"><?php echo $button_text?></button>
+    <!-- Modal -->
+    <div class="modal fade " id="<?php echo $bs_target?>" tabindex="-1" aria-labelledby="<?php echo $bs_target?>_Label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="<?php echo $bs_target?>_Label"><?php echo $modal_title?></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+          <div id="" style = "width: 600px;">
+    <div class="header">
+        <h5>PROJECT TITLE</h5>
+    </div>
+    <div class="body">
+        <table class = "table table-responsive table-bordered table-striped">
+            <thead>
+                <td>Form</td>
+                <td>Completion %</td>
+                <td>Operation</td> <!--delete, lock, hide-->
+            </thead>
+            <?php
+                     for($i = 0;$i<count($forms_present);$i++){
+                        
+                        ?>
+            <tr>
+                <td>
+                   <?php
+                   echo trim(ucwords($forms_present[$i]));
+                   ?>
+
+                </td>
+                <td><?php echo rand(0,100)?>% Complete</td>
+                <td class="d-flex justify-content-center">
+                    <ul class="d-inline-flex m-auto p-0">
+                        <button class = "btn btn-outline-info"><span></span>hide</button>
+                        <button class="btn progress-bar-animated"><span></span>lock</button>
+                        <button class = "btn my-btn-red">delete</button>
+
+                    </ul>
+
+                </td>
+            </tr>
+            <?php
+                     }
+            ?>
+        </table>
+    </div>
+    <?php
+      $forms = array("Architectural", "Sanitary_plumbing", "Structural","Electrical","Mechanical","Locational","Fsec");
+      print_r($forms_present) ;
+      print_r($forms) ;
+    ?>
+    <div class="footer">
+        <select name="" id="">
+
+
+            <?php
+            
+              for($i = 0;$i<count($forms);$i++){
+                if(!in_array(strtolower($forms[$i]),$forms_present)){
+                    echo '<option value="'.trim(ucwords($forms[$i])).'">'.trim(ucwords($forms[$i])).'</option>';
+                }
+                // echo $forms[$i];
+                
+            }
+
+
+            ?>
+            
+        </select>
+        <button class = "btn my-btn-blue float-end">Add form</button>
+    </div>
+</div>
+    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn my-btn-red" data-bs-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
                 <h5 class = "text-end">Project 0% Complete</h5>
@@ -164,6 +251,8 @@ $open_project = select("project",$condition); //result
 
     </div>
 
+
+    <!-- right portion/forms selected -->
 
     <div class="col m-0 p-0" style ="position:static;overflow-y:scroll" id = "right_portion">
         <!-- form -->
@@ -238,6 +327,8 @@ $("#nav_center_section").append('<div class="text-center" id ="project_title"><i
 $("#nav_center_section").addClass("m-auto")
 // add script for saving project name before editing
 // incase user doesn't input replacement or left blank
+
+
 function update_title(){
    
     // get project title and page
@@ -252,7 +343,8 @@ function update_title(){
 
     }else{
         //reflect page title
-        page_title.text = project_title.value
+        page_title.text = project_title.value;
+
     }
 
     //update value in db
