@@ -29,7 +29,6 @@ $open_project = select("project",$condition); //result
         echo "<title>$project_title</title>";
     }
 
-
   ?>
 
   
@@ -110,12 +109,13 @@ $open_project = select("project",$condition); //result
                 
                 ?>
 
-                <h5 style= "margin-left:-10%">Requirements</h5>
+                <h5 style= "margin-left:-10%">FORMS</h5>
                 <div class="nav flex-column nav-pills align-items-start" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php
                
                       for($i = 0;$i<count($forms_present);$i++){
                         $column = trim(ucwords($forms_present[$i]));
+                        $forms_present[$i] = $column;
                        if($i == 0){
                         echo '<button class="nav-link active" id="v-pills-'.$column.'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$column.'" type="button" role="tab" aria-controls="v-pills-'.$column.'" aria-selected="true">
                         <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$column.'</p></li>
@@ -158,7 +158,7 @@ $open_project = select("project",$condition); //result
             <h1 class="modal-title fs-5" id="<?php echo $bs_target?>_Label"><?php echo $modal_title?></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body ">
             
           <div id="" style = "width: 600px;">
     <div class="header">
@@ -198,30 +198,25 @@ $open_project = select("project",$condition); //result
             ?>
         </table>
     </div>
-    <?php
-      $forms = array("Architectural", "Sanitary_plumbing", "Structural","Electrical","Mechanical","Locational","Fsec");
-      print_r($forms_present) ;
-      print_r($forms) ;
-    ?>
+
     <div class="footer">
-        <select name="" id="">
+        <select name="" id="sel_add_form">
 
 
             <?php
-            
+              $forms = array("Architectural", "Sanitary", "Structural","Electrical","Mechanical","Locational");
+            //   Fsec not a table
               for($i = 0;$i<count($forms);$i++){
-                if(!in_array(strtolower($forms[$i]),$forms_present)){
+                // echo '<option value="'.trim(ucwords($forms[$i])).'">'.trim($forms_present[$i]).'</option>';
+                if(!in_array($forms[$i],$forms_present)){
                     echo '<option value="'.trim(ucwords($forms[$i])).'">'.trim(ucwords($forms[$i])).'</option>';
                 }
-                // echo $forms[$i];
-                
+                // echo $forms[$i];   
             }
-
-
             ?>
             
         </select>
-        <button class = "btn my-btn-blue float-end">Add form</button>
+        <button class = "btn my-btn-blue float-end" id = "btn_addform" onclick="add_form()">Add form</button>
     </div>
 </div>
     
@@ -281,6 +276,7 @@ for($i = 0;$i<count($forms_present);$i++){
         $require ="../components/form_fsec.php";
     }
     
+    
     if($i == 0){
         echo'<div class="tab-pane fade active show" id="v-pills-'.$column.'" role="tabpanel" aria-labelledby="v-pills-'.$column.'-tab" tabindex="0">';
         require "$require";
@@ -297,20 +293,9 @@ for($i = 0;$i<count($forms_present);$i++){
             
             </div>
         </div>
-
-
-
-
-
     </div>
-
     </div> 
-    
-
-
 </div>
-
-
 
 
 <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
@@ -318,17 +303,11 @@ for($i = 0;$i<count($forms_present);$i++){
 <script>
 
 
-<?php
-// if
-
-?>
-
+// add center project name
 $("#nav_center_section").append('<div class="text-center" id ="project_title"><input class="clear-input text-center white-text" type="text" name="" id="inp_project_name" onchange = "update_title()" value="<?php echo $project_title;?>"></div>')
 $("#nav_center_section").addClass("m-auto")
-// add script for saving project name before editing
-// incase user doesn't input replacement or left blank
 
-
+//updating title
 function update_title(){
    
     // get project title and page
@@ -364,6 +343,73 @@ function update_title(){
             
         }
     });
+
+}
+
+function add_form(){
+
+    //get selected value of dropdown
+    var selected = $("#sel_add_form  option:selected")[0].value;
+    var table = null;
+    //insert new form
+    //update form tables
+
+    if(selected == "Architectural"){
+        table = "f_architectural";
+    }else if(selected == "Structural"){
+        table = "f_structural";
+    }else if(selected == "Sanitary_plumbing"){
+        table = "f_sanitary";
+    }else if(selected == "Electrical"){
+        table = "f_electrical";
+    }else if(selected == "Mechanical"){
+        table = "f_mechanical";
+    }else if(selected == "Locational"){
+        table = "f_locational";
+    };
+
+    <?php
+    $form_id = gen_uuid();
+    ?>
+
+
+    $.ajax({
+        url: "../php_func/db_func.php",
+        type: "POST",
+        cache: false,
+        async : true,
+        data : {"action" : "insert",
+            "table" : table,
+            "column" : "id",
+            "value" : "'<?php echo $form_id;?>'"
+       
+        },
+        success: function(dataResult){
+            console.log(dataResult);
+            // location.reload();
+        }
+    });
+
+    //update
+    $.ajax({
+        url: "../php_func/db_func.php",
+        type: "POST",
+        cache: false,
+        async : true,
+        data : {"action" : "update",
+            "table" : "forms",
+            "to_update" : table = "'" + <?php echo $form_id?> +"'",
+            "condition" : "`id` = '<?php //echo "$project_id"?>'"
+        
+        },
+        success: function(dataResult){
+            console.log(dataResult);
+            
+        }
+    });
+
+
+
 
 }
 
