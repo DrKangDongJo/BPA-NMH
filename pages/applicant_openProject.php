@@ -26,9 +26,18 @@ $open_project = select("project",$condition); //result
 
     if($row = mysqli_fetch_assoc($open_project)) {
         $project_title = ucwords($row['title']);
+        $proj_land_property = $row['land_property'];
+        $proj_plan_details = $row['plans_details'];
+        $proj_address = $row['address'];
         echo "<title>$project_title</title>";
+        echo "prj_plan_details  = ".$proj_plan_details;
     }
 
+    $proj_forms = select("plans_details","id = '$proj_plan_details'");
+    if($proj_forms = mysqli_fetch_assoc($proj_forms)){
+        $proj_forms_id = $proj_forms['form'];
+        echo "forms_id = ".$proj_forms_id;
+    }
   ?>
 
   
@@ -171,15 +180,39 @@ $open_project = select("project",$condition); //result
                 <td>Completion %</td>
                 <td>Operation</td> <!--delete, lock, hide-->
             </thead>
-            <?php
-                     for($i = 0;$i<count($forms_present);$i++){
-                        
-                        ?>
+        <?php
+        $present = select("vw_project_forms","project_id = '$project_id'");
+        //add username/user_id later
+        
+        if($row = mysqli_fetch_row($present)) {
+            
+    for($i = 5; $i < count($row); $i++){
+        ?>
+                   
             <tr>
                 <td>
-                   <?php
-                   echo trim(ucwords($forms_present[$i]));
-                   ?>
+                 <!--form name here  -->
+                 <?php
+        if($row[$i] == "" || $row[$i] == null){
+            // echo "NULL";
+        }
+        if($i == 5){
+            echo "archi";
+        }else if($i == 6){
+            echo "struc";
+        }else if($i == 7){
+            echo "sani";
+        }else if($i == 8){
+            echo "elec";
+        }else if($i == 9){
+            echo "mech";
+        }else if($i == 10){
+            echo "loc";
+        }
+        // echo "--";
+        // echo $row[$i];
+
+?>
 
                 </td>
                 <td><?php echo rand(0,100)?>% Complete</td>
@@ -187,23 +220,31 @@ $open_project = select("project",$condition); //result
                     <ul class="d-inline-flex m-auto p-0">
                         <button class = "btn btn-outline-info"><span></span>hide</button>
                         <button class="btn progress-bar-animated"><span></span>lock</button>
-                        <button class = "btn my-btn-red">delete</button>
+                        <button class = "btn my-btn-red" id= "<?php echo $row[$i]?>">delete</button>
 
                     </ul>
 
                 </td>
             </tr>
+
             <?php
-                     }
+            
+        }
+
+    }
             ?>
+     
         </table>
     </div>
 
     <div class="footer">
-        <select name="" id="sel_add_form">
+        <?php
+        if(count($forms_present) == 6){
 
+        }else{
 
-            <?php
+            echo '<select name="" id="sel_add_form">';
+
               $forms = array("Architectural", "Sanitary", "Structural","Electrical","Mechanical","Locational");
             //   Fsec not a table
               for($i = 0;$i<count($forms);$i++){
@@ -213,10 +254,11 @@ $open_project = select("project",$condition); //result
                 }
                 // echo $forms[$i];   
             }
-            ?>
-            
-        </select>
-        <button class = "btn my-btn-blue float-end" id = "btn_addform" onclick="add_form()">Add form</button>
+
+            echo '</select><button class = "btn my-btn-blue float-end" id = "btn_addform" onclick="add_form()">Add form</button>';
+    
+        }
+        ?>
     </div>
 </div>
     
@@ -290,6 +332,8 @@ for($i = 0;$i<count($forms_present);$i++){
   
 
 ?>
+
+
             
             </div>
         </div>
@@ -358,7 +402,7 @@ function add_form(){
         table = "f_architectural";
     }else if(selected == "Structural"){
         table = "f_structural";
-    }else if(selected == "Sanitary_plumbing"){
+    }else if(selected == "Sanitary"){
         table = "f_sanitary";
     }else if(selected == "Electrical"){
         table = "f_electrical";
@@ -367,6 +411,10 @@ function add_form(){
     }else if(selected == "Locational"){
         table = "f_locational";
     };
+
+    console.log(selected)
+    console.log(table)
+
 
     <?php
     $form_id = gen_uuid();
@@ -386,7 +434,7 @@ function add_form(){
         },
         success: function(dataResult){
             console.log(dataResult);
-            // location.reload();
+           
         }
     });
 
@@ -398,8 +446,8 @@ function add_form(){
         async : true,
         data : {"action" : "update",
             "table" : "forms",
-            "to_update" : table = "'" + <?php echo $form_id?> +"'",
-            "condition" : "`id` = '<?php //echo "$project_id"?>'"
+            "to_update" : "`"+table.replace("f_","") +"` = '<?php echo $form_id?>'",
+            "condition" : "`id` = '<?php echo $proj_forms_id?>'"
         
         },
         success: function(dataResult){
@@ -409,7 +457,7 @@ function add_form(){
     });
 
 
-
+ location.reload();
 
 }
 
