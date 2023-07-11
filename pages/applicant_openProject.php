@@ -26,10 +26,18 @@ $open_project = select("project",$condition); //result
 
     if($row = mysqli_fetch_assoc($open_project)) {
         $project_title = ucwords($row['title']);
+        $proj_land_property = $row['land_property'];
+        $proj_plan_details = $row['plans_details'];
+        $proj_address = $row['address'];
         echo "<title>$project_title</title>";
+        echo "prj_plan_details  = ".$proj_plan_details;
     }
 
-
+    $proj_forms = select("plans_details","id = '$proj_plan_details'");
+    if($proj_forms = mysqli_fetch_assoc($proj_forms)){
+        $proj_forms_id = $proj_forms['form'];
+        echo "forms_id = ".$proj_forms_id;
+    }
   ?>
 
   
@@ -110,12 +118,13 @@ $open_project = select("project",$condition); //result
                 
                 ?>
 
-                <h5 style= "margin-left:-10%">Requirements</h5>
+                <h5 style= "margin-left:-10%">FORMS</h5>
                 <div class="nav flex-column nav-pills align-items-start" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php
                
                       for($i = 0;$i<count($forms_present);$i++){
                         $column = trim(ucwords($forms_present[$i]));
+                        $forms_present[$i] = $column;
                        if($i == 0){
                         echo '<button class="nav-link active" id="v-pills-'.$column.'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$column.'" type="button" role="tab" aria-controls="v-pills-'.$column.'" aria-selected="true">
                         <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$column.'</p></li>
@@ -158,7 +167,7 @@ $open_project = select("project",$condition); //result
             <h1 class="modal-title fs-5" id="<?php echo $bs_target?>_Label"><?php echo $modal_title?></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body ">
             
           <div id="" style = "width: 600px;">
     <div class="header">
@@ -171,15 +180,39 @@ $open_project = select("project",$condition); //result
                 <td>Completion %</td>
                 <td>Operation</td> <!--delete, lock, hide-->
             </thead>
-            <?php
-                     for($i = 0;$i<count($forms_present);$i++){
-                        
-                        ?>
+        <?php
+        $present = select("vw_project_forms","project_id = '$project_id'");
+        //add username/user_id later
+        
+        if($row = mysqli_fetch_row($present)) {
+            
+    for($i = 5; $i < count($row); $i++){
+        ?>
+                   
             <tr>
                 <td>
-                   <?php
-                   echo trim(ucwords($forms_present[$i]));
-                   ?>
+                 <!--form name here  -->
+                 <?php
+        if($row[$i] == "" || $row[$i] == null){
+            // echo "NULL";
+        }
+        if($i == 5){
+            echo "archi";
+        }else if($i == 6){
+            echo "struc";
+        }else if($i == 7){
+            echo "sani";
+        }else if($i == 8){
+            echo "elec";
+        }else if($i == 9){
+            echo "mech";
+        }else if($i == 10){
+            echo "loc";
+        }
+        // echo "--";
+        // echo $row[$i];
+
+?>
 
                 </td>
                 <td><?php echo rand(0,100)?>% Complete</td>
@@ -187,41 +220,45 @@ $open_project = select("project",$condition); //result
                     <ul class="d-inline-flex m-auto p-0">
                         <button class = "btn btn-outline-info"><span></span>hide</button>
                         <button class="btn progress-bar-animated"><span></span>lock</button>
-                        <button class = "btn my-btn-red">delete</button>
+                        <button class = "btn my-btn-red" id= "<?php echo $row[$i]?>">delete</button>
 
                     </ul>
 
                 </td>
             </tr>
+
             <?php
-                     }
+            
+        }
+
+    }
             ?>
+     
         </table>
     </div>
-    <?php
-      $forms = array("Architectural", "Sanitary_plumbing", "Structural","Electrical","Mechanical","Locational","Fsec");
-      print_r($forms_present) ;
-      print_r($forms) ;
-    ?>
+
     <div class="footer">
-        <select name="" id="">
+        <?php
+        if(count($forms_present) == 6){
 
+        }else{
 
-            <?php
-            
+            echo '<select name="" id="sel_add_form">';
+
+              $forms = array("Architectural", "Sanitary", "Structural","Electrical","Mechanical","Locational");
+            //   Fsec not a table
               for($i = 0;$i<count($forms);$i++){
-                if(!in_array(strtolower($forms[$i]),$forms_present)){
+                // echo '<option value="'.trim(ucwords($forms[$i])).'">'.trim($forms_present[$i]).'</option>';
+                if(!in_array($forms[$i],$forms_present)){
                     echo '<option value="'.trim(ucwords($forms[$i])).'">'.trim(ucwords($forms[$i])).'</option>';
                 }
-                // echo $forms[$i];
-                
+                // echo $forms[$i];   
             }
 
-
-            ?>
-            
-        </select>
-        <button class = "btn my-btn-blue float-end">Add form</button>
+            echo '</select><button class = "btn my-btn-blue float-end" id = "btn_addform" onclick="add_form()">Add form</button>';
+    
+        }
+        ?>
     </div>
 </div>
     
@@ -281,6 +318,7 @@ for($i = 0;$i<count($forms_present);$i++){
         $require ="../components/form_fsec.php";
     }
     
+    
     if($i == 0){
         echo'<div class="tab-pane fade active show" id="v-pills-'.$column.'" role="tabpanel" aria-labelledby="v-pills-'.$column.'-tab" tabindex="0">';
         require "$require";
@@ -294,23 +332,14 @@ for($i = 0;$i<count($forms_present);$i++){
   
 
 ?>
+
+
             
             </div>
         </div>
-
-
-
-
-
     </div>
-
     </div> 
-    
-
-
 </div>
-
-
 
 
 <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
@@ -318,17 +347,11 @@ for($i = 0;$i<count($forms_present);$i++){
 <script>
 
 
-<?php
-// if
-
-?>
-
+// add center project name
 $("#nav_center_section").append('<div class="text-center" id ="project_title"><input class="clear-input text-center white-text" type="text" name="" id="inp_project_name" onchange = "update_title()" value="<?php echo $project_title;?>"></div>')
 $("#nav_center_section").addClass("m-auto")
-// add script for saving project name before editing
-// incase user doesn't input replacement or left blank
 
-
+//updating title
 function update_title(){
    
     // get project title and page
@@ -364,6 +387,77 @@ function update_title(){
             
         }
     });
+
+}
+
+function add_form(){
+
+    //get selected value of dropdown
+    var selected = $("#sel_add_form  option:selected")[0].value;
+    var table = null;
+    //insert new form
+    //update form tables
+
+    if(selected == "Architectural"){
+        table = "f_architectural";
+    }else if(selected == "Structural"){
+        table = "f_structural";
+    }else if(selected == "Sanitary"){
+        table = "f_sanitary";
+    }else if(selected == "Electrical"){
+        table = "f_electrical";
+    }else if(selected == "Mechanical"){
+        table = "f_mechanical";
+    }else if(selected == "Locational"){
+        table = "f_locational";
+    };
+
+    console.log(selected)
+    console.log(table)
+
+
+    <?php
+    $form_id = gen_uuid();
+    ?>
+
+
+    $.ajax({
+        url: "../php_func/db_func.php",
+        type: "POST",
+        cache: false,
+        async : true,
+        data : {"action" : "insert",
+            "table" : table,
+            "column" : "id",
+            "value" : "'<?php echo $form_id;?>'"
+       
+        },
+        success: function(dataResult){
+            console.log(dataResult);
+           
+        }
+    });
+
+    //update
+    $.ajax({
+        url: "../php_func/db_func.php",
+        type: "POST",
+        cache: false,
+        async : true,
+        data : {"action" : "update",
+            "table" : "forms",
+            "to_update" : "`"+table.replace("f_","") +"` = '<?php echo $form_id?>'",
+            "condition" : "`id` = '<?php echo $proj_forms_id?>'"
+        
+        },
+        success: function(dataResult){
+            console.log(dataResult);
+            
+        }
+    });
+
+
+ location.reload();
 
 }
 

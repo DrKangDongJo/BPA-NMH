@@ -105,7 +105,7 @@ if(isset($_POST['action'])){
     select($_POST['table'],$_POST['condition']); 
   }
   if ($_POST['action'] == "insert") {
-     insert($_POST['table'],$_POST['to_update'],$_POST['condition'],$_POST['ret_last_id']);
+     insert($_POST['table'],$_POST['column'],$_POST['value']);
      }
   if ($_POST['action'] == "update") { 
     update($_POST['table'],$_POST['to_update'],$_POST['condition']);
