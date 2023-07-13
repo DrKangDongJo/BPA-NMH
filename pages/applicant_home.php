@@ -35,6 +35,8 @@ if (mysqli_num_rows($project) > 0) {
     <div class="row">
         Recent Projects
     </div>
+
+  
     <div class="row ms-4">
 
     <?php
@@ -43,8 +45,23 @@ if (mysqli_num_rows($project) > 0) {
 while($row = mysqli_fetch_assoc($project)) {
     // echo "Name: " . $row["username"]. " " . $row["title"]. "<br>";
   echo '<div style = "width:245px;height:180px;border:1px solid black;" class="d-flex-inline m-2">
+  <div class="row text-end float-right">
+  <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+          style = "width:20px;height:10px;background-color:red">
+              ...
+          </button>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Your application..</a></li>
+              <li><a class="dropdown-item" href="#">UPDATE!</a></li>
+              <li><a class="dropdown-item" href="#">Please check your em..</a></li>
+          </ul>
+      </div>
+  </div>
   <a href="applicant_openProject.php?project_id='.$row['id'].'">
-  <div style = "height:80%;border-bottom:1px solid black;"></div>
+  <div style = "height:80%;border-bottom:1px solid black;">
+  
+  </div>
   <p class="text-center" id = "'.$row['id'].'">'.$row['title'].'</p> 
   </a>
 </div>';

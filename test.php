@@ -6,45 +6,14 @@
 
 // require 'php_func/gen_uuid.php';
 require 'php_func/db_func.php';
+// $condition = "project_id = '47614c93-ccb1-49a9-a317-023f131ccd52' AND owner_id = '5d3e4e48-17ee-11ee-a01d-f47b09532450' ";
+$query = "SELECT username, COUNT(title) as 'untitled' FROM vw_project_owners WHERE title LIKE '%Untitled%' and owner_id = '5d3e4e48-17ee-11ee-a01d-f47b09532450'";
 
+$open_project = full_query($query); //result
 
-$project_id = '7e1c7005-6249-4ada-bcaf-c5ff1f96114b';
-$user_id = '5d3e4e48-17ee-11ee-a01d-f47b09532450';
+if($row = mysqli_fetch_assoc($open_project)) {
+    print_r($row);
 
-$result = select("vw_project_forms","project_id = '$project_id'");
-
-// print_r($present);
-
-// if($row = mysqli_fetch_field($present)) {
-    
-//     // for($i = 0; $i < count($row); $i++){
-//     //     if($row[$i] == "" || $row[$i] == null){
-//     //         echo "NULL";
-//     //     }
-//     //     echo $row[$i];
-//     // }
-
-//     print_r($row);
-// }
-
-
-
-// Print the column names as the headers of a table
-echo "<table><tr>";
-for($i = 0; $i < mysqli_num_fields($result); $i++) {
-    $field_info = mysqli_fetch_field($result);
-    echo "<th>{$field_info->name}</th>";
 }
-
-// Print the data
-// while($row = mysqli_fetch_row($result)) {
-//     echo "<tr>";
-//     foreach($row as $_column) {
-//         echo "<td>{$_column}</td>";
-//     }
-//     echo "</tr>";
-// }
-
-echo "</table>";
 
 ?>
