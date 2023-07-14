@@ -7,38 +7,49 @@
 
     <link rel="stylesheet" href="bootstrap-5.3.0/css/bootstrap.css">
     <link rel="stylesheet" href="css/general.css">
+
+    <style>
+        button:active{
+            background-color: green;
+
+        }
+    </style>
 </head>
 <body>
-    <div style = "width:245px;height:180px;border:1px solid black; " class="d-flex-inline m-2">
-        <div class="row text-end float-right m-0">
-        <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                style = "width:20px;height:10px;background-color:red">
+       
+    <div style = "width:245px;height:180px;border:1px solid black; " class="d-flex-inline m-2">  <!-- card -->
+        <div class="row text-end float-right m-0 px-2"> <!-- project controls  container-->
+        <div class="dropdown p-0"> <!-- project control dropdown -->
+                <button class="btn btn-secondary p-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                style = "color:black">
                     ...
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Your application..</a></li>
-                    <li><a class="dropdown-item" href="#">UPDATE!</a></li>
-                    <li><a class="dropdown-item" href="#">Please check your em..</a></li>
-                </ul>
-            </div>
+                <form action="php_func/delete_project.php" method="post">
+                    <ul class="dropdown-menu">
+                        <button type="submit">Delete</button>
+                        <!-- <li><a class="dropdown-item" href="#">UPDATE!</a></li> -->
+                        
+                    </ul>
+                </form>
         </div>
-        <a href="applicant_openProject.php?project_id='.$row['id'].'" >
-        <!-- <div style="display: flex; flex-direction: column;"> -->
-      
-        <!-- <div style = "height:80%;border-bottom:1px solid black;">
-        
-        </div> -->
-        <div class="text-center my-auto" style="min-height: 80%" id = "'.$row['id'].'">
-            <p style="margin-bottom: 0;">.$row['title'].'</p>
-            '</div>                                                                
-        
-        <!-- </div> -->
-    </a>
-      </div>
+        </div>
+        <a href="applicant_openProject.php?project_id='.$row['id'].'" > <!-- link -->
+            <div class="text-center my-auto" style="min-height: 80%; position: relative;" id = "'.$row['id'].'">
+                <p style="position: absolute;bottom: 0;margin-bottom: 0; right:0; left: 0;">.$row['title'].'</p> <!-- project title -->
+            </div>                                                                  
+        </a>
+   </div>
+
+
 
      
 <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
 <script src="../dependecies/jquery-3.6.4.js"></script>
+
+<script>
+
+</script>
+
+
 </body>
 </html>

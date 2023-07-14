@@ -10,14 +10,17 @@ $active_id = $_SESSION['user_id'];
 
 //check if user has project named default or untitled
 
-$query_untitled = "SELECT username, COUNT(title) as 'untitled' FROM vw_project_owners WHERE title LIKE '%Untitled%' and owner_id = '$active_id'";
+// $query_untitled = "SELECT username, COUNT(title) as 'untitled' FROM vw_project_owners WHERE title LIKE '%Untitled%' and owner_id = '$active_id'";
+
+$query_untitled = "SELECT MAX(CAST(SUBSTRING(title FROM 10) AS UNSIGNED)) as 'max' FROM project WHERE title LIKE '%Untitled%' and owner_id = '$active_id'";
+
 
 $untitled = full_query($query_untitled); //result
 
 if($row = mysqli_fetch_assoc($untitled)) {
     print_r($row);
 
-    $untitled = $row["untitled"] ;
+    $untitled = $row["max"] ;
     //insert project
     $project_id = gen_uuid();
     if($untitled == "" || $untitled == null){
@@ -43,7 +46,8 @@ insert("land_property","id","'$land_property_id'");
 
 //insert plans_detail
 $plans_detail_id = gen_uuid();
-insert("plans_details","id","'$plans_detail_id'");
+$documents_id = gen_uuid();
+insert("plans_details","id,documents","'$plans_detail_id','$documents_id'");
 
 $address_id = gen_uuid();
 insert("address","id,type","'$address_id','project'");
@@ -59,11 +63,18 @@ insert("forms","id","'$forms_id'");
 
 
 //insert documents
-$documents_id = gen_uuid();
-insert("documents","id","'$documents_id'");
+// $documents_id = gen_uuid();
+// insert("documents","id","'$documents_id'");
+
+//insert documents details
+// $documents_details_id = gen_uuid();
+// insert("document_details","id","'$documents_details_id'");
+
+//update documents
+// update("documents","details = '$documents_details_id'","id = '$documents_id'");
 
 //update plans_details
-update("plans_details","`form` = '$forms_id', `documents` = '$documents_id'" ,"`id` = '$plans_detail_id'");
+update("plans_details","`form` = '$forms_id'" ,"`id` = '$plans_detail_id'");
 
 
 
