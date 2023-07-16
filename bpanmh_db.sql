@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2023 at 11:29 AM
+-- Generation Time: Jul 09, 2023 at 11:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,10 +43,7 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `type`, `no`, `street`, `barangay`, `municipality`, `lot_no`, `block_no`) VALUES
-('4dc8ab2a-3a7f-4797-8547-4aea6148971c', 'project', '', '', '', '', '', ''),
-('9a750991-0665-4485-bfc6-84895a292475', 'project', '', '', '', '', '', ''),
-('f2dfe35a-fad1-4760-b24c-faeadb210bf1', 'project', '', '', '', '', '', ''),
-('f347a7d1-0535-43dd-8c25-97436660f5b3', 'project', '', '', '', '', '', '');
+('f2dfe35a-fad1-4760-b24c-faeadb210bf1', 'project', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -131,7 +128,7 @@ CREATE TABLE `forms` (
 --
 
 INSERT INTO `forms` (`id`, `architectural`, `structural`, `sanitary_plumbing`, `electrical`, `mechanical`, `locational`, `fsec`) VALUES
-('929727a0-5c0f-405a-9381-a167fcaa2629', '1', '1', NULL, NULL, NULL, NULL, '1');
+('929727a0-5c0f-405a-9381-a167fcaa2629', 'f8124200-1e8d-11ee-a647-0a0027000015', NULL, NULL, 'fc6e4a88-1e8d-11ee-a647-0a0027000015', '230be65a-1e8e-11ee-a647-0a0027000015', '1cb0cab9-1e8e-11ee-a647-0a0027000015', '17c49a89-1e8e-11ee-a647-0a0027000015');
 
 -- --------------------------------------------------------
 
@@ -149,16 +146,57 @@ CREATE TABLE `form_try` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `f_architectural`
+--
+
+CREATE TABLE `f_architectural` (
+  `id` varchar(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `f_architectural`
+--
+
+INSERT INTO `f_architectural` (`id`) VALUES
+('f8124200-1e8d-11ee-a647-0a0027000015');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `f_electrical`
 --
 
 CREATE TABLE `f_electrical` (
   `id` varchar(36) NOT NULL,
-  `scope` varchar(99) NOT NULL,
-  `ttl_conn_load` double NOT NULL,
-  `ttl_transformer_cap` double NOT NULL,
-  `ttl_generator_cap` double NOT NULL
+  `scope` varchar(99) DEFAULT NULL,
+  `ttl_conn_load` double DEFAULT NULL,
+  `ttl_transformer_cap` double DEFAULT NULL,
+  `ttl_generator_cap` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `f_electrical`
+--
+
+INSERT INTO `f_electrical` (`id`, `scope`, `ttl_conn_load`, `ttl_transformer_cap`, `ttl_generator_cap`) VALUES
+('fc6e4a88-1e8d-11ee-a647-0a0027000015', '', 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `f_fsec`
+--
+
+CREATE TABLE `f_fsec` (
+  `id` varchar(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `f_fsec`
+--
+
+INSERT INTO `f_fsec` (`id`) VALUES
+('17c49a89-1e8e-11ee-a647-0a0027000015');
 
 -- --------------------------------------------------------
 
@@ -173,6 +211,30 @@ CREATE TABLE `f_locational` (
   `project_tenure` varchar(99) NOT NULL,
   `project_cost` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `f_locational`
+--
+
+INSERT INTO `f_locational` (`id`, `right_over_land`, `project_nature`, `project_tenure`, `project_cost`) VALUES
+('1cb0cab9-1e8e-11ee-a647-0a0027000015', '', '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `f_mechanical`
+--
+
+CREATE TABLE `f_mechanical` (
+  `id` varchar(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `f_mechanical`
+--
+
+INSERT INTO `f_mechanical` (`id`) VALUES
+('230be65a-1e8e-11ee-a647-0a0027000015');
 
 -- --------------------------------------------------------
 
@@ -189,6 +251,30 @@ CREATE TABLE `f_sanitary` (
   `prp_date_start` date NOT NULL,
   `exp_date_completion` date NOT NULL,
   `prepared_by` varchar(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `f_sanitary_fixtures`
+--
+
+CREATE TABLE `f_sanitary_fixtures` (
+  `id` varchar(36) NOT NULL,
+  `sanitary_form` varchar(36) NOT NULL,
+  `description` varchar(99) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `state` enum('NEW','EXISTING','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `f_structural`
+--
+
+CREATE TABLE `f_structural` (
+  `id` varchar(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -256,7 +342,7 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`id`, `title`, `owner_id`, `land_property`, `plans_details`, `address`, `scope`, `char_of_occupancy`, `dateCreated`, `dateModified`) VALUES
-('7e1c7005-6249-4ada-bcaf-c5ff1f96114b', 'Untitled', '5d3e4e48-17ee-11ee-a01d-f47b09532450', '63dc105a-ce46-43ba-82c0-5c8a11c224c6', 'b301b5ac-9659-4408-8324-69cf6567c950', 'f2dfe35a-fad1-4760-b24c-faeadb210bf1', '', '', '2023-07-04 09:23:59', '2023-07-04 09:23:59');
+('7e1c7005-6249-4ada-bcaf-c5ff1f96114b', 'bahay ni astraa', '5d3e4e48-17ee-11ee-a01d-f47b09532450', '63dc105a-ce46-43ba-82c0-5c8a11c224c6', 'b301b5ac-9659-4408-8324-69cf6567c950', 'f2dfe35a-fad1-4760-b24c-faeadb210bf1', '', '', '2023-07-04 09:23:59', '2023-07-04 09:23:59');
 
 -- --------------------------------------------------------
 
@@ -384,9 +470,21 @@ ALTER TABLE `form_try`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `f_architectural`
+--
+ALTER TABLE `f_architectural`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `f_electrical`
 --
 ALTER TABLE `f_electrical`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `f_fsec`
+--
+ALTER TABLE `f_fsec`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -396,9 +494,28 @@ ALTER TABLE `f_locational`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `f_mechanical`
+--
+ALTER TABLE `f_mechanical`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `f_sanitary`
 --
 ALTER TABLE `f_sanitary`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `f_sanitary_fixtures`
+--
+ALTER TABLE `f_sanitary_fixtures`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sanitary_form` (`sanitary_form`);
+
+--
+-- Indexes for table `f_structural`
+--
+ALTER TABLE `f_structural`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -439,9 +556,19 @@ ALTER TABLE `applicant`
 -- Constraints for table `forms`
 --
 ALTER TABLE `forms`
-  ADD CONSTRAINT `forms_ibfk_1` FOREIGN KEY (`sanitary_plumbing`) REFERENCES `f_sanitary` (`id`),
-  ADD CONSTRAINT `forms_ibfk_2` FOREIGN KEY (`electrical`) REFERENCES `f_electrical` (`id`),
-  ADD CONSTRAINT `forms_ibfk_3` FOREIGN KEY (`locational`) REFERENCES `f_locational` (`id`);
+  ADD CONSTRAINT `forms_ibfk_2` FOREIGN KEY (`architectural`) REFERENCES `f_architectural` (`id`),
+  ADD CONSTRAINT `forms_ibfk_3` FOREIGN KEY (`electrical`) REFERENCES `f_electrical` (`id`),
+  ADD CONSTRAINT `forms_ibfk_4` FOREIGN KEY (`fsec`) REFERENCES `f_fsec` (`id`),
+  ADD CONSTRAINT `forms_ibfk_5` FOREIGN KEY (`locational`) REFERENCES `f_locational` (`id`),
+  ADD CONSTRAINT `forms_ibfk_6` FOREIGN KEY (`mechanical`) REFERENCES `f_mechanical` (`id`),
+  ADD CONSTRAINT `forms_ibfk_7` FOREIGN KEY (`sanitary_plumbing`) REFERENCES `f_sanitary` (`id`),
+  ADD CONSTRAINT `forms_ibfk_8` FOREIGN KEY (`structural`) REFERENCES `f_structural` (`id`);
+
+--
+-- Constraints for table `f_sanitary_fixtures`
+--
+ALTER TABLE `f_sanitary_fixtures`
+  ADD CONSTRAINT `f_sanitary_fixtures_ibfk_1` FOREIGN KEY (`sanitary_form`) REFERENCES `f_sanitary` (`id`);
 
 --
 -- Constraints for table `plans_details`

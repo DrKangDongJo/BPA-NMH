@@ -112,8 +112,8 @@
                 <img src="../img/icon/user-w.png" alt="user-icon" class = "my-dd-icon">
             </button>
             <ul class="dropdown-menu ">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="../pages/applicant_settings.html">Profile</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
                 <li><a class="dropdown-item" href="../php_func/logout.php">Logout</a></li>
             </ul>
         </div>

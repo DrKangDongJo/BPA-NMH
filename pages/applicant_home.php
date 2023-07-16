@@ -14,18 +14,17 @@ session_start();
 
 <div class="container-fluid">
     <div class="row">
-        <?php
-        require '../components/navbar.php';
-        ?>
+        <?php require '../components/navbar.php'; ?>
 
     </div>
 
     <?php 
-      $condition = "vw_project_owners.username = '". $_SESSION['username']."'";
+      $condition = "owner_id = '". $_SESSION['user_id']."'";
       $project = select("vw_project_owners",$condition);
 
     //check if there are result
 if (mysqli_num_rows($project) > 0) {   
+  // echo mysqli_num_rows($project) ;
 
   ?>
   
@@ -35,6 +34,8 @@ if (mysqli_num_rows($project) > 0) {
     <div class="row">
         Recent Projects
     </div>
+
+  
     <div class="row ms-4">
 
     <?php
@@ -42,10 +43,27 @@ if (mysqli_num_rows($project) > 0) {
 
 while($row = mysqli_fetch_assoc($project)) {
     // echo "Name: " . $row["username"]. " " . $row["title"]. "<br>";
-  echo '<div style = "width:245px;height:180px;border:1px solid black;" class="d-flex-inline m-2">
-  <a href="applicant_openProject.php?project_id='.$row['id'].'">
-  <div style = "height:80%;border-bottom:1px solid black;"></div>
-  <p class="text-center" id = "'.$row['id'].'">'.$row['title'].'</p> 
+  echo '<div style = "width:245px;height:180px;border:1px solid black; " class="d-flex-inline m-2">  <!-- card -->
+  <div class="row text-end float-right m-0 px-2"> <!-- project controls  container-->
+  <div class="dropdown p-0"> <!-- project control dropdown -->
+          <button class="btn btn-secondary p-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+          style = "color: black; background-color:transparent">
+              ...
+          </button>
+          
+          <form action="../php_func/delete_project.php" method="post">
+          <ul class="dropdown-menu">
+              <button type="submit" name = "project_id" value = "'.$row['project_id'].'">Delete</button>
+              <!-- <li><a class="dropdown-item" href="#">UPDATE!</a></li> -->
+              
+          </ul>
+      </form>
+  </div>
+  </div>
+  <a href="applicant_openProject.php?project_id='.$row['project_id'].'" > <!-- link -->
+      <div class="text-center my-auto" style="min-height: 80%; position: relative;" id = "'.$row['project_id'].'">
+          <p style="position: absolute;bottom: 0;margin-bottom: 0; right:0; left: 0;">'.$row['title'].'</p> <!-- project title -->
+      </div>                                                                  
   </a>
 </div>';
 
@@ -77,7 +95,6 @@ data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PR
 
 
 
-<!-- **! MODAL -->
 
 <!-- Modal -->
 <div class="modal fade" id="project_template_select_modal" tabindex="-1" aria-labelledby="project_template_select_modal_Label" aria-hidden="true">
