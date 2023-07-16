@@ -94,3 +94,7 @@ a{
     border-radius: 0.25rem;
     background-color: #f8f9fa;
   }
+
+  .txt_field_color:valid {
+    color:  #ff0000!important;
+  }
