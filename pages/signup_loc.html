@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../bootstrap-5.3.0/css/bootstrap.css">
+</head>
+<style>
+    /* Custom styles */
+    .custom-modal .modal-dialog {
+      max-width: 400px;
+    }
+
+    .custom-modal .modal-content {
+      border-radius: 10px;
+    }
+
+    .custom-modal .modal-header {
+      background-color: #f8f9fa;
+      border-bottom: none;
+    }
+
+    .custom-modal .modal-body {
+      padding: 20px;
+    }
+
+    .custom-modal .modal-footer {
+      border-top: none;
+    }
+
+    .hidden {
+        display: none;
+      }
+
+    .popup-message {
+    animation: popup 10s forwards;
+    }
+
+    
+    #btn4-text {
+        height: 72px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: rgb(240, 134, 134);
+        font-weight: bold;
+        text-align: center;
+        line-height: 72px;
+        position: fixed;
+        right: 5%;
+        bottom: 10%;
+      }
+      
+  </style>
+<body>
+  <button type="button" id="openModalBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalContainer">
+    Open Modal
+  </button>
+
+  <div class="modal fade" id="modalContainer" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header text-center" style="background-color: #5A8BB5;">
+          <h5 class="modal-title text-white text-uppercase" id="modalLabel">Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center" style="background-color: aliceblue;">
+          <p class="h4 text-center"><b>Is the location of the building is around nasugbu?</b></p>
+          <button type="button" id="yesBtn" class="btn btn-success">Yes</button>
+          <button type="button" id="noBtn" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+        </div>
+        <p id="btn4-text" class="hidden">Sorry, this is only available at nasugbu area</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../bootstrap-5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const btn4Text = document.getElementById('btn4-text');
+
+    yesBtn.addEventListener('click', () => {
+      // Action when "Yes" button is clicked
+      window.location.href = "signup.html";
+      $('#modalContainer').modal('hide');
+    });
+
+    noBtn.addEventListener('click', () => {
+      // Action when "No" button is clicked
+      btn4Text.classList.remove('hidden');
+      btn4Text.classList.add('popup-message');
+      //$('#modalContainer').modal('hide');
+    });
+
+    btn4Text.addEventListener('animationend', () => {
+        btn4Text.classList.remove('popup-message');
+        btn4Text.classList.add('hidden');
+      });
+  </script>
+</body>
+</html>
