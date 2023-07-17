@@ -113,3 +113,17 @@ a:hover{
   .txt_field_color:valid {
     color:  #ff0000!important;
   }
+
+  .text-field {
+    /* Remove default input field styles */
+ 
+        border: none;
+        outline: none;
+        background: none;
+   
+
+    /* Add a line as a border */
+  
+        border-bottom: 1px solid black;
+ 
+}
