@@ -30,18 +30,21 @@ if( password_verify($password,$db_pass) == 1){
     $_SESSION['middlename'] = $row['middlename'];
     $_SESSION['lastname'] = $row['lastname'];
     $_SESSION['contact_no'] = $row['contact_no'];
+    $_SESSION['privilege'] = 'applicant';
 
 
    header('Location: ../pages/applicant_home.php');
 }else{
    header('Location: ../index.php?error=incorrect,username='.$username);
 }
- 
-
-
 
   }
+
+
 } else {
+
+    //check admin
+
     //else return no data
     // echo "0 results";
     header('Location: ../index.php?error=noaccount');
