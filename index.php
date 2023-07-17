@@ -72,8 +72,8 @@ $page_title = "Building Permit Application | Home";
 
        <div class= "my-upper white-text" style="font-size: 0.9rem;">
        
-       <a href="pages/forgot_password.html" class = "white-text"><p class = "mb-0 mt-1">FORGOT PASSWORD?</p></a>
-       <a href="pages/signup.html" class = "white-text"><p class = "mb-1">SIGNUP</p></a>
+       <a href="../pages/forgot_password.html" class = "white-text"><p class = "mb-0 mt-1">FORGOT PASSWORD?</p></a>
+       <a href="../pages/signup_2.php" class = "white-text"><p class = "mb-1">SIGNUP</p></a>
        
 
        </div>
@@ -93,6 +93,7 @@ $page_title = "Building Permit Application | Home";
 
 
 </div>
+
 
 
 <script src="bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
