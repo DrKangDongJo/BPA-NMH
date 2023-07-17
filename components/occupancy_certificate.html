@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BUILDING PERMIT CERTIFICATE</title>
     <link rel="stylesheet" href="../bootstrap-5.3.0/css/bootstrap.css">
     <link rel="stylesheet" href="../css/general.css">
@@ -27,8 +27,8 @@
                     <div class="col-6">
                         <div class="d-flex align-items-end justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="checkbox1">
-                                <label class="form-check-label" for="checkbox1">
+                                <input class="form-check-input" type="checkbox" id="full">
+                                <label class="form-check-label" for="full">
                                 FULL
                                 </label>
                             </div>
@@ -37,8 +37,8 @@
                     <div class="col-6">
                         <div class="d-flex align-items-start justify-content-start">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="checkbox1">
-                                <label class="form-check-label" for="checkbox1">
+                                <input class="form-check-input" type="checkbox" id="partial">
+                                <label class="form-check-label" for="partial">
                                 PARTIAL
                                 </label>
                             </div>
@@ -46,12 +46,55 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-6">
-                        
+                <div class="row my-3 mx-5 align-items-center justify-content-center text-start">
+                    <div class="col-6 text-center">
+                        <div class="form-group">
+                            <label for="no." class="text-capitalize"><b>no.</b> </label>
+                            <input type="text" class="text-field form-control-sm"> <br>
+                            <label for="date_issued" class="text-capitalize"><b>date issued: </b> </label>
+                            <input type="text" class="text-field form-control-sm"> <br>
+                            <label for="fsic_no" class="text-capitalize"><b>FSIC no.</b> </label>
+                            <input type="text" class="text-field form-control-sm"> <br>
+                            <label for="date_issued" class="text-capitalize"><b>date issued: </b> </label>
+                            <input type="text" class="text-field form-control-sm"> 
+                        </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 text-center">
+                        <div class="form-group">
+                            <label for="fees_paid" class="text-capitalize"><b>fees paid</b> </label>
+                            <input type="text" class="text-field form-control-sm"> <br>
+                            <label for="receipt_no" class="text-capitalize"><b>official receipt no. </b> </label>
+                            <input type="text" class="text-field form-control-sm"> <br>
+                            <label for="date_paid" class="text-capitalize"><b>date paid</b> </label>
+                            <input type="text" class="text-field form-control-sm"> 
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row my-4 d-flex align-items-center justify-content-center">
+                    <div class="text-center">
+                        <p class="h5"><b> This is to certify that the building/structure which has been designed and constructed conforms to the issued Building Permit</b></p>
+                        <label for="no." class="text-capitalize"><b>no.</b> </label>
+                        <input type="text" class="text-field form-control-sm"> 
+                        <label for="dated" class="text-capitalize"><b>dated </b> </label>
+                        <input type="text" class="text-field form-control-sm">
+                    </div>
+                </div>
+
+                <div class="row d-flex align-items-center justify-content-center">
+                    <div class="text-center my-3">
+                        <label for="no." class="text-capitalize"><b>name of owner: </b> </label>
+                        <input type="text" class="text-field form-control-md w-50 mx-2"> <br>
+                        <label for="dated" class="text-capitalize"><b>name of project: </b> </label>
+                        <input type="text" class="text-field form-control-md w-50 mx-2"> <br>
+                        <label for="date_of_completion" class="text-capitalize"><b>date of completion: </b> </label>
+                        <input type="text" class="text-field form-control-md w-50 mx-2"> <br>
+                        <label for="date_of_completion" class="text-capitalize"><b>use or character of occupancy: </b> </label>
+                        <input type="text" class="text-field form-control-md w-25 mx-2">
+                        <label for="date_of_completion" class="text-capitalize"><b>group: </b> </label>
+                        <input type="text" class="text-field form-control-md w-25 mx-2"> <br>
+                        <label for="date_of_completion" class="text-capitalize"><b>located at / along: </b> </label>
+                        <input type="text" class="text-field form-control-md w-50 mx-2">
                     </div>
                 </div>
 
