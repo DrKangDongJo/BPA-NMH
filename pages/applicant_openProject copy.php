@@ -1,12 +1,14 @@
 <?php
+// $page_title = "Project title";
 require '../php_func/db_func.php';
-session_start(); //start session
-
-
-$full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; // get page url
+session_start();
+// get page url
+$full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $project_id = substr($full_url, strpos($full_url, "=") + 1);    
-// echo $project_id . "-----";
-// echo $_SESSION['user_id'];
+// echo $project_id;
+// query
+$condition = "id = '$project_id' AND owner_id = '".$_SESSION['user_id']."'";
+$open_project = select("project",$condition); //result
 
 ?>
 
@@ -20,31 +22,22 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 <link rel="stylesheet" href="../css/general.css">
 <link rel="icon" type="image/x-icon" href="../img/Seal_of_Nasugbu.png">
 
-  <?php
-    $condition = "project_id = '$project_id' AND owner_id = '".$_SESSION['user_id']."' ";
-    $open_project = select("vw_project_forms",$condition); //result
-    // echo $condition;
+  <?php 
 
-    //initialize storage also for tracking
-    $form_columns = array();
-    $form_values = array();
-
-    //loop through result to get column names
-    for($i = 0; $i < mysqli_num_fields($open_project); $i++) {
-        $field_info = mysqli_fetch_field($open_project);
-        array_push($form_columns,$field_info->name); //append to storage
+    if($row = mysqli_fetch_assoc($open_project)) {
+        $project_title = ucwords($row['title']);
+        $proj_land_property = $row['land_property'];
+        $proj_plan_details = $row['plans_details'];
+        $proj_address = $row['address'];
+        echo "<title>$project_title</title>";
+        echo "prj_plan_details  = ".$proj_plan_details;
     }
-    
-    //loop through result to get values
-   if($row = mysqli_fetch_assoc($open_project)) {
-    foreach($row as $_column) {
-    array_push($form_values,$_column); //append to storage
-    }
-    $project_title = ucwords($row['title']); //get project title
-    $forms_id = $row['form_id']; //forms id
-    echo "<title>{$project_title}</title>";  //display tab title
-}
 
+    $proj_forms = select("plans_details","id = '$proj_plan_details'");
+    if($proj_forms = mysqli_fetch_assoc($proj_forms)){
+        $proj_forms_id = $proj_forms['form'];
+        echo "forms_id = ".$proj_forms_id;
+    }
   ?>
 
   
@@ -86,7 +79,10 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
     
 <div class="container-fluid p-0" >
 
-    <?php require '../components/navbar.php'; //include navbar?> 
+    <?php
+    require '../components/navbar.php';
+    ?>
+
 
     <div class="row m-0" >
         <!-- checklist -->
@@ -96,28 +92,50 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
             <!-- header -->
             <div class = "text-end p-0 m-0"><a href="applicant_home.php">BACK</a> </div>
+            
+
             <!-- main -->
             <div class = "ms-3" name = "main" style="flex-grow:1">
                 <ul>
+                                
                 <!-- forms present in the project -->
-              
+                <?php
+                
+                $condition = "vw_project_forms_created.project_id = '$project_id'";
+                $forms_present = select("vw_project_forms_created","$condition");
+                if (mysqli_num_rows($forms_present) > 0) {
+                // output data of each row
+                if($row = mysqli_fetch_assoc($forms_present)) {
+                //   echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+                // print_r($row);
+                $forms_present = $row['notNull'];
+                $forms_present = explode (",", $forms_present); 
+
+                }
+                } else {
+                echo "0 results";
+                }
+                
+                ?>
+
                 <h5 style= "margin-left:-10%">FORMS</h5>
                 <div class="nav flex-column nav-pills align-items-start" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php
                
-                        for($i = 5; $i < count($form_columns); $i++){
-                            if($form_values[$i] != "" || $form_values[$i] != null){
-                                if($i == 5){
-                                    echo '<button class="nav-link active" id="v-pills-'.$form_columns[$i].'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$form_columns[$i].'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
-                                    <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$form_columns[$i].'</p></li>
-                                    </button>';
-                                }else{
-                                echo '<button class="nav-link " id="v-pills-'.$form_columns[$i].'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$form_columns[$i].'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
-                                <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$form_columns[$i].'</p></li>
-                                </button>';
-                                }
-                            }
-                        }
+                      for($i = 0;$i<count($forms_present);$i++){
+                        $column = trim(ucwords($forms_present[$i]));
+                        $forms_present[$i] = $column;
+                       if($i == 0){
+                        echo '<button class="nav-link active" id="v-pills-'.$column.'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$column.'" type="button" role="tab" aria-controls="v-pills-'.$column.'" aria-selected="true">
+                        <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$column.'</p></li>
+                        </button>';
+                       }else{
+                        echo '<button class="nav-link " id="v-pills-'.$column.'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$column.'" type="button" role="tab" aria-controls="v-pills-'.$column.'" aria-selected="true">
+                        <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$column.'</p></li>
+                        </button>';
+                       } 
+                      }
+
                  ?>
                   
                 </div>
@@ -128,12 +146,14 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
             </div>
 
             <div id="footer">
-            <!-- <button>Add Form</button> -->       
+            <!-- <button>Add Form</button> -->
+          
+
             <?php 
             
-                $bs_target = "edit_form";
-                $button_text = "Edit forms";
-                $modal_title = "EDIT FORMS";
+            $bs_target = "edit_form";
+            $button_text = "Edit forms";
+            $modal_title = "EDIT FORMS";
 
             ?>
 
@@ -160,63 +180,86 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                 <td>Completion %</td>
                 <td>Operation</td> <!--delete, lock, hide-->
             </thead>
-     
+        <?php
+        $present = select("vw_project_forms","project_id = '$project_id'");
+        //add username/user_id later
+        
+        if($row = mysqli_fetch_row($present)) {
+            
+    for($i = 5; $i < count($row); $i++){
+        ?>
                    
-            <?php
-                for($i = 5; $i < count($form_columns); $i++){
-                    if($form_values[$i] != "" || $form_values[$i] != null){
-
-          ?>
             <tr>
-              
+                <td>
+                 <!--form name here  -->
+                 <?php
+        if($row[$i] == "" || $row[$i] == null){
+            // echo "NULL";
+        }
+        if($i == 5){
+            echo "archi";
+        }else if($i == 6){
+            echo "struc";
+        }else if($i == 7){
+            echo "sani";
+        }else if($i == 8){
+            echo "elec";
+        }else if($i == 9){
+            echo "mech";
+        }else if($i == 10){
+            echo "loc";
+        }
+        // echo "--";
+        // echo $row[$i];
 
-                <td><?php echo $form_columns[$i]?></td>
+?>
+
+                </td>
                 <td><?php echo rand(0,100)?>% Complete</td>
                 <td class="d-flex justify-content-center">
-                    <ul class="d-inline-flex m-auto p-0" id= "<?php echo $form_values[$i]?>">
+                    <ul class="d-inline-flex m-auto p-0">
                         <button class = "btn btn-outline-info"><span></span>hide</button>
                         <button class="btn progress-bar-animated"><span></span>lock</button>
-                        <button class = "btn my-btn-red" id = "del_btn_<?php echo $form_values[$i]?>"
-                        table = "f_<?php echo $form_columns[$i]?>"
-                        onclick="delete_form(this.id,this.table)">delete</button>
+                        <button class = "btn my-btn-red" id= "<?php echo $row[$i]?>">delete</button>
+
                     </ul>
 
                 </td>
-
-
             </tr>
+
             <?php
+            
         }
-    }
-    ?>
-            
-            
 
-  
+    }
+            ?>
+     
         </table>
-
-<div id = "form_additon">
-    <?php
-
-
-echo '<select name="" id="sel_add_form">';
-for($i = 5; $i < count($form_columns); $i++){
-    if($form_values[$i] == "" || $form_values[$i] == null){
-
-
-        echo '<option value="'.ucwords($form_columns[$i]).'">'.ucwords($form_columns[$i]).'</option>';
-    }
-}
-
-echo '</select>';
-
-    ?>
-  
-  <button class = "btn my-btn-blue" onclick="add_form()">ADD FORM</button>
-  </div>
     </div>
 
-    <div class="footer"></div>
+    <div class="footer">
+        <?php
+        if(count($forms_present) == 6){
+
+        }else{
+
+            echo '<select name="" id="sel_add_form">';
+
+              $forms = array("Architectural", "Sanitary", "Structural","Electrical","Mechanical","Locational");
+            //   Fsec not a table
+              for($i = 0;$i<count($forms);$i++){
+                // echo '<option value="'.trim(ucwords($forms[$i])).'">'.trim($forms_present[$i]).'</option>';
+                if(!in_array($forms[$i],$forms_present)){
+                    echo '<option value="'.trim(ucwords($forms[$i])).'">'.trim(ucwords($forms[$i])).'</option>';
+                }
+                // echo $forms[$i];   
+            }
+
+            echo '</select><button class = "btn my-btn-blue float-end" id = "btn_addform" onclick="add_form()">Add form</button>';
+    
+        }
+        ?>
+    </div>
 </div>
     
           </div>
@@ -227,6 +270,8 @@ echo '</select>';
         </div>
       </div>
     </div>
+
+
 
                 <h5 class = "text-end">Project 0% Complete</h5>
                 <div class="row">
@@ -253,22 +298,39 @@ echo '</select>';
 
 <?php
 
-for($i = 5; $i < count($form_columns); $i++){
-    if($form_values[$i] != "" || $form_values[$i] != null){
 
-        $require = "../components/form_"."$form_columns[$i]".".php";
-        if($i == 5){
-           echo'<div class="tab-pane fade active show" id="v-pills-'.$form_columns[$i].'" role="tabpanel" aria-labelledby="v-pills-'.$form_columns[$i].'-tab" tabindex="0">';
-           require "$require";
-           echo '</div>';
-        }else{
-            echo'<div class="tab-pane fade" id="v-pills-'.$form_columns[$i].'" role="tabpanel" aria-labelledby="v-pills-'.$form_columns[$i].'-tab" tabindex="0">';
-            require "$require";
-            echo '</div>';
-        }
+for($i = 0;$i<count($forms_present);$i++){
+    $column = trim(ucwords($forms_present[$i]));
+
+    if($column == "Architectural"){
+        $require ="../components/form_architectural.php";
+    }elseif($column == "Structural"){
+        $require ="../components/form_structural.php";
+    }elseif($column == "Sanitary_plumbing"){
+        $require ="../components/form_sanitary_plumbing.php";
+    }elseif($column == "Electrical"){
+        $require ="../components/form_electrical.php";
+    }elseif($column == "Mechanical"){
+        $require ="../components/form_mechanical.php";
+    }elseif($column == "Locational"){
+        $require ="../components/form_locational.php";
+    }elseif($column == "Fsec"){
+        $require ="../components/form_fsec.php";
     }
-}
     
+    
+    if($i == 0){
+        echo'<div class="tab-pane fade active show" id="v-pills-'.$column.'" role="tabpanel" aria-labelledby="v-pills-'.$column.'-tab" tabindex="0">';
+        require "$require";
+        echo '</div>';
+    }else{
+        echo'<div class="tab-pane fade " id="v-pills-'.$column.'" role="tabpanel" aria-labelledby="v-pills-'.$column.'-tab" tabindex="0">';
+        require "$require"; 
+        echo '</div>';
+    }
+   } 
+  
+
 ?>
 
 
@@ -287,12 +349,7 @@ for($i = 5; $i < count($form_columns); $i++){
 
 // add center project name
 $("#nav_center_section").append('<div class="text-center" id ="project_title"><input class="clear-input text-center white-text" type="text" name="" id="inp_project_name" onchange = "update_title()" value="<?php echo $project_title;?>"></div>')
-$("#nav_center_section").addClass("m-auto");
-
-if($("#sel_add_form").children().length == 0){
-    $("#sel_add_form").parent().attr("hidden","hidden") // hide div form additon
-}
-
+$("#nav_center_section").addClass("m-auto")
 
 //updating title
 function update_title(){
@@ -336,12 +393,32 @@ function update_title(){
 function add_form(){
 
     //get selected value of dropdown
-    var selected = $("#sel_add_form  option:selected")[0].value;   
-    var table = "f_"+selected.toLowerCase();
+    var selected = $("#sel_add_form  option:selected")[0].value;
+    var table = null;
     //insert new form
     //update form tables
 
-    <?php $form_id = gen_uuid();?>
+    if(selected == "Architectural"){
+        table = "f_architectural";
+    }else if(selected == "Structural"){
+        table = "f_structural";
+    }else if(selected == "Sanitary"){
+        table = "f_sanitary";
+    }else if(selected == "Electrical"){
+        table = "f_electrical";
+    }else if(selected == "Mechanical"){
+        table = "f_mechanical";
+    }else if(selected == "Locational"){
+        table = "f_locational";
+    };
+
+    console.log(selected)
+    console.log(table)
+
+
+    <?php
+    $form_id = gen_uuid();
+    ?>
 
 
     $.ajax({
@@ -370,7 +447,7 @@ function add_form(){
         data : {"action" : "update",
             "table" : "forms",
             "to_update" : "`"+table.replace("f_","") +"` = '<?php echo $form_id?>'",
-            "condition" : "`id` = '<?php echo $forms_id?>'"
+            "condition" : "`id` = '<?php echo $proj_forms_id?>'"
         
         },
         success: function(dataResult){
@@ -379,59 +456,8 @@ function add_form(){
         }
     });
 
- location.reload();
- sleep(1.2);
-
-}
-
-function delete_form(id){
-
-    var table = $('#'+id).attr("table");
-console.log(id);
-console.log(table)
-
-
-
-//update on forms
-
-$.ajax({
-        url: "../php_func/db_func.php",
-        type: "POST",
-        cache: false,
-        async : true,
-        data : {"action" : "update",
-            "table" : "forms",
-            "to_update" : "`"+table.replace("f_","")+"` = NULL",
-            "condition" : "`id` = '<?php echo $forms_id?>'"
-       
-        },
-        success: function(dataResult){
-            console.log(dataResult);
-           
-        }
-    });
-//delete on table
-
-$.ajax({
-        url: "../php_func/db_func.php",
-        type: "POST",
-        cache: false,
-        async : true,
-        data : {"action" : "delete",
-            "table" : table,
-            "condition" : "`id` = '" + id.replace("del_btn_","")+"'",
-           
-       
-        },
-        success: function(dataResult){
-            console.log(dataResult);
-           
-        }
-    });
 
  location.reload();
- sleep(1.2);
-
 
 }
 

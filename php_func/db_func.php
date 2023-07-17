@@ -30,6 +30,21 @@ function select($table_name,$condition){
     
 }
 
+function full_query($query){
+
+  $conn = db_conn();
+    
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+      // die would end the func
+    }
+
+    $result = mysqli_query($conn, $query);
+    mysqli_close($conn);
+    return $result;
+
+}
+
 
 function insert($table_name,$column,$value){
   // ,$ret_last_id
@@ -91,8 +106,25 @@ mysqli_close($conn);
 }
 
 
-function delete_(){
-  echo "delete";
+function delete_($table_name, $condition){
+ 
+  $conn = db_conn();
+
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  // sql to delete a record
+  $sql = "DELETE FROM $table_name  WHERE $condition";
+  echo $sql;
+  if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+  } else {
+    echo "Error deleting record: " . $conn->error;
+  }
+  
+  $conn->close();
+
 }
 
 
@@ -110,7 +142,9 @@ if(isset($_POST['action'])){
   if ($_POST['action'] == "update") { 
     update($_POST['table'],$_POST['to_update'],$_POST['condition']);
    }
-  if ($_POST['action'] == "delete") { delete_(); }
+  if ($_POST['action'] == "delete") { 
+    delete_($_POST['table'],$_POST['condition']);
+ }
 }
 
 ?>
