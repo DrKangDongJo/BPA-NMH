@@ -240,7 +240,11 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                 </div>
 
                     <div class="tab-pane fade" id="v-pills-cont-electrical_" role="tabpanel" 
-                    aria-labelledby="v-pills-electrical_" tabindex="0">Electrical</div>
+                    aria-labelledby="v-pills-electrical_" tabindex="0">Electrical
+                    <?php
+                    require '../components\form_electrical.php';
+                    ?>
+                </div>
 
                     <div class="tab-pane fade" id="v-pills-cont-locational_" role="tabpanel" 
                     aria-labelledby="v-pills-locational_" tabindex="0">Locational</div>
