@@ -231,7 +231,13 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
     <div class="col m-0 p-0" style ="position:static;overflow-y:scroll" id = "right_portion">
                  <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-cont-sanitary_" role="tabpanel" 
-                    aria-labelledby="v-pills-sanitary_" tabindex="0">Sanitary</div>
+                    aria-labelledby="v-pills-sanitary_" tabindex="0">Sanitary
+                
+                    <?php
+                    require '../components\form_sanitary.php';
+                    ?>
+                
+                </div>
 
                     <div class="tab-pane fade" id="v-pills-cont-electrical_" role="tabpanel" 
                     aria-labelledby="v-pills-electrical_" tabindex="0">Electrical</div>
