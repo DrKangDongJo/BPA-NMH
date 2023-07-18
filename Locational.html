@@ -82,55 +82,35 @@
                 
                 <div class="row my-2">
                     <div class="col">
-                        <p><b>(7)PROJECT TYPE</b></p>
+                      <p><b>(7)PROJECT TYPE</b></p>
                     </div>
                     <div class="col">
-                        <p><b>(8)PROJECT NATURE</b></p>
+                      <p><b>(8)PROJECT NATURE</b></p>
                     </div>
-                </div>
-                <div class="row my-2">
+                  </div>
+                  <div class="row my-2">
                     <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">RESIDENTIAL</label>
-
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">COMMERCIAL</label>
-                               
-                            </div>
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">INDUSTRIAL</label>
-                            </div>
-                                
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">INSTITUTIONAL</label>
-                               
-                            </div>
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">OTHERS(SPECIFY)</label>
-                                <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-                            </div>
-
+                      <select id="project-type-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="RESIDENTIAL">RESIDENTIAL</option>
+                        <option value="COMMERCIAL">COMMERCIAL</option>
+                        <option value="INDUSTRIAL">INDUSTRIAL</option>
+                        <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+                        <option value="OTHERS">OTHERS (SPECIFY)</option>
+                      </select>
+                      <input type="text" id="project-type-others" name="others" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                     </div>
                     <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">NEW DEVELOPMENT</label>
-
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">IMPROVEMENT</label>
-                             </div>   
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">OTHERS(SPECIFY)</label>
-                                <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-                            </div>
-
-                    </div><br>
-                </div>
+                      <select id="project-nature-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="NEW DEVELOPMENT">NEW DEVELOPMENT</option>
+                        <option value="IMPROVEMENT">IMPROVEMENT</option>
+                        <option value="OTHERS">OTHERS (SPECIFY)</option>
+                      </select>
+                      <input type="text" id="project-nature-others" name="others" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
+                    </div>
+                  </div>
+                  
                 <br>
 
 
@@ -357,33 +337,16 @@
                         <div class="row my-3">
                             <p><b>(17) PREPARED MODE OF LEASE OF DECISION</b></p>
                             <div class="col-8">
-
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">PICK-UP</label>
-                                    
-                                </div>
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">BY MAIL,ADDRESS TO</label>
-                                    
-                                </div>
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">APPLICANT</label>
-                                    
-                                </div>
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">AUTHORIZED REPRESENTATIVE</label>
-                                    
-                                </div>
-
-                                
-                                
-
+                              <select id="lease-decision-mode-select" class="form-select mb-2">
+                                <option value="">Select an option</option>
+                                <option value="PICK-UP">PICK-UP</option>
+                                <option value="BY MAIL, ADDRESS TO">BY MAIL, ADDRESS TO</option>
+                                <option value="APPLICANT">APPLICANT</option>
+                                <option value="AUTHORIZED REPRESENTATIVE">AUTHORIZED REPRESENTATIVE</option>
+                              </select>
                             </div>
-                        </div>
+                          </div>
+                          
 
                         <div class="row my-3">
                             <div class="col-4">
