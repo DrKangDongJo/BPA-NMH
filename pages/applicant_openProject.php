@@ -107,13 +107,14 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                
                         for($i = 5; $i < count($form_columns); $i++){
                             if($form_values[$i] != "" || $form_values[$i] != null){
+                                // $form_values = ucwords($form_values[$i]);
                                 if($i == 5){
-                                    echo '<button class="nav-link active" id="v-pills-'.$form_columns[$i].'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$form_columns[$i].'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
-                                    <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$form_columns[$i].'</p></li>
+                                    echo '<button class="nav-link active" id="v-pills-'.ucwords($form_columns[$i]).'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.ucwords($form_columns[$i]).'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
+                                    <li class = ""><span><input type="checkbox" class = "me-2"></span><p class= "d-inline p-2">'.ucwords($form_columns[$i]).'</p></li>
                                     </button>';
                                 }else{
-                                echo '<button class="nav-link " id="v-pills-'.$form_columns[$i].'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.$form_columns[$i].'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
-                                <li class = ""><span><input type="checkbox" name="" id=""  class = "me-2"></span><p class= "d-inline p-2">'.$form_columns[$i].'</p></li>
+                                echo '<button class="nav-link " id="v-pills-'.ucwords($form_columns[$i]).'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.ucwords($form_columns[$i]).'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
+                                <li class = ""><span><input type="checkbox" class = "me-2"></span><p class= "d-inline p-2">'.ucwords($form_columns[$i]).'</p></li>
                                 </button>';
                                 }
                             }
@@ -170,14 +171,14 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
             <tr>
               
 
-                <td><?php echo $form_columns[$i]?></td>
+                <td><?php echo ucwords($form_columns[$i])?></td>
                 <td><?php echo rand(0,100)?>% Complete</td>
                 <td class="d-flex justify-content-center">
                     <ul class="d-inline-flex m-auto p-0" id= "<?php echo $form_values[$i]?>">
                         <button class = "btn btn-outline-info"><span></span>hide</button>
                         <button class="btn progress-bar-animated"><span></span>lock</button>
                         <button class = "btn my-btn-red" id = "del_btn_<?php echo $form_values[$i]?>"
-                        table = "f_<?php echo $form_columns[$i]?>"
+                        table = "f_<?php echo ucwords($form_columns[$i])?>"
                         onclick="delete_form(this.id,this.table)">delete</button>
                     </ul>
 
@@ -258,11 +259,11 @@ for($i = 5; $i < count($form_columns); $i++){
 
         $require = "../components/form_"."$form_columns[$i]".".php";
         if($i == 5){
-           echo'<div class="tab-pane fade active show" id="v-pills-'.$form_columns[$i].'" role="tabpanel" aria-labelledby="v-pills-'.$form_columns[$i].'-tab" tabindex="0">';
+           echo'<div class="tab-pane fade active show" id="v-pills-'.ucwords($form_columns[$i]).'" role="tabpanel" aria-labelledby="v-pills-'.ucwords($form_columns[$i]).'-tab" tabindex="0">';
            require "$require";
            echo '</div>';
         }else{
-            echo'<div class="tab-pane fade" id="v-pills-'.$form_columns[$i].'" role="tabpanel" aria-labelledby="v-pills-'.$form_columns[$i].'-tab" tabindex="0">';
+            echo'<div class="tab-pane fade" id="v-pills-'.ucwords($form_columns[$i]).'" role="tabpanel" aria-labelledby="v-pills-'.ucwords($form_columns[$i]).'-tab" tabindex="0">';
             require "$require";
             echo '</div>';
         }

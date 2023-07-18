@@ -1,9 +1,10 @@
 <?php
 $page_title = "Building Permit Application | Home";
 
-print_r($_SESSION);
+
  
 session_start(); //start session
+// print_r($_SESSION);
 
 if (isset($_SESSION['user_id'])) { //check if session has active user
     //check active user's priviledges

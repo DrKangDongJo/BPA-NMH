@@ -2,6 +2,8 @@
 $page_title = "Home | Applicant | BPA";
 require '../php_func/session_check.php';
 privilege_keeping("applicant","engineering_home.php");
+print_r($_SESSION);
+
 
 ?>
 

@@ -29,7 +29,7 @@ while($row = mysqli_fetch_assoc($details)) {
     $address_id = $row['address'];
 }
 
-$details = select("plan_details","id = '$plans_details_id'");
+$details = select("plans_details","id = '$plan_details_id'");
 while($row = mysqli_fetch_assoc($details)) {
     $forms_id = $row['form'];
     $documents_id = $row['documents'];
@@ -42,47 +42,51 @@ while($row = mysqli_fetch_assoc($details)) {
     $electrical_id = $row['electrical'];
     $mechanical_id = $row['mechanical'];
     $locational_id = $row['locational'];
+    $structural_id = $row['structural'];
+
 
 }
 
-// echo
+//delete project
+delete_('project',"id = '$project_id' AND owner_id = '$active_id'");
+
+
+//delete land property
+    delete_("land_property","id = '$land_property_id'");
+
+//delete address
+    delete_("address","id = '$address_id'");
+
+
+// select all documents related to plans details
+$query = "SELECT * FROM `vw_project_documents` WHERE documents = '$documents_id'";
+
+$open_project = full_query($query); //result
+
+while($row = mysqli_fetch_assoc($open_project)) {
+    $inv_document_id = $row['id'];
+    delete_("document","id = '$inv_document_id'");
+}
+
+
+//delete plans details
+delete_("plans_details","id = '$plan_details_id'");
+
+
+//delete form
+delete_("forms","id = '$forms_id'");
 
 //delete forms
     //delete architectural
     delete_("f_architectural","id = '$architectural_id'");
     //delete structural
     delete_("f_structural","id = '$structural_id'");
+     //delete sanitary
+     delete_("f_sanitary","id = '$sanitary_id'");
     //delete electrical
     delete_("f_electrical","id = '$electrical_id'");
     //delete mechanical
     delete_("f_mechanical","id = '$mechanical_id'");
     //delete locational
     delete_("f_locational","id = '$locational_id'");
-
-//delete documents
-
-// select all documents related to plans details
-// $query = "SELECT * FROM `vw_project_documents` WHERE documents = '4348819c-c32e-4717-b893-5e3bbce2c7ed'";
-
-// $open_project = full_query($query); //result
-
-// if($row = mysqli_fetch_assoc($open_project)) {
-//     print_r($row);
-
-// }
-//     // delete_($do)
-
-
-//delete land property
-
-//delete address
-
-//delete plans_details
-
-
-//delete project
-// delete_('project',"id = '$project_id' AND owner_id = '$active_id'")
-
-
-
 
