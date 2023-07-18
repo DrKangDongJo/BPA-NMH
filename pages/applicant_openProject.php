@@ -48,7 +48,6 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
   ?>
 
   
-
     <style>
         ul > li{
             list-style: none;
@@ -70,11 +69,14 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
             height: calc(100vh - 60px);
         }
 
+        button.nav-link{
+            color:black;
+        }
         .nav-pills .nav-link.active{
             background-color:unset;
         }
         
-        .nav-pills .nav-link.active li p{
+        .nav-pills .nav-link.active{
             background-color:#4074ac;
             border-radius: 10px;
             color:white;
@@ -99,30 +101,64 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
             <!-- main -->
             <div class = "ms-3" name = "main" style="flex-grow:1">
                 <ul>
-                <!-- forms present in the project -->
-              
-                <h5 style= "margin-left:-10%">FORMS</h5>
-                <div class="nav flex-column nav-pills align-items-start" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <?php
-               
-                        for($i = 5; $i < count($form_columns); $i++){
-                            if($form_values[$i] != "" || $form_values[$i] != null){
-                                // $form_values = ucwords($form_values[$i]);
-                                if($i == 5){
-                                    echo '<button class="nav-link active" id="v-pills-'.ucwords($form_columns[$i]).'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.ucwords($form_columns[$i]).'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
-                                    <li class = ""><span><input type="checkbox" class = "me-2"></span><p class= "d-inline p-2">'.ucwords($form_columns[$i]).'</p></li>
-                                    </button>';
-                                }else{
-                                echo '<button class="nav-link " id="v-pills-'.ucwords($form_columns[$i]).'-tab" data-bs-toggle="pill" data-bs-target="#v-pills-'.ucwords($form_columns[$i]).'" type="button" role="tab" aria-controls="v-pills-'.$form_columns[$i].'" aria-selected="true">
-                                <li class = ""><span><input type="checkbox" class = "me-2"></span><p class= "d-inline p-2">'.ucwords($form_columns[$i]).'</p></li>
-                                </button>';
-                                }
-                            }
-                        }
-                 ?>
-                  
+                
+
+                <div class="accordion" id="accordionExample" style= "margin-left:-10%">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        FORMS
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical" id = "form_nav">
+                                <button class="nav-link active" id="v-pills-sanitary_" data-bs-toggle="pill" data-bs-target="#v-pills-cont-sanitary_" 
+                                type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Sanitary</button>
+
+                                <button class="nav-link" id="v-pills-electrical_" data-bs-toggle="pill" data-bs-target="#v-pills-cont-electrical_" 
+                                type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Electrical</button>
+
+                                <button class="nav-link" id="v-pills-locational_" data-bs-toggle="pill" data-bs-target="#v-pills-cont-locational_" 
+                                type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false">Locational</button>
+
+                                <button class="nav-link" id="v-pills-unified_" data-bs-toggle="pill" data-bs-target="#v-pills-cont-unified_" 
+                                type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Unified</button>
+                               
+                            </div>
+                           
+                    </div>
+
+
+                    </div>
+                    </div>
+                </div>
+                <div class="accordion-item" hidden>
+                    <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        DOCUMENTS
+                    </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" >
+                    <div class="accordion-body">
+                    <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+                                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+                                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+                                <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false" disabled>Disabled</button>
+                                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+                                <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+                            </div>
+                            
+                    </div>
+
+                    </div>
+                    </div>
                 </div>
                 
+                </div>
+
                 </ul>
                 
              
@@ -155,66 +191,11 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
         <h5>PROJECT TITLE</h5>
     </div>
     <div class="body">
-        <table class = "table table-responsive table-bordered table-striped">
-            <thead>
-                <td>Form</td>
-                <td>Completion %</td>
-                <td>Operation</td> <!--delete, lock, hide-->
-            </thead>
-     
-                   
-            <?php
-                for($i = 5; $i < count($form_columns); $i++){
-                    if($form_values[$i] != "" || $form_values[$i] != null){
-
-          ?>
-            <tr>
-              
-
-                <td><?php echo ucwords($form_columns[$i])?></td>
-                <td><?php echo rand(0,100)?>% Complete</td>
-                <td class="d-flex justify-content-center">
-                    <ul class="d-inline-flex m-auto p-0" id= "<?php echo $form_values[$i]?>">
-                        <button class = "btn btn-outline-info"><span></span>hide</button>
-                        <button class="btn progress-bar-animated"><span></span>lock</button>
-                        <button class = "btn my-btn-red" id = "del_btn_<?php echo $form_values[$i]?>"
-                        table = "f_<?php echo ucwords($form_columns[$i])?>"
-                        onclick="delete_form(this.id,this.table)">delete</button>
-                    </ul>
-
-                </td>
-
-
-            </tr>
-            <?php
-        }
-    }
-    ?>
-            
+          
             
 
-  
-        </table>
-
-<div id = "form_additon">
-    <?php
 
 
-echo '<select name="" id="sel_add_form">';
-for($i = 5; $i < count($form_columns); $i++){
-    if($form_values[$i] == "" || $form_values[$i] == null){
-
-
-        echo '<option value="'.ucwords($form_columns[$i]).'">'.ucwords($form_columns[$i]).'</option>';
-    }
-}
-
-echo '</select>';
-
-    ?>
-  
-  <button class = "btn my-btn-blue" onclick="add_form()">ADD FORM</button>
-  </div>
     </div>
 
     <div class="footer"></div>
@@ -248,34 +229,31 @@ echo '</select>';
     <!-- right portion/forms selected -->
 
     <div class="col m-0 p-0" style ="position:static;overflow-y:scroll" id = "right_portion">
-        <!-- form -->
-        <div class="d-flex align-items-end">
-            <div class="tab-content" id="v-pills-tabContent">
+                 <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-cont-sanitary_" role="tabpanel" 
+                    aria-labelledby="v-pills-sanitary_" tabindex="0">Sanitary
+                
+                    <?php
+                    require '../components\form_sanitary.php';
+                    ?>
+                
+                </div>
 
-<?php
+                    <div class="tab-pane fade" id="v-pills-cont-electrical_" role="tabpanel" 
+                    aria-labelledby="v-pills-electrical_" tabindex="0">Electrical</div>
 
-for($i = 5; $i < count($form_columns); $i++){
-    if($form_values[$i] != "" || $form_values[$i] != null){
+                    <div class="tab-pane fade" id="v-pills-cont-locational_" role="tabpanel" 
+                    aria-labelledby="v-pills-locational_" tabindex="0">Locational</div>
 
-        $require = "../components/form_"."$form_columns[$i]".".php";
-        if($i == 5){
-           echo'<div class="tab-pane fade active show" id="v-pills-'.ucwords($form_columns[$i]).'" role="tabpanel" aria-labelledby="v-pills-'.ucwords($form_columns[$i]).'-tab" tabindex="0">';
-           require "$require";
-           echo '</div>';
-        }else{
-            echo'<div class="tab-pane fade" id="v-pills-'.ucwords($form_columns[$i]).'" role="tabpanel" aria-labelledby="v-pills-'.ucwords($form_columns[$i]).'-tab" tabindex="0">';
-            require "$require";
-            echo '</div>';
-        }
-    }
-}
-    
-?>
-
-
-            
-            </div>
-        </div>
+                    <div class="tab-pane fade" id="v-pills-cont-unified_" role="tabpanel" 
+                    aria-labelledby="v-pills-unified_" tabindex="0">Unified</div>
+                  
+                    <!-- <div class="tab-pane fade" id="v-pills-home2" role="tabpanel" aria-labelledby="v-pills-home-tab2" tabindex="0">1</div>
+                    <div class="tab-pane fade" id="v-pills-profile2" role="tabpanel" aria-labelledby="v-pills-profile-tab2" tabindex="0">...2</div>
+                    <div class="tab-pane fade" id="v-pills-disabled2" role="tabpanel" aria-labelledby="v-pills-disabled-tab2" tabindex="0">...3</div>
+                    <div class="tab-pane fade" id="v-pills-messages2" role="tabpanel" aria-labelledby="v-pills-messages-tab2" tabindex="0">...4</div>
+                    <div class="tab-pane fade" id="v-pills-settings2" role="tabpanel" aria-labelledby="v-pills-settings-tab2" tabindex="0">...5</div> -->
+                </div>
     </div>
     </div> 
 </div>
