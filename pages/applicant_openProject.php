@@ -247,10 +247,22 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                 </div>
 
                     <div class="tab-pane fade" id="v-pills-cont-locational_" role="tabpanel" 
-                    aria-labelledby="v-pills-locational_" tabindex="0">Locational</div>
+                    aria-labelledby="v-pills-locational_" tabindex="0">
+                    Locational
+                    <?php
+                    require '../components\form_locational.php';
+                    ?>
+                
+                </div>
+                  
 
                     <div class="tab-pane fade" id="v-pills-cont-unified_" role="tabpanel" 
-                    aria-labelledby="v-pills-unified_" tabindex="0">Unified</div>
+                    aria-labelledby="v-pills-unified_" tabindex="0">Unified
+                    <?php
+                    require '../components\form_unified.php';
+                    ?>
+                
+                </div>
                   
                     <!-- <div class="tab-pane fade" id="v-pills-home2" role="tabpanel" aria-labelledby="v-pills-home-tab2" tabindex="0">1</div>
                     <div class="tab-pane fade" id="v-pills-profile2" role="tabpanel" aria-labelledby="v-pills-profile-tab2" tabindex="0">...2</div>
