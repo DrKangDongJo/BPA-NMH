@@ -1,7 +1,19 @@
 <?php
 $page_title = "Building Permit Application | Home";
 
+
+ 
+session_start(); //start session
 // print_r($_SESSION);
+
+if (isset($_SESSION['user_id'])) { //check if session has active user
+    //check active user's priviledges
+    if(strtolower($_SESSION['privilege']) == "applicant"){
+        header('Location: pages/applicant_home.php');
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>

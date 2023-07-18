@@ -82,55 +82,35 @@
                 
                 <div class="row my-2">
                     <div class="col">
-                        <p><b>(7)PROJECT TYPE</b></p>
+                      <p><b>(7)PROJECT TYPE</b></p>
                     </div>
                     <div class="col">
-                        <p><b>(8)PROJECT NATURE</b></p>
+                      <p><b>(8)PROJECT NATURE</b></p>
                     </div>
-                </div>
-                <div class="row my-2">
+                  </div>
+                  <div class="row my-2">
                     <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">RESIDENTIAL</label>
-
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">COMMERCIAL</label>
-                               
-                            </div>
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">INDUSTRIAL</label>
-                            </div>
-                                
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">INSTITUTIONAL</label>
-                               
-                            </div>
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">OTHERS(SPECIFY)</label>
-                                <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-                            </div>
-
+                      <select id="project-type-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="RESIDENTIAL">RESIDENTIAL</option>
+                        <option value="COMMERCIAL">COMMERCIAL</option>
+                        <option value="INDUSTRIAL">INDUSTRIAL</option>
+                        <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+                        <option value="OTHERS">OTHERS (SPECIFY)</option>
+                      </select>
+                      <input type="text" id="project-type-others" name="others" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                     </div>
                     <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">NEW DEVELOPMENT</label>
-
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">IMPROVEMENT</label>
-                             </div>   
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">OTHERS(SPECIFY)</label>
-                                <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-                            </div>
-
-                    </div><br>
-                </div>
+                      <select id="project-nature-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="NEW DEVELOPMENT">NEW DEVELOPMENT</option>
+                        <option value="IMPROVEMENT">IMPROVEMENT</option>
+                        <option value="OTHERS">OTHERS (SPECIFY)</option>
+                      </select>
+                      <input type="text" id="project-nature-others" name="others" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
+                    </div>
+                  </div>
+                  
                 <br>
 
 
@@ -147,97 +127,49 @@
                         <input type="text" name="Lot" id="Lot" class="col">
                         <input type="text" name="Building_Improvement" id="Building_Improvement" class="col">
                     </div>
-                </div>
+                </div><br><br>
 
 
                 <div class="row my-2">
                     <div class="col">
-                        <p><b>(11)RIGHT OVER LAND</b></p>
+                      <p><b>(11)RIGHT OVER LAND</b></p>
+                      <select id="right-over-land-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="OWNER">OWNER</option>
+                        <option value="LEASE">LEASE</option>
+                        <option value="OTHERS">OTHERS</option>
+                      </select>
+                      <input type="text" id="right-over-land-specify" name="right-over-land-specify" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                     </div>
                     <div class="col">
-                        <p><b>(12)PROJECT TENURE</b></p>
+                      <p><b>(12)PROJECT TENURE</b></p>
+                      <select id="project-tenure-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="PERMANENT">PERMANENT</option>
+                        <option value="TEMPORARY">TEMPORARY </option>
+                        <option value="VACANT/IDLE">VACANT/IDLE</option>
+                        <option value="AGRICULTURAL">AGRICULTURAL</option>
+                        <option value="TENANTED">TENANTED</option>
+                        <option value="NOT TENANTED">NOT TENANTED</option>
+                      </select>
+                      <input type="text" id="project-tenure-specify" name="project-tenure-specify" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                     </div>
-                </div>
-                <div class="row my-2">
+                  </div>
+                  
+
+                  <div class="row my-2">
                     <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">OWNER</label>
-
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">LEASE</label>
-                               
-                            </div>
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">OTHERS(SPECIFY)</label>
-                                <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-                            </div>
-
+                      <p><b>(13)EXISTING LAND USE FOR PROJECT SITE</b></p>
+                      <select id="existing-land-use-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="RESIDENTIAL">RESIDENTIAL</option>
+                        <option value="COMMERCIAL">COMMERCIAL</option>
+                        <option value="INDUSTRIAL">INDUSTRIAL</option>
+                        <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+                      </select>
                     </div>
-                    <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">PERMANENT </label>
-
-                        <div class="col">
-                            <input type="checkbox" name="" id="" class="mx-2">
-                            <label for="" class="my-1 mx-1">TEMPORARY(Specify)</label>
-                            <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-                        </div>  
-                        <div class="col">
-                            <input type="checkbox" name="" id="" class="mx-2">
-                            <label for="" class="my-1 mx-1">VACANT/Idle</label>
-                            
-                           
-                        </div> 
-                        <div class="col">
-                            <input type="checkbox" name="" id="" class="mx-2">
-                            <label for="" class="my-1 mx-1">AGRICULTURAL SPECIFY CROP</label>
-                            <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-                            
-                            
-                           
-                        </div> 
-                        <div class="col">
-                            <input type="checkbox" name="" id="" class="mx-2">
-                            <label for="" class="my-1 mx-1">TENANTED</label>
-                            
-                           
-                        </div> 
-                        <div class="col">
-                            <input type="checkbox" name="" id="" class="mx-2">
-                            <label for="" class="my-1 mx-1">NOT TENANTED</label>
-                            
-                           
-                        </div> 
-
-
-                    </div>
-                </div>
-
-                <div class="row my-2">
-                    <p><b>(13)EXISTING LAND USE FOR PROJECT SITE</b></p>
-                    <div class="col-6">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">RESIDENTIAL</label>
-                
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">COMMERCIAL</label>
-                                
-                            </div>
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">INDUSTRIAL</label>
-                              
-                            </div>
-                            <div class="col">
-                                <input type="checkbox" name="" id="" class="mx-2">
-                                <label for="" class="my-1 mx-1">INSTITUTIONAL</label>
-                                
-                            </div>
-                    </div>
-                </div>
+                  </div>
+                  
 
                 <div class="row my-2">
                     <div class="col">
@@ -357,33 +289,19 @@
                         <div class="row my-3">
                             <p><b>(17) PREPARED MODE OF LEASE OF DECISION</b></p>
                             <div class="col-8">
-
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">PICK-UP</label>
-                                    
-                                </div>
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">BY MAIL,ADDRESS TO</label>
-                                    
-                                </div>
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">APPLICANT</label>
-                                    
-                                </div>
-                                <div class="col">
-                                    <input type="checkbox" name="" id="" class="mx-2">
-                                    <label for="" class="my-1 mx-1">AUTHORIZED REPRESENTATIVE</label>
-                                    
-                                </div>
-
-                                
-                                
-
+                              <select id="lease-decision-mode-select" class="form-select mb-2">
+                                <option value="">Select an option</option>
+                                <option value="PICK-UP">PICK-UP</option>
+                                <option value="BY MAIL, ADDRESS TO">BY MAIL, ADDRESS TO</option>
+                                <option value="APPLICANT">APPLICANT</option>
+                                <option value="AUTHORIZED REPRESENTATIVE">AUTHORIZED REPRESENTATIVE</option>
+                                <option value="OTHERS">OTHERS (SPECIFY)</option>
+                              </select>
+                              <input type="text" id="lease-decision-mode-specify" name="lease-decision-mode-specify" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                             </div>
-                        </div>
+                          </div>
+                          
+                          
 
                         <div class="row my-3">
                             <div class="col-4">

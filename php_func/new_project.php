@@ -81,11 +81,11 @@ update("plans_details","`form` = '$forms_id'" ,"`id` = '$plans_detail_id'");
 //insert forms as part of template
 
 //insert form 1,2,3
-$form_architectural = gen_uuid();
-insert("f_architectural","`id`","'$form_architectural'");
+// $form_architectural = gen_uuid();
+// insert("f_architectural","`id`","'$form_architectural'");
 
-$form_structural = gen_uuid();
-insert("f_structural","`id`","'$form_structural'");
+// $form_structural = gen_uuid();
+// insert("f_structural","`id`","'$form_structural'");
 
 $form_sanitary = gen_uuid();
 insert("f_sanitary","`id`","'$form_sanitary'");
@@ -93,15 +93,15 @@ insert("f_sanitary","`id`","'$form_sanitary'");
 $form_electrical = gen_uuid();
 insert("f_electrical","`id`","'$form_electrical'");
 
-$form_mechanical = gen_uuid();
-insert("f_mechanical","`id`","'$form_mechanical'");
+// $form_mechanical = gen_uuid();
+// insert("f_mechanical","`id`","'$form_mechanical'");
 
 $form_locational = gen_uuid();
 insert("f_locational","`id`","'$form_locational'");
 
 
 //update forms
-update("forms","`architectural` = '$form_architectural',`structural` = '$form_structural',`sanitary` = '$form_sanitary',`electrical` = '$form_electrical',`mechanical` = '$form_mechanical',`locational` = '$form_locational'","`id` = '$forms_id'");
+update("forms","`sanitary` = '$form_sanitary',`electrical` = '$form_electrical',`locational` = '$form_locational'","`id` = '$forms_id'");
 
 
 
