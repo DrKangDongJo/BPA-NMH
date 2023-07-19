@@ -1,13 +1,19 @@
+<?php
+$page_title = "Profile | Applicant | BPA";
+require '../php_func/session_check.php';
+privilege_keeping("applicant","engineering_home.php");
+// print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap-5.3.0\css\bootstrap.css">
-    <link rel="stylesheet" href="../css/general.css">
-    <title>Document</title>
+  <?php require('../php_func/header_temp.php')?>
 </head>
+
 <body>
+
+<?php require '../components/navbar.php'; ?>
+
     <div class="container my-3">
         <div class="row gutters-sm">
             <div class="col-md-4 d-none d-md-block">
@@ -191,7 +197,7 @@
     </div>
 
     <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
-    <script src="../dependecies/jquery-3.6.4.js"></script>
+    <script src="../js/jquery-3.6.4.js"></script>
 
 </body>
 </html>

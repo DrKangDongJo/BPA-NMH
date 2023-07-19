@@ -1,47 +1,34 @@
 <div class="row p-5">
-    <div class="row p-4 m-0 border-black">
+    <div class="row p-5 m-0 border-black">
 
         <div id="scope_of_work">
-            <div class="row my-2">
-                <div class="col-4">
-                    <p class="my-2">SCOPE OF WORK<span> <br>
-                            <input type="checkbox" name="" id="" class="mx-2">
-                            <label for="" class="my-2 mx-2">NEW INSTALLATION</label>
-                        </span></p>
+            <b>SCOPE OF WORK</b>
+            <div class="row g-2">
+                <div class="col">
+                    <select name="sanitary_scope" id="sanitary_scope" class="form-select">
+                        <option value="new">NEW INSTALLATION</option>
+                        <option value="addition">ADDITION OF</option>
+                        <option value="repair">REPAIR OF</option>
+                        <option value="removal">REMOVAL OF</option>
+                        <option value="others">OTHERS(SPECIFY)</option>
+                    </select>
                 </div>
-                <div class="col-4">
-                    <input type="checkbox" name="" id="" class="mx-2">
-                    <label for="" class="my-2 mx-1">ADDITION OF</label>
-                    <input type="text" name="addition_of" class="w-50" style="border:none; border-bottom: 1px solid black; outline: none;">
-                    <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">REPAIR OF</label>
-                        <input type="text" name="addition_of" class="w-50 mx-3" style="border:none; border-bottom: 1px solid black; outline: none;">
-                    </div>
-                    <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <label for="" class="my-2 mx-1">REMOVAL OF</label>
-                        <input type="text" name="addition_of" class="w-50" style="border:none; border-bottom: 1px solid black; outline: none;">
-                    </div>
-                </div>
-                <div class="col-4">
-                    <p class="mx-5 my-2" style="margin-left: 50px;">OTHERS(SPECIFY)</p>
-                    <div class="col">
-                        <input type="checkbox" name="" id="" class="mx-2">
-                        <input type="text" name="addition_of" style="border:none; border-bottom: 1px solid black; outline: none; width: 120px">
-                        <label for="">OF</label>
-                        <input type="text" name="addition_of" style="border:none; border-bottom: 1px solid black; outline: none; width: 120px">
+                <div class="col-6">
+                    <input type="text" name="scope_desc" id="scope_desc" class="input-text-outline mb-2 w-100">
 
-                        <div class="col">
-                            <input type="checkbox" name="" id="" class="mx-2">
-                            <input type="text" name="addition_of" style="border:none; border-bottom: 1px solid black; outline: none; width: 120px">
-                            <label for="">OF</label>
-                            <input type="text" name="addition_of" style="border:none; border-bottom: 1px solid black; outline: none; width: 120px">
-                        </div>
-                    </div>
                 </div>
+                <div class="col-2"></div>
+
             </div>
-        </div><br>
+
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-2"><input type="button" value="add_scope" class="btn my-btn-blue w-auto "></div>
+
+            </div>
+
+
+        </div>
 
 
 
@@ -63,7 +50,7 @@
                             <option value="RECREATIONAL">RECREATIONAL</option>
                             <option value="OTHERS">OTHERS (SPECIFY)</option>
                         </select>
-                        <button id="add-occupancy-btn" class="btn btn-primary btn-block">Add</button>
+                        <button id="add-occupancy-btn" class="btn my-btn-blue btn-block">Add</button>
                     </div>
 
                 </div>
@@ -102,7 +89,7 @@
                             <option value="SWIMMING POOL">SWIMMING POOL</option>
                             <option value="OTHERS">OTHERS (SPECIFY)</option>
                         </select>
-                        <button id="add-fixtures-btn" class="btn btn-primary btn-block">Add</button>
+                        <button id="add-fixtures-btn" class="btn my-btn-blue btn-block">Add</button>
                         <input type="text" id="others-text" name="others" class="mx-3 w-10 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                     </div>
                 </div>
@@ -126,7 +113,7 @@
                     </select>
                     <input type="text" name="others" class="mx-3 w-10 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                 </div>
-                <button id="add-water-supply-btn" class="btn btn-primary">Add</button>
+                <button id="add-water-supply-btn" class="btn my-btn-blue">Add</button>
             </div>
 
             <div class="col">
@@ -142,7 +129,7 @@
                     </select>
                     <input type="text" name="others" class="mx-3 w-10 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                 </div>
-                <button id="add-disposal-btn" class="btn btn-primary">Add</button>
+                <button id="add-disposal-btn" class="btn my-btn-blue">Add</button>
 
 
             </div>
@@ -209,11 +196,11 @@
 
 
         <div class="row">
-            
-                <p class="my-4">TOTAL COST <br> OF INSTALLATION ₱</p>
-                <input type="text" name="cost" class="mx-1 w-50" style="border:none; border-bottom: 1px solid black; outline: none; margin-top: 10px">
 
-       
+            <p class="my-4">TOTAL COST <br> OF INSTALLATION ₱</p>
+            <input type="text" name="cost" class="mx-1 w-50" style="border:none; border-bottom: 1px solid black; outline: none; margin-top: 10px">
+
+
         </div>
 
 

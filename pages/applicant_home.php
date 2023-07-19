@@ -2,7 +2,7 @@
 $page_title = "Home | Applicant | BPA";
 require '../php_func/session_check.php';
 privilege_keeping("applicant","engineering_home.php");
-print_r($_SESSION);
+// print_r($_SESSION);
 
 
 ?>
@@ -11,6 +11,7 @@ print_r($_SESSION);
 <html lang="en">
 <head>
   <?php require('../php_func/header_temp.php')?>
+
 </head>
 <body>
 
@@ -135,7 +136,7 @@ data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PR
 
 
 <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
-<script src="../dependecies/jquery-3.6.4.js"></script>
+<script src="../js/jquery-3.6.4.js"></script>
 <script>
 
 

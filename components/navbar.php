@@ -63,7 +63,7 @@
 
 </style>
 
-<div id="navbar" class= "row m-0 gx-4">
+<div id="navbar" class= "row m-0 gx-4" >
 
     <div id="title_logo" name = "nav_left_section" class = "col-4">
         <div id="logo_container">
@@ -83,6 +83,10 @@
     <div id ="user-tools" name = "nav_right_section" class="col-4 text-end white-text my-auto d-flex-inline" >
 
     <!-- notifications -->
+        <a class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" 
+        href = "../pages/applicant_home.php">
+                <img src="../img/icon/home-w.png" alt="user-icon" class = "my-dd-icon">
+        </a>
          <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="../img/icon/bell-w.png" alt="user-icon" class = "my-dd-icon">
@@ -112,7 +116,7 @@
                 <img src="../img/icon/user-w.png" alt="user-icon" class = "my-dd-icon">
             </button>
             <ul class="dropdown-menu ">
-                <li><a class="dropdown-item" href="../pages/applicant_settings.html">Profile</a></li>
+                <li><a class="dropdown-item" href="../pages/applicant_settings.php">Profile</a></li>
                 <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
                 <li><a class="dropdown-item" href="../php_func/logout.php">Logout</a></li>
             </ul>

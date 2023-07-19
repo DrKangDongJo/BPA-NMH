@@ -109,7 +109,7 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
 
 
 <script src="bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
-<script src="dependecies/jquery-3.6.4.js"></script>
+<script src="js/jquery-3.6.4.js"></script>
 <script>
        $("#user-tools").attr('hidden','hidden')
        $("#logo")[0].setAttribute("src","img/Seal_of_Nasugbu.png")

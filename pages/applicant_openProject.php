@@ -82,6 +82,10 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
             color:white;
             /* padding:6px; */
         }
+
+        #right_portion::-webkit-scrollbar {
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -276,7 +280,7 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
 
 <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
-<script src="../dependecies/jquery-3.6.4.js"></script>
+<script src="../js/jquery-3.6.4.js"></script>
 <script>
 
 
@@ -287,7 +291,32 @@ $("#nav_center_section").addClass("m-auto");
 if($("#sel_add_form").children().length == 0){
     $("#sel_add_form").parent().attr("hidden","hidden") // hide div form additon
 }
+var elements = document.getElementsByClassName("nav-link");
 
+//add event listeners to nav-links
+for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', function(){
+
+        //get active links
+        active_links = $("button.nav-link.active")
+        active_contents = $("#v-pills-tabContent > div.active.show")
+
+        if(active_links.length > 1){ //check if there's more than one
+ 
+        //remove all
+        active_links.removeClass("active")
+        active_contents.removeClass("active")
+        active_contents.removeClass("show")
+
+        //set active to one just clicked
+        $("#"+this.id).addClass("active")
+        
+        // console.log(this.id)
+
+
+    }
+    },false);
+}
 
 //updating title
 function update_title(){

@@ -1,5 +1,5 @@
 <div class="row p-5">
-    <div class="row p-4 m-0 border-black">
+    <div class="row p-5 m-0 border-black">
         <!-- SCOPE OF WORK -->
         <div id="scope_of_work">
             <div class="row my-2">
