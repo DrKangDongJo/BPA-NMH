@@ -147,8 +147,13 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" >
                     <div class="accordion-body">
                     <div class="d-flex align-items-start">
+<<<<<<< HEAD
+                            <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+                                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+=======
                     <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
                                 <button class="nav-link" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+>>>>>>> e0272277ed8972417de1ff288228354b6122e6c8
                                 <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
                                 <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false">Disabled</button>
                                 <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
