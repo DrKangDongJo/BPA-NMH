@@ -1,39 +1,80 @@
 <div class="row p-5">
     <div class="row p-5 m-0 border-black">
-
-        <div id="scope_of_work">
-            <b>SCOPE OF WORK</b>
-            <div class="row g-2">
-                <div class="col">
-                    <select name="sanitary_scope" id="sanitary_scope" class="form-select">
-                        <option value="new">NEW INSTALLATION</option>
-                        <option value="addition">ADDITION OF</option>
-                        <option value="repair">REPAIR OF</option>
-                        <option value="removal">REMOVAL OF</option>
-                        <option value="others">OTHERS(SPECIFY)</option>
-                    </select>
-                </div>
-                <div class="col-6">
-                    <input type="text" name="scope_desc" id="scope_desc" class="input-text-outline mb-2 w-100">
-
-                </div>
-                <div class="col-2"></div>
-
+    <div class="row">
+        <div class="col-sm-4">
+            <p><b>SCOPE OF WORK</b></p>
+            <div class="form-check mx-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  NEW INSTALLATION
+                </label>
             </div>
-
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-2"><input type="button" value="add_scope" class="btn my-btn-blue w-auto "></div>
-
-            </div>
-
-
         </div>
+        <div class="col-sm-4 my-3">
+            <div class="d-flex">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput1" data-target="textInputContainer1">
+                    <label class="form-check-label" for="showInput1">ADDITION OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer1" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput1">
+                      </div>
+                  </div>    
+            </div>
+            
+              <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput2" data-target="textInputContainer2">
+                    <label class="form-check-label" for="showInput2">REPAIR OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer2" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50 mx-2" id="textInput2">
+                      </div>
+                  </div>
+              </div>
 
+              <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput3" data-target="textInputContainer3">
+                    <label class="form-check-label" for="showInput3">REMOVAL OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer3" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput3">
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <div class="col-sm-4 my-3">
+            <p>OTHERS(specify)</p>
+            <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput4" data-target="textInputContainer4">
+                    
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer4" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput4">
+                    </div>
+                </div>
+            </div>
 
-
-
-
+            <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput5" data-target="textInputContainer5">
+                    
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer5" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
         <div class="row">
             <div class="col">
                 <div class="row my-2">
