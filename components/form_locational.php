@@ -3,10 +3,10 @@
 
         <div class="row my-2">
             <div class="col">
-                <p><b>(7)PROJECT TYPE</b></p>
+                <p><b>PROJECT TYPE</b></p>
             </div>
             <div class="col">
-                <p><b>(8)PROJECT NATURE</b></p>
+                <p><b>PROJECT NATURE</b></p>
             </div>
         </div>
         <div class="row my-2">
@@ -37,8 +37,8 @@
 
         <div id="NUMBER_9-10">
             <div class="row">
-                <label for="ProjectLocation" class="col">(9)PROJECT LOCATION (Number,Street,Barangay,City/Mun.Pronvince)</label>
-                <label for="ProjectArea" class="col">(10)PROJECT AREA(in square meters)</label>
+                <label for="ProjectLocation" class="col">PROJECT LOCATION (Number,Street,Barangay,City/Mun.Pronvince)</label>
+                <label for="ProjectArea" class="col">PROJECT AREA(in square meters)</label>
                 <label for="Lot" class="col">LOT</label>
                 <label for="Building_Improvement" class="col">BUILDING IMPROVEMENT</label>
             </div>
@@ -53,7 +53,7 @@
 
         <div class="row my-2">
             <div class="col">
-                <p><b>(11)RIGHT OVER LAND</b></p>
+                <p><b>RIGHT OVER LAND</b></p>
                 <select id="right-over-land-select" class="form-select mb-2">
                     <option value="">Select an option</option>
                     <option value="OWNER">OWNER</option>
@@ -63,7 +63,7 @@
                 <input type="text" id="right-over-land-specify" name="right-over-land-specify" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
             </div>
             <div class="col">
-                <p><b>(12)PROJECT TENURE</b></p>
+                <p><b>PROJECT TENURE</b></p>
                 <select id="project-tenure-select" class="form-select mb-2">
                     <option value="">Select an option</option>
                     <option value="PERMANENT">PERMANENT</option>
@@ -80,7 +80,7 @@
 
         <div class="row my-2">
             <div class="col">
-                <p><b>(13)EXISTING LAND USE FOR PROJECT SITE</b></p>
+                <p><b>EXISTING LAND USE FOR PROJECT SITE</b></p>
                 <select id="existing-land-use-select" class="form-select mb-2">
                     <option value="">Select an option</option>
                     <option value="RESIDENTIAL">RESIDENTIAL</option>
@@ -94,7 +94,7 @@
 
         <div class="row my-2">
             <div class="col">
-                <p><b>(14)PROJECT COST/CAPITALIZATION(in pesos,write int words and figures)</b></p>
+                <p><b>PROJECT COST/CAPITALIZATION(in pesos,write int words and figures)</b></p>
 
             </div>
 
@@ -109,7 +109,7 @@
         </div>
         <div class="row my-2">
             <div class="col">
-                <p><b>(15)IF THE PROJECT APPLIED FOR THE SUBJECT OF THE WRITTEN NOTICE FROM
+                <p><b>IF THE PROJECT APPLIED FOR THE SUBJECT OF THE WRITTEN NOTICE FROM
                         THIS COMMISION AND ITS DEPUTIZED ZINING ADMINISTRATOR TO THE EFFECT REQUIRING FOR THE PRESENTATION OF THE
                         LOCATIONAL CLEARANCE/CERTIFICATE OF ZONING COMPLIANCE/CZC
                     </b></p>
@@ -153,7 +153,7 @@
 
             <div class="row my-3">
                 <div class="col-8">
-                    <p><b>(16) IS THE PROJECT APPLIED FOR THE SUBJECT OF THE SIMILAR APPLICATION WITH THE OTHER OFFICER
+                    <p><b> IS THE PROJECT APPLIED FOR THE SUBJECT OF THE SIMILAR APPLICATION WITH THE OTHER OFFICER
                             OF THE COMMISSION AND/OR DEPUTIZED ZONING ADMINISTRATOR?
                         </b></p>
 
@@ -178,7 +178,7 @@
             </div>
 
             <div class="row">
-                <p><b> If Yes Pleas Answer the Followeing:
+                <p><b> If Yes Please Answer the Following:
                     </b></p>
 
                 <div class="col-8">
@@ -208,7 +208,7 @@
 
 
                 <div class="row my-3">
-                    <p><b>(17) PREPARED MODE OF LEASE OF DECISION</b></p>
+                    <p><b> PREPARED MODE OF LEASE OF DECISION</b></p>
                     <div class="col-8">
                         <select id="lease-decision-mode-select" class="form-select mb-2">
                             <option value="">Select an option</option>
@@ -224,67 +224,14 @@
 
 
 
-                <div class="row my-3">
-                    <div class="col-4">
-                        <input type="text" name="others" class=" mx-2 w-50" style="border:none; border-bottom: 1px solid black; outline: none;">
+                
 
-                    </div>
+                
 
-                    <div class="col-4">
-                        <input type="text" name="others" class="mx-5 w-50" style="border:none; border-bottom: 1px solid black; outline: none;">
-
-                    </div>
-                </div>
-
-                <div class="row my-3">
-                    <div class="col-4">
-                        <label for="" class="my-1 mx-1">(18)SIGNATURE OF APPLICANT</label>
-
-                    </div>
-
-                    <div class="col-4">
-                        <label for="" class="my-1 mx-1">SIGNATURE OF AUTHORIZED REPRESENTATIVE</label>
-
-                    </div>
-                </div>
-
-                <div class="row  my-5">
-                    <p>"SUBSCRIBE AND SWORN to before me this______________day of_________________,20______________
-                        in the City/Municipallity of _____________________________________________Province of__________________
-                        afflant exhibited to me his/her Residence Certificate No.___________________________Issued at_____________
-                        on___________________________2023."</p>
-
-                    <!-- di ko pa magawa -->
-
-                </div>
+                
 
 
-                <div class="row my-5">
-                    <div class="col-5">
-                        <div class="col">
-                            <label for="" class="my-1 mx-1">Doc.No</label>
-                            <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-
-                        </div>
-                        <div class="col">
-                            <label for="" class="my-1 mx-1">Page.No</label>
-                            <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-
-                        </div>
-                        <div class="col">
-                            <label for="" class="my-1 mx-1">Page.No</label>
-                            <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
-
-                        </div>
-
-
-                    </div>
-
-                    <div class="col-6">
-                        <p>NOTARY PUBLIC</p>
-                    </div>
-
-                </div>
+                
 
             </div>
 

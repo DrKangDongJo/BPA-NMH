@@ -128,7 +128,7 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
             <div class="my-centered">
                 <div class="row login-cont m-auto">
                     <div class="row mt-auto" style="justify-content:center">
-                        <img src="img/Seal_of_Nasugbu.png" alt="Seal of Nasugbu" style="width:50%; aspect-ratio:1/1" class="img-fluid">
+                        <img src="img/Seal_of_Nasugbu.png" alt="Seal of Nasugbu" style="width:50%;" class="img-fluid">
                     </div>
                     <br>
 

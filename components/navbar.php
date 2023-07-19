@@ -67,7 +67,9 @@
 
     <div id="title_logo" name = "nav_left_section" class = "col-4">
         <div id="logo_container">
+            <a href="../index.php">
             <img id = "logo" src="../img/Seal_of_Nasugbu.png" alt="Seal_of_Nasugbu" >
+            </a>
         </div>
 
         <div id="title_container">
