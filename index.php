@@ -47,6 +47,65 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
             padding:2%;
 
         }    
+
+        .custom-modal .modal-dialog {
+      max-width: 400px;
+    }
+
+    .custom-modal .modal-content {
+      border-radius: 10px;
+    }
+
+    .custom-modal .modal-header {
+      background-color: #f8f9fa;
+      border-bottom: none;
+    }
+
+    .custom-modal .modal-body {
+      padding: 20px;
+    }
+
+    .custom-modal .modal-footer {
+      border-top: none;
+    }
+
+    .hidden {
+        display: none;
+      }
+
+    .popup-message {
+    animation: popup 3s forwards;
+    }
+
+    @keyframes popup {
+      0% {
+        transform: translateY(15%);
+        opacity: 0;
+      }
+      10%, 90% {
+        transform: none;
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(15%);
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    #btn4-text {
+        height: 72px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: rgb(240, 134, 134);
+        font-weight: bold;
+        text-align: center;
+        line-height: 72px;
+        position: fixed;
+        right: 5%;
+        bottom: 10%;
+      }
+      
     </style>
 
     <link rel="stylesheet" href="bootstrap-5.3.0\css\bootstrap.css">
@@ -84,15 +143,14 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
 
        <div class= "my-upper white-text" style="font-size: 0.9rem;">
        
-       <a href="../pages/forgot_password.html" class = "white-text"><p class = "mb-0 mt-1">FORGOT PASSWORD?</p></a>
-       <a href="../pages/signup_2.php" class = "white-text"><p class = "mb-1">SIGNUP</p></a>
+       <a href="../pages/password_forgot.php" class = "white-text"><p class = "mb-0 mt-1">FORGOT PASSWORD?</p></a>
+       <p class = "mb-1" data-bs-toggle="modal" data-bs-target="#modalContainer">SIGNUP</p>
+
        
 
        </div>
        
-        <!-- <a href = "pages/applicant_home.php">
-           
-       </a> -->
+       
        <div>
        <button type="" class="btn my-btn-blue m-auto float-end p-auto" style="color:white;">
             LOGIN</button>
@@ -108,6 +166,25 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
 
 
 
+
+  <div class="modal fade" id="modalContainer" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header text-center" style="background-color: #5A8BB5;">
+          <h5 class="modal-title text-white text-uppercase" id="modalLabel">Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center" style="background-color: aliceblue;">
+          <p class="h4 text-center"><b>Is the location of the building is around nasugbu?</b></p>
+          <button type="button" id="yesBtn" class="btn btn-success">Yes</button>
+          <button type="button" id="noBtn" class="btn btn-danger">No</button>
+        </div>
+        <p id="btn4-text" class="hidden">Sorry, this is only available at nasugbu area</p>
+      </div>
+    </div>
+  </div>
+
+
 <script src="bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
 <script src="js/jquery-3.6.4.js"></script>
 <script>
@@ -116,6 +193,32 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
        $("#title_logo").removeClass("col-4")
        $("#title_logo").addClass("p-0")
 
+
+
+       const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const btn4Text = document.getElementById('btn4-text');
+
+    yesBtn.addEventListener('click', () => {
+      // Action when "Yes" button is clicked
+      window.location.href = "signup.html";
+      $('#modalContainer').modal('hide');
+    });
+
+    noBtn.addEventListener('click', () => {
+      // Action when "No" button is clicked
+      console.log("1")
+      btn4Text.classList.remove('hidden');
+      btn4Text.classList.add('popup-message');
+      $('#modalContainer').modal('hide');
+    });
+
+    // btn4Text.addEventListener('animationend', () => {
+    //   console.log("2")
+
+    //     btn4Text.classList.remove('popup-message');
+    //     btn4Text.classList.add('hidden');
+    //   });
 </script>
 </body>
 </html>
