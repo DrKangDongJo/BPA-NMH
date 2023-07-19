@@ -1,11 +1,15 @@
+<?php
+$page_title = "Signup | BPANMH";
+
+// require '../php_func/session_check.php';
+// privilege_keeping("applicant","engineering_home.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup | BPANMH</title>
-    <link rel="stylesheet" href="../bootstrap-5.3.0/css/bootstrap.css">
-    <link rel="stylesheet" href="../css/general.css">
+<?php require('../php_func/header_temp.php')?>
+
 
 </head>
 
@@ -30,6 +34,11 @@
 <body>
     
 <div class="container-fluid">
+
+
+<div class="row">
+        <?php require('../components/navbar.php')?>
+    </div>
 
     <form action="" method="post">
         <div class="row signin-cont m-auto mt-5 p-4 justify-content-center" style = "background-color: #5A8BB5; width: 500px; ">
@@ -80,6 +89,13 @@
     </form>
            
            
+    <script src="../js/jquery-3.6.4.js"></script>
+    <script>
+           $("#user-tools").attr('hidden', 'hidden')
+
+
+    </script>
+
     
 </div>
      

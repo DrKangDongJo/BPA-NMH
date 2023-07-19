@@ -132,3 +132,9 @@ a:hover{
 html::-webkit-scrollbar {
     display: none;
 }
+
+
+.my-container-blue{
+    background-color: #5A8BB5;
+    border-radius: 10px ;
+}
