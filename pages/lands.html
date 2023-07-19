@@ -11,6 +11,7 @@
 </head>
   
 <style>
+
   .image-preview {
     max-width: 100%;
     height: 300px; /* Updated height to 300px */
@@ -27,21 +28,21 @@
 </style>
   
   <body>
-    <div class="container">
-      <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto justify-content-center align-items-center">
+    <div class="container-fluid">
+      <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto justify-content-center align-items-center text-center">
        
         <!-- LANDS -->
-        <div class="col-">
+        <div class="col">
           <p class="text-center"><b>LANDS</b></p>
           <div class="card">
-            <div class="card-header text-center text-white" style="background-color: #5A8BB5;">
+            <div class="card-header text-white" style="background-color: #5A8BB5;">
               <p class="my-1"><b>REGISTRY OF DEED</b></p>
             </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="1">
+            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="1" accept="image/*,.pdf">
             <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-1" data-title="Registry of Deed" id="preview-link-1">
-                    <div class="my-2" id="1"></div>
-                  </a>
+                    <a href="#" data-lightbox="image-preview-1" data-title="Registry of Deed" id="preview-link-1">
+                      <div class="my-2" id="1"></div>
+                    </a>
               <div class="text-center my-2">
                 <button class="btn btn-danger delete-btn">Delete</button>
                 <button class="btn btn-primary save-btn">Save</button>
@@ -69,7 +70,7 @@
             </div>
             <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="3">
             <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-3" data-title="Registry of Deed" id="preview-link-3">
+                <a href="#" data-lightbox="image-preview-3" data-title="Contract of Lease" id="preview-link-3">
                     <div class="image-preview-container my-2" id="3"></div>
                   </a>
               <div class="text-center my-2">
@@ -79,287 +80,12 @@
             </div>
           </div>
         </div>
-
-        <!-- COST -->
-        <div class="col">
-          <p class="text-center"><b>COSTS</b></p>
-          <div class="card">
-            <div class="card-header text-center text-white" style="background-color: #5A8BB5;">
-              <p class="my-1"><b>LATEST TAX DECLARATION</b></p>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="4">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-4" data-title="Registry of Deed" id="preview-link-4">
-                    <div class="image-preview-container my-2" id="4"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-          <div class="card my-3">
-            <div class="card-header text-center text-white" style="background-color: #5A8BB5;">
-              <p class="my-1"><b>LATEST TAX RECEIPT</b></p>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="5">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-5" data-title="Deed of Sale" id="preview-link-5">
-                    <div class="image-preview-container my-2" id="5"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-          <div class="card my-3">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>BILL OF MATERIALS</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="Signed and sealed by the engineer in-charge">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="6">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-6" data-title="Registry of Deed" id="preview-link-6">
-                    <div class="image-preview-container my-2" id="6"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-          <div class="card my-3">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>COST ESTIMATE</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="Signed and sealed by the engineer in-charge">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="7">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-7" data-title="Registry of Deed" id="preview-link-7">
-                    <div class="image-preview-container my-2" id="7"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PLANS -->
-      <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto justify-content-center align-items-center my-5">
-        <div class="col">
-          <p class="text-center"><b>PLANS</b></p>
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>LOCATION PLAN</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="Certified Geodetic Engineer">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="8">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-8" data-title="Registry of Deed" id="preview-link-8">
-                    <div class="image-preview-container my-2" id="8"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>LOT PLAN</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="Certified Geodetic Engineer">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="9">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-9" data-title="Registry of Deed" id="preview-link-9">
-                    <div class="image-preview-container my-2" id="9"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div> 
-
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>SPECIFICATION</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="Certified Geodetic Engineer">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="9">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-9" data-title="Registry of Deed" id="preview-link-9">
-                    <div class="image-preview-container my-2" id="9"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div> 
-        </div>
-
-        <!-- PERMITS -->
-        <div class="col">
-          <p class="text-center"><b>PERMITS</b></p>
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>BARANGAY PERMIT</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="to construct">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="10">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-10" data-title="Registry of Deed" id="preview-link-10">
-                    <div class="image-preview-container my-2" id="10"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>DOLE</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="Dept. order 13 series of 1998 guidelines governing occupational safety & health in the construction">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="10">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-11" data-title="Registry of Deed" id="preview-link-11">
-                    <div class="image-preview-container my-2" id="11"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>SOIL BORING TEST</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="for 3 or more storey building">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="12">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-12" data-title="Registry of Deed" id="preview-link-12">
-                    <div class="image-preview-container my-2" id="12"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ADDITIONAL REQUIREMENTS -->
-      <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto justify-content-center align-items-center my-5">
-        <div class="col">
-          <p class="text-center"><b>ADDITIONAL REQUIREMENTS</b></p>
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>ENFORCEMENT OF R.A 9275</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="for 3 or more storey building">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="13">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-13" data-title="Registry of Deed" id="preview-link-13">
-                    <div class="image-preview-container my-2" id="13"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center text-white" style="background-color: #5A8BB5;">
-              <div class="flex-grow-1 text-center">
-                <p class="my-1"><b>DENR</b></p>
-              </div>
-              <button class="btn btn-transparent" data-toggle="tooltip" data-placement="right" title="ECC OR CNC">
-                <i class="bi bi-info-circle-fill"></i>
-              </button>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="14">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-14" data-title="Registry of Deed" id="preview-link-14">
-                    <div class="image-preview-container my-2" id="14"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div> 
-
-          <div class="card">
-            <div class="card-header text-center text-white" style="background-color: #5A8BB5;">
-              <p class="my-1"><b>DPWH CLEARANCE</b></p>
-            </div>
-            <input type="file" class="form-control-file upload-input my-2 mx-2" data-preview="15">
-            <div class="card-body my-3">
-                <a href="#" data-lightbox="image-preview-15" data-title="Registry of Deed" id="preview-link-15">
-                    <div class="image-preview-container my-2" id="15"></div>
-                  </a>
-              <div class="text-center my-2">
-                <button class="btn btn-danger delete-btn">Delete</button>
-                <button class="btn btn-primary save-btn">Save</button>
-              </div>
-            </div>
-          </div> 
-        </div>
       </div>
     </div>
   
     <script src="../js/jquery-3.6.4.js"></script>
     <script src="../js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
     
     <script>
         $(document).ready(function() {
@@ -381,6 +107,53 @@
           $('[data-toggle="tooltip"]').tooltip();
         });
       </script>
+
+      <script>
+
+        pdfjsLib.disableWorker = true;
+        // Function to load and render the PDF file
+        function renderPDF(url) {
+          // Fetch the PDF file
+          const loadingTask = pdfjsLib.getDocument(url);
+          loadingTask.promise.then(function (pdf) {
+            // Get the first page of the PDF
+            pdf.getPage(1).then(function (page) {
+              var canvas = document.createElement("canvas");
+              var context = canvas.getContext("2d");
+    
+              // Set the canvas dimensions to match the PDF page
+              var viewport = page.getViewport({ scale: 1 });
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+    
+              // Render the PDF page into the canvas
+              var renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+              };
+              page.render(renderContext).promise.then(function () {
+                // Append the canvas to the PDF container
+                $(".pdf-container").html(canvas);
+              });
+            });
+          }).catch(function (error) {
+            console.error("Error loading PDF:", error);
+          });
+        }
+    
+        // Handle file input change event
+        $(".upload-input").on("change", function (e) {
+          var file = e.target.files[0];
+          if (file && file.type === "application/pdf") {
+            // Create a URL object from the selected file
+            var url = URL.createObjectURL(file);
+            // Render the PDF file
+            renderPDF(url);
+          }
+        });
+      </script>
+
+
   </body>
   
   
