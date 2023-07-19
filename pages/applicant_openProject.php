@@ -22,27 +22,32 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
     <link rel="icon" type="image/x-icon" href="../img/Seal_of_Nasugbu.png">
 
     <?php
-    $condition = "project_id = '$project_id' AND owner_id = '" . $_SESSION['user_id'] . "' ";
-    $open_project = select("vw_project_forms", $condition); //result
+    $condition = "id = '$project_id' AND owner_id = '" . $_SESSION['user_id'] . "' ";
     // echo $condition;
 
-    //initialize storage also for tracking
-    $form_columns = array();
-    $form_values = array();
-
-    //loop through result to get column names
-    for ($i = 0; $i < mysqli_num_fields($open_project); $i++) {
-        $field_info = mysqli_fetch_field($open_project);
-        array_push($form_columns, $field_info->name); //append to storage
+    $open_project = select("project", $condition); //result
+    if ($row = mysqli_fetch_assoc($open_project)) {
+        
+        $project_status = $row['status'];
+        // echo $project_status;
     }
+
+    $condition = "project_id = '$project_id' AND owner_id = '" . $_SESSION['user_id'] . "' ";
+
+    $open_project = select("vw_project_forms", $condition); //result
 
     //loop through result to get values
     if ($row = mysqli_fetch_assoc($open_project)) {
-        foreach ($row as $_column) {
-            array_push($form_values, $_column); //append to storage
-        }
+        // foreach ($row as $_column) {
+        //     // array_push($form_values, $_column); //append to storage
+        // }
         $project_title = ucwords($row['title']); //get project title
+
+        $forms = array("form_id"=>"$row[form_id]", "sanitary"=>"$row[sanitary]", "electrical"=>"$row[electrical]","locational"=>"$row[locational]","unified"=>"$row[unified]");
+        $_SESSION["forms"] = $forms;
         $forms_id = $row['form_id']; //forms id
+ 
+        // print_r($_SESSION);
         echo "<title>{$project_title}</title>";  //display tab title
     }
 
@@ -90,6 +95,11 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
         #right_portion::-webkit-scrollbar {
             display: none;
         }
+
+        .my-dd-btn{
+        background-color: transparent;
+        border: none;
+    }
     </style>
 </head>
 
@@ -182,7 +192,7 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
                         ?>
 
-                        <button type="button" class="btn my-btn-blue mx-auto white-text" style="width:auto" data-bs-toggle="modal" data-bs-target="#<?php echo $bs_target ?>"><?php echo $button_text ?></button>
+                        <button type="button" class="btn my-btn-blue mx-auto white-text" style="width:auto" data-bs-toggle="modal" data-bs-target="#<?php echo $bs_target ?>" hidden><?php echo $button_text ?></button>
                         <!-- Modal -->
                         <div class="modal fade " id="<?php echo $bs_target ?>" tabindex="-1" aria-labelledby="<?php echo $bs_target ?>_Label" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -217,13 +227,49 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                             </div>
                         </div>
 
-                        <h5 class="text-end">Project 0% Complete</h5>
+                        <h5 class="text-end" hidden>Project 0% Complete</h5>
                         <div class="row">
                             <div class="col-3">FAQ</div>
                             <div class="col text-end">
-                                <button type="" class="btn my-btn-blue white-text" style="font-size:small">SUBMIT FOR REVIEW</button>
+        
+                                <button type="button" class="btn my-btn-blue white-text" id = "submit_for_review_btn"
+                                data-bs-toggle="modal" data-bs-target="#submit_confirmation">
+                                SUBMIT FOR REVIEW
+                                </button>
+
                             </div>
                         </div>
+<!-- modal -->
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="submit_confirmation" tabindex="-1" aria-labelledby="submit_confirmationLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="submit_confirmationLabel">Confirm submission</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to submit your project for review? <br>
+        <b>This will lock your project temporarily - you will not be able to make changes</b>
+        while we send your forms and documents to designated departments. 
+        Please make sure everything is filled and checked before proceeding. 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I'll do it later</button>
+
+        <form action="../php_func/submit_for_review.php" method="post">
+             <input name = "project_id" value = "<?php echo $project_id?>" hidden>
+             <button type="submit" class="btn btn-primary">Submit for review</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
                     </div>
 
@@ -237,9 +283,9 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
             <div class="col m-0 p-0" style="position:static;overflow-y:scroll" id="right_portion">
                 <div class="tab-content" id="v-pills-tabContent">
-                    
+
                     <div class="tab-pane fade show active" id="v-pills-cont-locational_" role="tabpanel" aria-labelledby="v-pills-locational_" tabindex="0">
-                        Locational
+                        <!-- Locational -->
                         <?php
                         require '../components\form_locational.php';
                         ?>
@@ -247,7 +293,8 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                     </div>
 
 
-                    <div class="tab-pane fade " id="v-pills-cont-sanitary_" role="tabpanel" aria-labelledby="v-pills-sanitary_" tabindex="0">Sanitary
+                    <div class="tab-pane fade " id="v-pills-cont-sanitary_" role="tabpanel" aria-labelledby="v-pills-sanitary_" tabindex="0">
+                        <!-- Sanitary -->
 
                         <?php
                         require '../components\form_sanitary.php';
@@ -255,7 +302,8 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-cont-electrical_" role="tabpanel" aria-labelledby="v-pills-electrical_" tabindex="0">Electrical
+                    <div class="tab-pane fade" id="v-pills-cont-electrical_" role="tabpanel" aria-labelledby="v-pills-electrical_" tabindex="0">
+                        <!-- Electrical -->
                         <?php
                         require '../components\form_electrical.php';
                         ?>
@@ -263,40 +311,45 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
 
 
-                    <div class="tab-pane fade" id="v-pills-cont-unified_" role="tabpanel" aria-labelledby="v-pills-unified_" tabindex="0">Unified
+                    <div class="tab-pane fade" id="v-pills-cont-unified_" role="tabpanel" aria-labelledby="v-pills-unified_" tabindex="0">
+                        <!-- Unified -->
                         <?php
                         require '../components\form_unified.php';
                         ?>
 
+                    </div>
                         <!-- DOCUMENTS -->
 
-                    </div>
-
-                    <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">LANDS
+                    <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                        <!-- LANDS -->
                         <?php
                         require '../pages/lands.html';
                         ?>
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">PERMITS
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                        <!-- PERMITS -->
                         <?php
                         require '../pages/permits.html';
                         ?>
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">PLANS
+                    <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                        <!-- PLANS -->
                         <?php
                         require '../pages/plans.html';
                         ?>
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">COSTS
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
+                        <!-- COSTS -->
                         <?php
                         require '../pages/costs.html';
                         ?>
                     </div>
 
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">ADDITIONAL REQUIREMENTS
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
+                        <!-- ADDITIONAL REQUIREMENTS -->
                         <?php
                         require '../pages/additional_req.html';
                         ?>
@@ -313,6 +366,15 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
         // add center project name
         $("#nav_center_section").append('<div class="text-center" id ="project_title"><input class="clear-input text-center white-text" type="text" name="" id="inp_project_name" onchange = "update_title()" value="<?php echo $project_title; ?>"></div>')
         $("#nav_center_section").addClass("m-auto");
+
+        var project_status = "<?php echo $project_status?>";
+        console.log(project_status);
+        if(project_status != "open"){
+            $("select").attr("disabled","disabled")
+            $("input").attr("disabled","disabled")
+            $("#submit_for_review_btn")[0].innerText = "Review in process";
+            $("#submit_for_review_btn").attr("disabled","disabled")
+        }
 
         if ($("#sel_add_form").children().length == 0) {
             $("#sel_add_form").parent().attr("hidden", "hidden") // hide div form additon

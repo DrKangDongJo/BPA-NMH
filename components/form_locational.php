@@ -1,28 +1,38 @@
+<?php
+$locational_id = $_SESSION["forms"]["locational"];
+
+$locational_data = select("f_locational","id = '$locational_id'");
+
+if ($row = mysqli_fetch_assoc($locational_data)) {
+    // print_r($row);
+
+?>
+
+
+
 <div class="row p-5">
     <div class="row p-5 m-0 border-black">
+    <div id="form_header" class="row text-center">
+            <p>REPUBLIC OF THE PHILIPINES<br>
+                <b>MUNICIPALITY OF NASUGBU </b> <br>
+                <b>PROVINCE OF BATANGAS</b> <br>
+            </p>
 
+            <H3>APPLICATION FOR LOCATIONAL CLEARANCE</H3>
+
+
+        </div>
         <div class="row my-2">
-            <div class="col">
-                <p><b>PROJECT TYPE</b></p>
-            </div>
+           
             <div class="col">
                 <p><b>PROJECT NATURE</b></p>
             </div>
         </div>
         <div class="row my-2">
+         
             <div class="col">
-                <select id="project-type-select" class="form-select mb-2">
-                    <option value="">Select an option</option>
-                    <option value="RESIDENTIAL">RESIDENTIAL</option>
-                    <option value="COMMERCIAL">COMMERCIAL</option>
-                    <option value="INDUSTRIAL">INDUSTRIAL</option>
-                    <option value="INSTITUTIONAL">INSTITUTIONAL</option>
-                    <option value="OTHERS">OTHERS (SPECIFY)</option>
-                </select>
-                <input type="text" id="project-type-others" name="others" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
-            </div>
-            <div class="col">
-                <select id="project-nature-select" class="form-select mb-2">
+                <select id="project-nature-select" class="form-select mb-2"
+                oninput="update_table_ajax('f_locational','project_nature',this.value,'<?php echo $locational_id?>')">
                     <option value="">Select an option</option>
                     <option value="NEW DEVELOPMENT">NEW DEVELOPMENT</option>
                     <option value="IMPROVEMENT">IMPROVEMENT</option>
@@ -37,16 +47,16 @@
 
         <div id="NUMBER_9-10">
             <div class="row">
-                <label for="ProjectLocation" class="col">PROJECT LOCATION (Number,Street,Barangay,City/Mun.Pronvince)</label>
+         
                 <label for="ProjectArea" class="col">PROJECT AREA(in square meters)</label>
                 <label for="Lot" class="col">LOT</label>
-                <label for="Building_Improvement" class="col">BUILDING IMPROVEMENT</label>
+                <label for="Building_Improvement" class="col" hidden>BUILDING IMPROVEMENT</label>
             </div>
             <div class="row">
-                <input type="text" name="ProjectLocation" id="ProjectLocation" class="col">
-                <input type="text" name="ProjectArea id=" full_address" class="col">
+  
+                <input type="number" name="ProjectArea" id="full_address" class="col">
                 <input type="text" name="Lot" id="Lot" class="col">
-                <input type="text" name="Building_Improvement" id="Building_Improvement" class="col">
+                <input type="text" name="Building_Improvement" id="Building_Improvement" class="col" hidden>
             </div>
         </div><br><br>
 
@@ -54,7 +64,8 @@
         <div class="row my-2">
             <div class="col">
                 <p><b>RIGHT OVER LAND</b></p>
-                <select id="right-over-land-select" class="form-select mb-2">
+                <select id="right-over-land-select" class="form-select mb-2" 
+                oninput="update_table_ajax('f_locational','right_over_land',this.value,'<?php echo $locational_id?>')">     
                     <option value="">Select an option</option>
                     <option value="OWNER">OWNER</option>
                     <option value="LEASE">LEASE</option>
@@ -64,7 +75,8 @@
             </div>
             <div class="col">
                 <p><b>PROJECT TENURE</b></p>
-                <select id="project-tenure-select" class="form-select mb-2">
+                <select id="project-tenure-select" class="form-select mb-2" 
+                oninput="update_table_ajax('f_locational','project_tenure',this.value,'<?php echo $locational_id?>')">     
                     <option value="">Select an option</option>
                     <option value="PERMANENT">PERMANENT</option>
                     <option value="TEMPORARY">TEMPORARY </option>
@@ -102,7 +114,8 @@
 
         <div class="row my-2">
             <div class="col">
-                <input type="text" name="others" class=" w-100" style="border:none; border-bottom: 1px solid black; outline: none;">
+                <input id="project-cost-input" type="text" name="others" class=" w-100" style="border:none; border-bottom: 1px solid black; outline: none;"
+                oninput="update_table_ajax('f_locational','project_cost',this.value,'<?php echo $locational_id?>')">
 
             </div>
 
@@ -221,18 +234,6 @@
                         <input type="text" id="lease-decision-mode-specify" name="lease-decision-mode-specify" class="mx-3 w-60 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
                     </div>
                 </div>
-
-
-
-                
-
-                
-
-                
-
-
-                
-
             </div>
 
         </div>
@@ -241,3 +242,20 @@
     </div>
 
 </div>
+<script src="../js/db_operations_ajax.js"></script>
+<script>
+
+selectElement('project-nature-select', '<?php echo $row['project_nature']?>');
+selectElement('right-over-land-select', '<?php echo $row['right_over_land']?>');
+selectElement('project-tenure-select', '<?php echo $row['project_tenure']?>');
+selectElement('project-cost-input', '<?php echo $row['project_cost']?>');
+
+
+
+
+
+</script>
+
+<?php
+}
+?>

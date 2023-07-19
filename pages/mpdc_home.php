@@ -3,7 +3,22 @@ $page_title = "Home | Admin | Engineering | BPA";
 session_start();
 // print_r($_SESSION);
 
+require '../php_func/db_func.php';
+
 ?>
+
+<?php
+    
+    
+    
+    $locational_data = select("project","status = 'reviewing'");
+        
+    while($row = mysqli_fetch_assoc($locational_data)) {
+        print_r($row);
+    
+    }
+    
+        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +41,11 @@ session_start();
 
     </div>
 
+   
+
     <div class="main" style="padding:3%">
+
+
         <div class="row">
             <div class="col">
                 <div style = "width:90%;aspect-ratio:3/1;" class="border-black my-border-8 text-center">
@@ -82,12 +101,15 @@ session_start();
 
 
     </div>
+    </div>
+
+    
     
        
 
 
     <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
-<script src="../dependecies/jquery-3.6.4.js"></script>
+<script src="../js/jquery-3.6.4.js"></script>
 <script>
 $("#nav_center_section").append('<div class="col text-center white-text" id ="project_title"><div class="row"><h5 class="clear-input w-100 text-center m-0 mt-2" id="">MPDC DEPARTMENT</h5></div><div class="row"><p>Home - Admin <span id = "pop_up_nav"></span></p></div></div>')
 $("#user-tools").removeClass("my-auto");

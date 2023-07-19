@@ -153,4 +153,8 @@ html::-webkit-scrollbar {
   .card-size {
     max-width: 30rem;
   }
+
+  .input-group-append {
+    cursor: pointer;
+  }
   
