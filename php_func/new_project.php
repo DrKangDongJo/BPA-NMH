@@ -96,18 +96,21 @@ insert("f_electrical","`id`","'$form_electrical'");
 // $form_mechanical = gen_uuid();
 // insert("f_mechanical","`id`","'$form_mechanical'");
 
+$form_unified = gen_uuid();
+insert("f_unified","id","'$form_unified'");
+
 $form_locational = gen_uuid();
 insert("f_locational","`id`","'$form_locational'");
 
 
 //update forms
-update("forms","`sanitary` = '$form_sanitary',`electrical` = '$form_electrical',`locational` = '$form_locational'","`id` = '$forms_id'");
+update("forms","`sanitary` = '$form_sanitary',`electrical` = '$form_electrical',`locational` = '$form_locational',`unified` ='$form_unified'","`id` = '$forms_id'");
 
 
 
 
 
-// header("Location: ../pages/applicant_openProject.php?project_id=$project_id")
+header("Location: ../pages/applicant_home.php")
 
 
 ?>

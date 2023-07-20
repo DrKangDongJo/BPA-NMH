@@ -24,7 +24,7 @@ privilege_keeping("applicant","engineering_home.php");
                             <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile-content" aria-selected="false">Account Settings</button>
                             <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled-content" aria-selected="false">Security</button>
                             <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages-content" aria-selected="false">Notification</button>
-                            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings-content" aria-selected="false">Billing</button>
+             
                         </div>
                     </div>
                 </div>
@@ -45,14 +45,7 @@ privilege_keeping("applicant","engineering_home.php");
                                 <input type="text" class="form-control text-muted" id="fullName" placeholder="Enter your fullname" value="Reignoel D. Rodriguez">
                                 <small id="fullNameHelp" class="form-text text-muted">Your name may appear around here where you are mentioned. You can change or remove it at any time.</small>
                             </div>
-                            <div class="mb-3">
-                                <label for="bio" class="form-label">Your Bio</label>
-                                <textarea class="form-control text-muted" id="bio" placeholder="Write something about you" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 62px;">A front-end developer that focus more on user interface design, a web interface wizard, a connector of awesomeness.</textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="url" class="form-label">URL</label>
-                                <input type="text" class="form-control text-muted" id="url" placeholder="Enter your website address" value="http://benije.ke/pozzivkij">
-                            </div>
+                     
                             <div class="mb-3">
                                 <label for="location" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" placeholder="Enter your location" value="Bay Area, San Francisco, CA">
@@ -175,21 +168,7 @@ privilege_keeping("applicant","engineering_home.php");
                             </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
-                            <h6>BILLING SETTINGS</h6>
-                            <hr>
-                            <form>
-                            <div class="mb-3">
-                                <label class="d-block mb-0">Payment Method</label>
-                                <div class="small text-muted mb-3">You have not added a payment method</div>
-                                <button class="btn btn-info" type="button">Add Payment Method</button>
-                            </div>
-                            <div class="mb-3">
-                                <label class="d-block">Payment History</label>
-                                <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">You have not made any payment.</div>
-                            </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

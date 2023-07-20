@@ -37,12 +37,14 @@ while($row = mysqli_fetch_assoc($details)) {
 
 $details = select("forms","id = '$forms_id'");
 while($row = mysqli_fetch_assoc($details)) {
-    $architectural_id = $row['architectural'];
+    // $architectural_id = $row['architectural'];
     $sanitary_id = $row['sanitary'];
     $electrical_id = $row['electrical'];
-    $mechanical_id = $row['mechanical'];
+    // $mechanical_id = $row['mechanical'];
     $locational_id = $row['locational'];
-    $structural_id = $row['structural'];
+    $unified_id = $row['unified'];
+
+    // $structural_id = $row['structural'];
 
 
 }
@@ -78,15 +80,19 @@ delete_("forms","id = '$forms_id'");
 
 //delete forms
     //delete architectural
-    delete_("f_architectural","id = '$architectural_id'");
+    // delete_("f_architectural","id = '$architectural_id'");
     //delete structural
-    delete_("f_structural","id = '$structural_id'");
+    // delete_("f_structural","id = '$structural_id'");
      //delete sanitary
      delete_("f_sanitary","id = '$sanitary_id'");
     //delete electrical
     delete_("f_electrical","id = '$electrical_id'");
     //delete mechanical
-    delete_("f_mechanical","id = '$mechanical_id'");
+    // delete_("f_mechanical","id = '$mechanical_id'");
     //delete locational
     delete_("f_locational","id = '$locational_id'");
+    //delete unified
+    delete_("f_unified","id = '$unified_id'");
+
+    header("Location: ../pages/applicant_home.php");
 

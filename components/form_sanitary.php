@@ -1,11 +1,32 @@
+<?php
+$sanitary_id = $_SESSION["forms"]["sanitary"];
+
+$sanitary_data = select("f_sanitary","id = '$sanitary_id'");
+
+if ($row = mysqli_fetch_assoc($sanitary_data)) {
+    // print_r($row);
+
+?>
+
+
 <div class="row p-5">
     <div class="row p-5 m-0 border-black">
+    <div id="form_header" class="row text-center">
+            <p>REPUBLIC OF THE PHILIPINES<br>
+                <b>MUNICIPALITY OF NASUGBU </b> <br>
+                <b>PROVINCE OF BATANGAS</b> <br>
+            </p>
 
+            <H3>SANITARY/PLUMBING PERMIT</H3>
+
+
+        </div>
         <div id="scope_of_work">
             <b>SCOPE OF WORK</b>
             <div class="row g-2">
                 <div class="col">
-                    <select name="sanitary_scope" id="sanitary_scope" class="form-select">
+                    <select id="project-scope-select" name="sanitary_scope" id="sanitary_scope" class="form-select"
+                    oninput="update_table_ajax('f_sanitary','scope',this.value,'<?php echo $sanitary_id?>')">
                         <option value="new">NEW INSTALLATION</option>
                         <option value="addition">ADDITION OF</option>
                         <option value="repair">REPAIR OF</option>
@@ -20,20 +41,72 @@
                 <div class="col-2"></div>
 
             </div>
+        </div>
+        <div class="col-sm-4 my-3">
+            <div class="d-flex">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput1" data-target="textInputContainer1">
+                    <label class="form-check-label" for="showInput1">ADDITION OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer1" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput1">
+                      </div>
+                  </div>    
+            </div>
+            
+              <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput2" data-target="textInputContainer2">
+                    <label class="form-check-label" for="showInput2">REPAIR OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer2" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50 mx-2" id="textInput2">
+                      </div>
+                  </div>
+              </div>
 
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-2"><input type="button" value="add_scope" class="btn my-btn-blue w-auto "></div>
-
+              <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput3" data-target="textInputContainer3">
+                    <label class="form-check-label" for="showInput3">REMOVAL OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer3" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput3">
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <div class="col-sm-4 my-3">
+            <p>OTHERS(specify)</p>
+            <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput4" data-target="textInputContainer4">
+                    
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer4" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput4">
+                    </div>
+                </div>
             </div>
 
-
+            <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput5" data-target="textInputContainer5">
+                    
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer5" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput5">
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-
-
-
+    </div>
+        
         <div class="row">
             <div class="col">
                 <div class="row my-2">
@@ -104,7 +177,8 @@
             <div class="col">
                 <p class="my-4"><b>WATER SUPPLY</b></p>
                 <div id="water-supply-container">
-                    <select class="form-select mb-2" name="water-supply">
+                    <select id="water-supply-select" class="form-select mb-2" name="water-supply"
+                    oninput="update_table_ajax('f_sanitary','water_supply',this.value,'<?php echo $sanitary_id?>')">
                         <option value="">Select an option</option>
                         <option value="SHALLOW WELL">SHALLOW WELL</option>
                         <option value="DEEP WELL & PUMP SET">DEEP WELL & PUMP SET</option>
@@ -119,7 +193,8 @@
             <div class="col">
                 <p class="my-4"><b>SYSTEM OF DISPOSAL</b></p>
                 <div id="disposal-container">
-                    <select class="form-select mb-2" name="disposal">
+                    <select id="water-disposal-select" class="form-select mb-2" name="disposal"
+                    oninput="update_table_ajax('f_sanitary','water_disposal',this.value,'<?php echo $sanitary_id?>')">
                         <option value="">Select an option</option>
                         <option value="WASTE WATER TREATMENT PLANT">WASTE WATER TREATMENT PLANT</option>
                         <option value="SEPTIC VAULT/IMHOPE TANK">SEPTIC VAULT/IMHOPE TANK</option>
@@ -142,7 +217,8 @@
                 <div class="row">
                     <p class="my-4">NUMBER OF STOREYS OF BUILDING</p>
                 </div>
-                <div class="row"><input type="text" name="storeys" class="mx-5 w-50 d-flex" style="border:none; border-bottom: 1px solid black; outline: none;">
+                <div class="row">
+                    <input type="text" name="storeys" class="mx-5 w-50 d-flex" style="border:none; border-bottom: 1px solid black; outline: none;">
                 </div>
 
 
@@ -172,8 +248,11 @@
 
                 </div>
                 <div class="row">
-                    <input type="text" name="start-date" class="mx-5 w-50" style="border:none; border-bottom: 1px solid black; outline: none; margin-top: 10px">
-
+                    <div class="input-group date" id="datepicker">
+                        <input id="proposed-date-start" type="date" class="form-control" id="date" 
+                        oninput="update_table_ajax('f_sanitary','prp_date_start',this.value,'<?php echo $sanitary_id?>')"/>
+                        
+                    </div>
                 </div>
 
             </div>
@@ -184,9 +263,11 @@
 
                 </div>
                 <div class="row">
-                    <input type="text" name="completion-date" class="mx-5 w-50" style="border:none; border-bottom: 1px solid black; outline: none;">
-
-
+                    <div class="input-group date" id="datepicker">
+                        <input id="expected-date-completion" type="date" class="form-control" id="date" 
+                        oninput="update_table_ajax('f_sanitary','exp_date_completion',this.value,'<?php echo $sanitary_id?>')"/>
+                        
+                    </div>
                 </div>
 
 
@@ -198,7 +279,8 @@
         <div class="row">
 
             <p class="my-4">TOTAL COST <br> OF INSTALLATION ₱</p>
-            <input type="text" name="cost" class="mx-1 w-50" style="border:none; border-bottom: 1px solid black; outline: none; margin-top: 10px">
+            <input id="total-cost-input" type="text" name="cost" class="mx-1 w-50" style="border:none; border-bottom: 1px solid black; outline: none; margin-top: 10px"
+            oninput="update_table_ajax('f_sanitary','total_cost',this.value,'<?php echo $sanitary_id?>')">
 
 
         </div>
@@ -207,3 +289,24 @@
 
     </div>
 </div>
+
+<script src="../js/db_operations_ajax.js"></script>
+<script src="../js/jquery-3.6.4.js"></script>
+
+    <script>
+
+
+        selectElement('project-scope-select', '<?php echo $row['scope']?>');
+        selectElement('water-supply-select', '<?php echo $row['water_supply']?>');
+        selectElement('water-disposal-select', '<?php echo $row['water_disposal']?>');
+        selectElement('total-cost-input', '<?php echo $row['total_cost']?>');
+        selectElement('proposed-date-start', '<?php echo $row['prp_date_start']?>');
+        selectElement('expected-date-completion', '<?php echo $row['exp_date_completion']?>');
+        // selectElement('prepared-by-input', '<?php //echo $row['prepared_by']?>');
+
+    </script>
+   
+
+<?php
+}
+?>
