@@ -94,4 +94,5 @@ delete_("forms","id = '$forms_id'");
     //delete unified
     delete_("f_unified","id = '$unified_id'");
 
+    header("Location: ../pages/applicant_home.php");
 

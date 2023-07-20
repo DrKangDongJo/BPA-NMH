@@ -14,7 +14,7 @@ if ($row = mysqli_fetch_assoc($electrical_data)) {
 ?>
 
 <div class="row p-5">
-    dyurdurdyud
+    <!-- dyurdurdyud -->
     <div class="row p-5 m-0 border-black">
 
     <div id="form_header" class="row text-center">
