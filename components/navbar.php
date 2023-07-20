@@ -59,6 +59,7 @@
 
     .dropdown-toggle::after{
         content: none;
+        background-color: transparent;
     }
 
 </style>
@@ -123,14 +124,6 @@
                 <li><a class="dropdown-item" href="../php_func/logout.php">Logout</a></li>
             </ul>
         </div>
-
-
-
     </div>
-
-
-   
-
-
 </div>
 

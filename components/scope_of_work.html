@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-5.3.0\css\bootstrap.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>ADDITIONAL REQUIREMENTS</title>
+</head>
+<style>
+    .hide{
+        display:none;
+      }
+      .show{
+        display:block;
+      }
+</style>
+<body>
+    <div class="row">
+        <div class="col-sm-4">
+            <p><b>SCOPE OF WORK</b></p>
+            <div class="form-check mx-4">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  NEW INSTALLATION
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-4 my-3">
+            <div class="d-flex">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput1" data-target="textInputContainer1">
+                    <label class="form-check-label" for="showInput1">ADDITION OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer1" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput1">
+                      </div>
+                  </div>    
+            </div>
+            
+              <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput2" data-target="textInputContainer2">
+                    <label class="form-check-label" for="showInput2">REPAIR OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer2" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50 mx-2" id="textInput2">
+                      </div>
+                  </div>
+              </div>
+
+              <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput3" data-target="textInputContainer3">
+                    <label class="form-check-label" for="showInput3">REMOVAL OF</label>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer3" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput3">
+                      </div>
+                  </div>
+              </div>
+        </div>
+        <div class="col-sm-4 my-3">
+            <p>OTHERS(specify)</p>
+            <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput4" data-target="textInputContainer4">
+                    
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer4" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex my-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showInput5" data-target="textInputContainer5">
+                    
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="mx-3" id="textInputContainer5" style="display: none;">
+                        <input type="text" class="form-control input-text-outline w-50" id="textInput5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="row my-2">
+                <p><b>USE OR TYPE OF OCCUPANCY</b></p>
+                <div class="col">
+                    <select id="occupancy-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="RESIDENTIAL">RESIDENTIAL</option>
+                        <option value="COMMERCIAL">COMMERCIAL</option>
+                        <option value="INDUSTRIAL">INDUSTRIAL</option>
+                        <option value="INSTITUTIONAL">INSTITUTIONAL</option>
+                        <option value="AGRICULTURAL">AGRICULTURAL</option>
+                        <option value="PARKS">PARKS, PLAZAS, MONUMENTS</option>
+                        <option value="RECREATIONAL">RECREATIONAL</option>
+                        <option value="OTHERS">OTHERS (SPECIFY)</option>
+                    </select>
+                    <div class="d-flex gap-2">
+                        <!-- <button id="add-occupancy-btn" class="btn my-btn-blue btn-block" name="answer" onclick="onButtonClick()" style="display:block;">Add</button>
+                    <input type="text" class="form-control input-text-outline w-50" id="btnInput" style="display:none;"> -->
+                  
+                        <button id="add-fixtures-btn mx-3" class="btn my-btn-blue" name="answer" onclick="onButtonClick()">ADD</button>
+                        <input type="text" class="d-none form-control w-50" type="text" id="textInput" />
+                    
+                    
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row my-2">
+                <p><b>FIXTURES TO BE INSTALLED</b></p>
+                <div class="col-12">
+                    <select id="fixtures-select" class="form-select mb-2">
+                        <option value="">Select an option</option>
+                        <option value="WATER CLOSET">WATER CLOSET</option>
+                        <option value="FLOOR DRAIN">FLOOR DRAIN</option>
+                        <option value="LAVATORIES">LAVATORIES</option>
+                        <option value="KITCHEN SINK">KITCHEN SINK</option>
+                        <option value="FAUCET">FAUCET</option>
+                        <option value="SHOWER HEAD">SHOWER HEAD</option>
+                        <option value="WATER METER">WATER METER</option>
+                        <option value="GREASE TRAP">GREASE TRAP</option>
+                        <option value="BATH TUBS">BATH TUBS</option>
+                        <option value="SLOP SINK">SLOP SINK</option>
+                        <option value="URINAL">URINAL</option>
+                        <option value="AIR CONDITIONING UNIT">AIR CONDITIONING UNIT</option>
+                        <option value="WATER TANK/RESERVOIR">WATER TANK/RESERVOIR</option>
+                        <option value="BIDETTE">BIDETTE</option>
+                        <option value="LAUNDRY TRAYS">LAUNDRY TRAYS</option>
+                        <option value="DENTAL CUSPIDOR">DENTAL CUSPIDOR</option>
+                        <option value="GAS HEATER">GAS HEATER</option>
+                        <option value="ELECTRICAL HEATER">ELECTRICAL HEATER</option>
+                        <option value="WATER BOILER">WATER BOILER</option>
+                        <option value="DRINKING FOUNTAIN">DRINKING FOUNTAIN</option>
+                        <option value="BAR SINK">BAR SINK</option>
+                        <option value="SODA FOUNTAIN SINK">SODA FOUNTAIN SINK</option>
+                        <option value="LABORATORY SINK">LABORATORY SINK</option>
+                        <option value="STERILIZER">STERILIZER</option>
+                        <option value="SWIMMING POOL">SWIMMING POOL</option>
+                        <option value="OTHERS">OTHERS (SPECIFY)</option>
+                    </select>
+                    <button id="add-fixtures-btn" class="btn my-btn-blue btn-block">Add</button>
+                    <input type="text" id="others-text" name="others" class="mx-3 w-10 d-none" style="border:none; border-bottom: 1px solid black; outline: none;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../js/jquery-3.6.4.js"></script>
+    <script>
+        const checkboxes = document.querySelectorAll('.form-check-input');
+        
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener('change', function() {
+            const targetId = this.dataset.target;
+            const targetContainer = document.getElementById(targetId);
+            
+            if (this.checked) {
+              targetContainer.style.display = 'block';
+            } else {
+              targetContainer.style.display = 'none';
+            }
+          });
+        });
+
+        function onButtonClick(){
+            document.getElementById('textInput').className="show";
+          }
+
+      </script>
+
+</body>
+</html>
