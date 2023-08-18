@@ -288,7 +288,7 @@ if ($row = mysqli_fetch_assoc($sanitary_data)) {
 
 
     </div>
-</div>
+<!-- </div> -->
 
 <script src="../js/db_operations_ajax.js"></script>
 <script src="../js/jquery-3.6.4.js"></script>

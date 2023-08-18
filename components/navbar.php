@@ -86,12 +86,13 @@
     <div id ="user-tools" name = "nav_right_section" class="col-4 text-end white-text my-auto d-flex-inline" >
 
     <!-- notifications -->
-        <a class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" 
+    <!-- btn btn-secondary dropdown-toggle -->
+        <a class="my-dd-btn" type="button" 
         href = "../pages/applicant_home.php">
                 <img src="../img/icon/home-w.png" alt="user-icon" class = "my-dd-icon">
         </a>
          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="../img/icon/bell-w.png" alt="user-icon" class = "my-dd-icon">
             </button>
             <ul class="dropdown-menu">
@@ -103,7 +104,7 @@
 
     <!-- inbox -->
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="../img/icon/inbox-w.png" alt="user-icon" class = "my-dd-icon">
             </button>
             <ul class="dropdown-menu">
@@ -115,7 +116,7 @@
 
     <!-- profile -->
         <div class="btn-group drop-start">
-            <button class="btn btn-secondary dropdown-toggle my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="my-dd-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="../img/icon/user-w.png" alt="user-icon" class = "my-dd-icon">
             </button>
             <ul class="dropdown-menu ">

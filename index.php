@@ -36,10 +36,12 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
 
         .login-cont {
             background-color: #5A8BB5;
-            min-width: 300px;
-            min-height: 500px;
+        
             max-width: 400px;
             max-height: 600px;
+            min-width: 272px;
+            min-height: 355px;
+            
             border-radius: 10px;
             /* position:absolute;
             top: 50%;
