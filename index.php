@@ -25,7 +25,7 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?></title>
     <link rel="icon" type="image/x-icon" href="img/Seal_of_Nasugbu.png">
-
+    <link rel="stylesheet" href="css/general.css">
 
     <style>
         .bg {
@@ -37,16 +37,21 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
         .login-cont {
             background-color: #5A8BB5;
         
-            max-width: 400px;
+            /* max-width: 400px;
             max-height: 600px;
             min-width: 272px;
-            min-height: 355px;
+            min-height: 355px; */
+          
+            max-width: 322px;
+            max-height: 418px;
+            min-width: 262px; 
+            min-height: 345px; 
             
             border-radius: 10px;
-            /* position:absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); */
+            /* position:absolute; */
+            /* top: 50%; */
+            /* left: 50%; */
+            /* transform: translate(-50%, -50%);  */
             padding: 2%;
 
         }
@@ -119,15 +124,18 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
 
 <body class="bg">
 
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
         <!-- ** NAVBAR -->
-        <div class="row">
+        <!-- <div class="row"> -->
             <?php
             require 'components\navbar.php';
             ?>
-        </div>
+        <!-- </div> -->
+
+        <div id="main_content" class = "p-3">      
         <form action="php_func/login_validation.php" method="post">
-            <div class="my-centered">
+            <!-- my-centered -->
+            <!-- <div class=""> -->
                 <div class="row login-cont m-auto">
                     <div class="row mt-auto" style="justify-content:center">
                         <img src="img/Seal_of_Nasugbu.png" alt="Seal of Nasugbu" style="width:50%;" class="img-fluid">
@@ -137,11 +145,11 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
                     <div class="row">
                         <label for="USERNAME" class="white-text ">USERNAME</label>
                         <div class="row m-auto">
-                            <input type="text" value="" name="USERNAME" class="my-upper my-text-input my-border-8" placeholder="username88" required>
+                            <input type="text" value="" name="USERNAME" class="my-text-input my-border-8" placeholder="Enter your username" required>
                         </div>
                         <label for="PASSWORD" class="white-text ">PASSWORD</label>
                         <div class="row m-auto">
-                            <input type="password" value="" name="PASSWORD" class="my-upper my-text-input my-border-8" placeholder="required" required>
+                            <input type="password" value="" name="PASSWORD" class="my-text-input my-border-8" placeholder="Enter your password" required>
                         </div>
                     </div>
 
@@ -163,12 +171,17 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
                     </div>
 
                 </div>
-            </div>
+            <!-- </div> -->
         </form>
+        </div>  
 
-
+        <?php require 'components\footer.php'?>
 
     </div>
+
+
+   
+
 
 
 

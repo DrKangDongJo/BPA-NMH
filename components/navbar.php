@@ -64,7 +64,7 @@
 
 </style>
 
-<div id="navbar" class= "row m-0 gx-4" >
+<div id="navbar" class= "row m-0 gx-4 p-0" >
 
     <div id="title_logo" name = "nav_left_section" class = "col-4">
         <div id="logo_container">

@@ -139,7 +139,7 @@ data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PR
 <script src="../js/jquery-3.6.4.js"></script>
 <script>
 
-
+  
 
 
 
