@@ -47,12 +47,57 @@ require 'php_func/db_func.php';
 // echo phpversion();
 
 
-$locational_data = select("project","status = 'reviewing'");
+// $locational_data = select("project","status = 'reviewing'");
     
-while($row = mysqli_fetch_assoc($locational_data)) {
-    print_r($row);
+// while($row = mysqli_fetch_assoc($locational_data)) {
+//     print_r($row);
 
-}
+// }
+
+
+
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-5.3.0/css/bootstrap.css">
+
+</head>
+<body>
+
+
+<?php
+include "hm/form_architectural.php";
+echo "<hr>";
+include "hm/form_electrical.php";
+echo "<hr>";
+
+include "hm/form_fsec.php";
+echo "<hr>";
+
+include "hm/form_locational.php";
+echo "<hr>";
+
+include "hm/form_mechanical.php";
+echo "<hr>";
+include "hm/form_sanitary.php";
+echo "<hr>";
+include "hm/form_structural.php";
+echo "<hr>";
+include "hm/form_unified.php";
+echo "<hr>";
+
+
+
+
+
+?>
+    
+</body>
+</html>

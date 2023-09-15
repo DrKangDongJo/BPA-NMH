@@ -372,8 +372,16 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
         if(project_status != "open"){
             $("select").attr("disabled","disabled")
             $("input").attr("disabled","disabled")
-            $("#submit_for_review_btn")[0].innerText = "Review in process";
-            $("#submit_for_review_btn").attr("disabled","disabled")
+            $("#submit_for_review_btn")[0].innerText =  project_status;
+            $("#submit_for_review_btn").css("text-transform", "uppercase");
+            $("#submit_for_review_btn").attr("disabled","disabled");
+
+            if(project_status == "approved"){
+            $("#submit_for_review_btn").css("background-color", "#00920091");
+            }else if(project_status == "denied"){
+            $("#submit_for_review_btn").css("background-color", "#d100008a");
+                
+            }
         }
 
         if ($("#sel_add_form").children().length == 0) {

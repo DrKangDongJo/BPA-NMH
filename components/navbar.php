@@ -88,7 +88,7 @@
     <!-- notifications -->
     <!-- btn btn-secondary dropdown-toggle -->
         <a class="my-dd-btn" type="button" 
-        href = "../pages/applicant_home.php">
+        href = "../pages/applicant_home.php" id="applicant_home_btn">
                 <img src="../img/icon/home-w.png" alt="user-icon" class = "my-dd-icon">
         </a>
          <div class="dropdown">

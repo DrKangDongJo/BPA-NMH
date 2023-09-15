@@ -3,7 +3,7 @@ $project_id =  $_POST['project_id'];
 require 'db_func.php';
 
 try{
-    update("project","status = 'reviewing'","id = '$project_id'");
+    update("project","status = 'pending'","id = '$project_id'");
   
 
 }catch(Exception $e){

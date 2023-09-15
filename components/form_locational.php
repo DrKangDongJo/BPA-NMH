@@ -54,9 +54,11 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
             </div>
             <div class="row">
   
-                <input type="number" name="ProjectArea" id="full_address" class="col">
-                <input type="text" name="Lot" id="Lot" class="col">
-                <input type="text" name="Building_Improvement" id="Building_Improvement" class="col" hidden>
+                <input type="number" name="ProjectArea" id="inp_project_area" class="col" 
+                onfocusout="update_table_ajax('f_locational','project_area',this.value,'<?php echo $locational_id?>')">
+                <input type="text" name="Lot" id="inp_lot" class="col"
+                onfocusout="update_table_ajax('f_locational','lot',this.value,'<?php echo $locational_id?>')">
+                <!-- <input type="text" name="Building_Improvement" id="Building_Improvement" class="col" hidden> -->
             </div>
         </div><br><br>
 
@@ -93,7 +95,8 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
         <div class="row my-2">
             <div class="col">
                 <p><b>EXISTING LAND USE FOR PROJECT SITE</b></p>
-                <select id="existing-land-use-select" class="form-select mb-2">
+                <select id="existing-land-use-select" class="form-select mb-2"
+                oninput="update_table_ajax('f_locational','existing_land_use',this.value,'<?php echo $locational_id?>')">
                     <option value="">Select an option</option>
                     <option value="RESIDENTIAL">RESIDENTIAL</option>
                     <option value="COMMERCIAL">COMMERCIAL</option>
@@ -114,8 +117,8 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
 
         <div class="row my-2">
             <div class="col">
-                <input id="project-cost-input" type="text" name="others" class=" w-100" style="border:none; border-bottom: 1px solid black; outline: none;"
-                oninput="update_table_ajax('f_locational','project_cost',this.value,'<?php echo $locational_id?>')">
+                <input id="project-cost-input" type="text" name="others" class=" w-100" style="border:none; border-bottom: 1px solid black; outline: none;">
+                <!-- onfocusout="update_table_ajax('f_locational','project_cost',this.value,'<?php //echo $locational_id?>')" -->
 
             </div>
 
@@ -123,7 +126,7 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
         <div class="row my-2">
             <div class="col">
                 <p><b>IF THE PROJECT APPLIED FOR THE SUBJECT OF THE WRITTEN NOTICE FROM
-                        THIS COMMISION AND ITS DEPUTIZED ZINING ADMINISTRATOR TO THE EFFECT REQUIRING FOR THE PRESENTATION OF THE
+                        THIS COMMISION AND ITS DEPUTIZED ZONING ADMINISTRATOR TO THE EFFECT REQUIRING FOR THE PRESENTATION OF THE
                         LOCATIONAL CLEARANCE/CERTIFICATE OF ZONING COMPLIANCE/CZC
                     </b></p>
 
@@ -133,20 +136,28 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
 
         <div class="row my-2">
 
-            <div class="col-6">
-                <input type="checkbox" name="" id="" class="mx-2">
-                <label for="" class="my-2 mx-1">YES</label>
+            <div class="col-8">
+
+            <div class="row">
+            <div class="col">
+                    <p><span><input type="radio" name="rad_written_notice" id="" class="mx-2" value = "yes"
+                    onclick="update_table_ajax('f_locational','project_cost',this.value,'<?php echo $locational_id?>')"
+                    ></span>YES</p>
+                    
+                </div>
 
                 <div class="col">
-                    <input type="checkbox" name="" id="" class="mx-2">
-                    <label for="" class="my-1 mx-1">NO</label>
+                <p><span><input type="radio" name="rad_written_notice" id="" class="mx-2" value = "no"></span>NO</p>
+
 
                 </div>
-                <div class="col">
-                    <input type="checkbox" name="" id="" class="mx-2">
-                    <label for="" class="my-1 mx-1">OTHER HSRC OFFICER OF ZONING ADMINISTRATIR WHO ISSUED THE NOTICE</label>
+            </div>
+            <div class="row">
+            <p><span><input type="radio" name="rad_written_notice" id="" class="mx-2" value = "other"></span>OTHER HSRC OFFICER OF ZONING ADMINISTRATOR WHO ISSUED THE NOTICE</p>
 
-                </div>
+            </div>
+           
+                
                 <div class="col">
                     <label for="" class="my-1 mx-1">DATE OF NOTICE</label>
                     <input type="text" name="others" class="mx-3 w-60" style="border:none; border-bottom: 1px solid black; outline: none;">
@@ -160,11 +171,9 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
             </div>
         </div>
         <div class="row my-2">
-            <div class="col">
-                <input type="text" name="others" class=" w-100" style="border:none; border-bottom: 1px solid black; outline: none;">
-            </div>
+        
 
-            <div class="row my-3">
+            <div class="row my-3" id = "subj_similar_app">
                 <div class="col-8">
                     <p><b> IS THE PROJECT APPLIED FOR THE SUBJECT OF THE SIMILAR APPLICATION WITH THE OTHER OFFICER
                             OF THE COMMISSION AND/OR DEPUTIZED ZONING ADMINISTRATOR?
@@ -174,20 +183,13 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
 
 
                 <div class="coL-4">
-                    <input type="checkbox" name="" id="" class="mx-2">
-                    <label for="" class="my-1 mx-1">YES</label>
-
+                    <p><span><input type="radio" name="rad_subj_similar_app" id="" class="mx-2"></span>YES</p>
+                    
                 </div>
                 <div class="col-4">
-                    <input type="checkbox" name="" id="" class="mx-2">
-                    <label for="" class="my-1 mx-1">NO</label>
+                <p><span><input type="radio" name="rad_subj_similar_app" id="" class="mx-2"></span>NO</p>
 
                 </div>
-
-
-
-
-
             </div>
 
             <div class="row">
@@ -215,9 +217,7 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
             </div>
 
             <div class="row my-2">
-                <div class="col">
-                    <input type="text" name="others" class=" w-100" style="border:none; border-bottom: 1px solid black; outline: none;">
-                </div>
+       
 
 
                 <div class="row my-3">
@@ -246,11 +246,23 @@ if ($row = mysqli_fetch_assoc($locational_data)) {
 <script>
 
 selectElement('project-nature-select', '<?php echo $row['project_nature']?>');
+selectElement('inp_project_area', '<?php echo $row['project_area']?>');
+selectElement('inp_lot', '<?php echo $row['lot']?>');
+
+
+
+selectElement('existing-land-use-select', '<?php echo $row['existing_land_use']?>');
+
 selectElement('right-over-land-select', '<?php echo $row['right_over_land']?>');
 selectElement('project-tenure-select', '<?php echo $row['project_tenure']?>');
 selectElement('project-cost-input', '<?php echo $row['project_cost']?>');
 
 
+// function radio_set(id,value){
+//     onclick='$("input[name=rad_written_notice][value=yes]").prop("checked", true);';
+
+//     update_table_ajax('f_locational','project_cost',this.value,'<?php echo $locational_id?>')
+// }
 
 
 
