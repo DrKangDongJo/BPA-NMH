@@ -116,6 +116,9 @@ if (isset($_SESSION['user_id'])) { //check if session has active user
             right: 5%;
             bottom: 10%;
         }
+
+
+     
     </style>
 
     <link rel="stylesheet" href="bootstrap-5.3.0\css\bootstrap.css">

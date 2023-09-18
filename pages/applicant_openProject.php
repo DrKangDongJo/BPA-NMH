@@ -2,6 +2,7 @@
 require '../php_func/db_func.php';
 session_start(); //start session
 
+// print_r($_SESSION);
 
 $full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; // get page url
 $project_id = substr($full_url, strpos($full_url, "=") + 1);
@@ -21,13 +22,17 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
     <link rel="stylesheet" href="../css/general.css">
     <link rel="icon" type="image/x-icon" href="../img/Seal_of_Nasugbu.png">
 
+    
+    <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
+    <script src="../js/jquery-3.6.4.js"></script>
+
     <?php
     $condition = "id = '$project_id' AND owner_id = '" . $_SESSION['user_id'] . "' ";
     // echo $condition;
 
     $open_project = select("project", $condition); //result
     if ($row = mysqli_fetch_assoc($open_project)) {
-        
+
         $project_status = $row['status'];
         // echo $project_status;
     }
@@ -43,10 +48,10 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
         // }
         $project_title = ucwords($row['title']); //get project title
 
-        $forms = array("form_id"=>"$row[form_id]", "sanitary"=>"$row[sanitary]", "electrical"=>"$row[electrical]","locational"=>"$row[locational]","unified"=>"$row[unified]");
+        $forms = array("form_id" => "$row[form_id]", "sanitary" => "$row[sanitary]", "electrical" => "$row[electrical]", "locational" => "$row[locational]", "unified" => "$row[unified]");
         $_SESSION["forms"] = $forms;
         $forms_id = $row['form_id']; //forms id
- 
+
         // print_r($_SESSION);
         echo "<title>{$project_title}</title>";  //display tab title
     }
@@ -96,10 +101,10 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
             display: none;
         }
 
-        .my-dd-btn{
-        background-color: transparent;
-        border: none;
-    }
+        .my-dd-btn {
+            background-color: transparent;
+            border: none;
+        }
     </style>
 </head>
 
@@ -179,95 +184,61 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
                         </ul>
 
-
                     </div>
 
                     <div id="footer">
                         <!-- <button>Add Form</button> -->
-                        <?php
-
-                        $bs_target = "edit_form";
-                        $button_text = "Edit forms";
-                        $modal_title = "EDIT FORMS";
-
-                        ?>
-
-                        <button type="button" class="btn my-btn-blue mx-auto white-text" style="width:auto" data-bs-toggle="modal" data-bs-target="#<?php echo $bs_target ?>" hidden><?php echo $button_text ?></button>
-                        <!-- Modal -->
-                        <div class="modal fade " id="<?php echo $bs_target ?>" tabindex="-1" aria-labelledby="<?php echo $bs_target ?>_Label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="<?php echo $bs_target ?>_Label"><?php echo $modal_title ?></h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body ">
-
-                                        <div id="" style="width: 600px;">
-                                            <div class="header">
-                                                <h5>PROJECT TITLE</h5>
-                                            </div>
-                                            <div class="body">
 
 
-
-
-
-                                            </div>
-
-                                            <div class="footer"></div>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn my-btn-red" data-bs-dismiss="modal">Close</button>
-                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <h5 class="text-end" hidden>Project 0% Complete</h5>
                         <div class="row">
-                            <div class="col-3">FAQ</div>
+
+                            <div class="col-3" style="bottom: 0px;">FAQ</div>
                             <div class="col text-end">
-        
-                                <button type="button" class="btn my-btn-blue white-text" id = "submit_for_review_btn"
-                                data-bs-toggle="modal" data-bs-target="#submit_confirmation">
-                                SUBMIT FOR REVIEW
+
+
+                                <button type="button" class="btn my-btn-blue white-text" id="preview_app_btn" data-bs-toggle="modal" data-bs-target="#preview_app">
+                                    PREVIEW
+                                </button>
+
+                                <!-- Button trigger modal submit_confirmation-->
+                                <button type="button" class="btn my-btn-blue white-text" id="submit_for_review_btn" data-bs-toggle="modal" data-bs-target="#submit_confirmation">
+                                    SUBMIT FOR REVIEW
                                 </button>
 
                             </div>
                         </div>
-<!-- modal -->
 
-<!-- Button trigger modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="submit_confirmation" tabindex="-1" aria-labelledby="submit_confirmationLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="submit_confirmationLabel">Confirm submission</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to submit your project for review? <br>
-        <b>This will lock your project temporarily - you will not be able to make changes</b>
-        while we send your forms and documents to designated departments. 
-        Please make sure everything is filled and checked before proceeding. 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I'll do it later</button>
 
-        <form action="../php_func/submit_for_review.php" method="post">
-             <input name = "project_id" value = "<?php echo $project_id?>" hidden>
-             <button type="submit" class="btn btn-primary">Submit for review</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+                        <!-- Modal submit_confirmation -->
+                        <div class="modal fade" id="submit_confirmation" tabindex="-1" aria-labelledby="submit_confirmationLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="submit_confirmationLabel">Confirm submission</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to submit your project for review? <br>
+                                        <b>This will lock your project temporarily - you will not be able to make changes</b>
+                                        while we send your forms and documents to designated departments.
+                                        Please make sure everything is filled and checked before proceeding.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I'll do it later</button>
+
+                                        <form action="../php_func/submit_for_review.php" method="post">
+                                            <input name="project_id" value="<?php echo $project_id ?>" hidden>
+                                            <button type="submit" class="btn btn-primary">Submit for review</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -276,6 +247,63 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
                 </div>
 
+            </div>
+
+
+            <div class="modal fade" id="preview_app" tabindex="-1" aria-labelledby="preview_appLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="width: fit-content;
+    height: 2047px;">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="preview_appLabel">Preview</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick='$("#v-pills-locational_").click()'></button>
+                        </div>
+                        <div class="modal-body" style="width:fit-content;height:fit-content;">
+
+                            <!-- <h1>IMAGE VIEW</h1> -->
+                            <ul class="nav nav-pills flex-column flex-sm-row" id="preview_tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="preview-home-tab" data-bs-toggle="pill" data-bs-target="#preview-home" type="button" role="tab" aria-controls="preview-home" aria-selected="true">Unified Form</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="preview-profile-tab" data-bs-toggle="pill" data-bs-target="#preview-profile" type="button" role="tab" aria-controls="preview-profile" aria-selected="false">Sanitary</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="preview-contact-tab" data-bs-toggle="pill" data-bs-target="#preview-contact" type="button" role="tab" aria-controls="preview-contact" aria-selected="false">Electrical</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="preview-disabled-tab" data-bs-toggle="pill" data-bs-target="#preview-disabled" type="button" role="tab" aria-controls="preview-disabled" aria-selected="false" disabled>Disabled</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="preview_tab-tabContent">
+                                <div class="tab-pane fade" id="preview-home" role="tabpanel" aria-labelledby="preview-home-tab" tabindex="0">
+                                    <?php
+                                    $mode = "view";
+                                    require "..\components\prevf_unified.php"; ?>
+                                </div>
+                                <div class="tab-pane fade" id="preview-profile" role="tabpanel" aria-labelledby="preview-profile-tab" tabindex="0">
+                                    <?php //require "../components/prefv_sanitary.html";
+                                    ?>
+
+                                </div>
+                                <div class="tab-pane fade" id="preview-contact" role="tabpanel" aria-labelledby="preview-contact-tab" tabindex="0">
+                                    <?php //require "../components/prefv_electrical.html";
+                                    ?>
+
+                                </div>
+                                <div class="tab-pane fade" id="preview-disabled" role="tabpanel" aria-labelledby="preview-disabled-tab" tabindex="0">...</div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick='$("#v-pills-locational_").click()'>Close</button>
+                            <button type="submit" class="btn btn-primary">Print</button>
+
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -318,7 +346,7 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
                         ?>
 
                     </div>
-                        <!-- DOCUMENTS -->
+                    <!-- DOCUMENTS -->
 
                     <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
                         <!-- LANDS -->
@@ -360,27 +388,25 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
     </div>
 
 
-    <script src="../bootstrap-5.3.0/js/bootstrap.bundle.js"></script>
-    <script src="../js/jquery-3.6.4.js"></script>
     <script>
         // add center project name
         $("#nav_center_section").append('<div class="text-center" id ="project_title"><input class="clear-input text-center white-text" type="text" name="" id="inp_project_name" onchange = "update_title()" value="<?php echo $project_title; ?>"></div>')
         $("#nav_center_section").addClass("m-auto");
 
-        var project_status = "<?php echo $project_status?>";
+        var project_status = "<?php echo $project_status ?>";
         console.log(project_status);
-        if(project_status != "open"){
-            $("select").attr("disabled","disabled")
-            $("input").attr("disabled","disabled")
-            $("#submit_for_review_btn")[0].innerText =  project_status;
+        if (project_status != "open") {
+            $("select").attr("disabled", "disabled")
+            $("input").attr("disabled", "disabled")
+            $("#submit_for_review_btn")[0].innerText = project_status;
             $("#submit_for_review_btn").css("text-transform", "uppercase");
-            $("#submit_for_review_btn").attr("disabled","disabled");
+            $("#submit_for_review_btn").attr("disabled", "disabled");
 
-            if(project_status == "approved"){
-            $("#submit_for_review_btn").css("background-color", "#00920091");
-            }else if(project_status == "denied"){
-            $("#submit_for_review_btn").css("background-color", "#d100008a");
-                
+            if (project_status == "approved") {
+                $("#submit_for_review_btn").css("background-color", "#00920091");
+            } else if (project_status == "denied") {
+                $("#submit_for_review_btn").css("background-color", "#d100008a");
+
             }
         }
 
@@ -559,6 +585,34 @@ $project_id = substr($full_url, strpos($full_url, "=") + 1);
 
 
         }
+
+   
+        // function printDiv() {
+        //     var divContents = document.getElementById("prevf_unified").innerHTML;
+        //     var divStyle = document.getElementById("prevf_unified_style");
+        //     var a = window.open('', '', 'height=auto, width=auto');
+        //     a.document.write('<html>');
+        //     a.document.write('<head>');
+        //     a.document.write(divStyle);
+        //     a.document.write('</head>');
+        //     a.document.write('<body > <h1>Div contents are <br>');
+        //     a.document.write(divContents);
+        //     a.document.write('</body></html>');
+        //     a.document.close();
+        //     a.print();
+        // }
+   
+        function printPageArea(areaID){
+
+            //add print/scaling settings
+    var printContent = document.getElementById(areaID).innerHTML;
+    var originalContent = document.body.innerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContent;
+}
+
+
     </script>
 </body>
 

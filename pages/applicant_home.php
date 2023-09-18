@@ -160,16 +160,21 @@ data-bs-toggle="modal" data-bs-target="#project_template_select_modal">CREATE PR
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-
-                <div style="width:200px;aspect-ratio:1/1;border:1px solid black;">
-
-                  <div style="height:80%;border-bottom:1px solid black;"></div>
-
-                  <a href="../php_func/new_project.php">
-                    <p class="text-center">BUILDING PERMIT APPLICATION</p>
-                  </a>
-
+              
+                <div style="width:200px;aspect-ratio:1/1;border:1px solid black;" >
+                <a href="../php_func/new_project.php">
+                  <div style="height:80%;border-bottom:1px solid black;
+                  background-image:url(../img/icon/construction-plans.png);  
+                  background-repeat: no-repeat; background-size: cover;
+                  background-position-x:center;" id = "temp_bg">
                 </div>
+
+                  
+                    <p class="text-center">BUILDING PERMIT APPLICATION</p>
+              
+                    </a>
+                </div>
+              
 
               </div>
               <div class="modal-footer">

@@ -110,7 +110,9 @@ update("forms","`sanitary` = '$form_sanitary',`electrical` = '$form_electrical',
 
 
 
-header("Location: ../pages/applicant_home.php")
+header("Location: ../pages/applicant_openProject.php?project_id=$project_id")
+
+// applicant_openProject.php?project_id=fea4c7c8-db14-47c1-bd93-d0ee0a158af4
 
 
 ?>

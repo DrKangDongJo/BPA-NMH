@@ -28,11 +28,6 @@ session_start();
 
     <p>in progress as first step of approval process</p>
     <?php
-
-
-
-
-
     // $locational_data = select("project", "status = 'reviewing'");
 
     // while ($row = mysqli_fetch_assoc($locational_data)) {

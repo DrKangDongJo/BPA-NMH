@@ -1,12 +1,17 @@
+<style>
+
+
+</style>
+
 <footer style="  
                             /* margin: 0; */
-                           /* position: absolute; */
+                           position: absolute;
                            bottom: 0;
                            width: 100%;
                            padding:10px; 
                            color:white;
-                           /* height:auto;
-                           overflow:auto; */
+                           height:108px;
+                           overflow:auto;
                            margin-top:auto;
                            " class="our-bgblue"
                            >
